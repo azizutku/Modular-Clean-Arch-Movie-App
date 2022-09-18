@@ -20,11 +20,8 @@ android {
         testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
     }
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
+        BuildTypeDebug.create(this)
+        BuildTypeRelease.create(this)
     }
     flavorDimensions.add(BuildProductDimensions.DIMENSION_VERSION)
     productFlavors {
