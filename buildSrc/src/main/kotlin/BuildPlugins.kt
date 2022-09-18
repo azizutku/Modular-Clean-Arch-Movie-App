@@ -6,6 +6,7 @@ object BuildPlugins {
     const val KTLINT_PLUGIN = "org.jlleitschuh.gradle.ktlint"
 
     const val DETEKT = "plugins.detekt"
+    const val GIT_HOOKS = "plugins.git-hooks"
 
     const val KTLINT_PLUGIN_VERSION = "11.0.0"
 
