@@ -4,4 +4,6 @@ object BuildPlugins {
     const val KOTLIN_ANDROID = "kotlin-android"
     const val KOTLIN_KAPT = "kotlin-kapt"
 
+    const val DETEKT = "plugins.detekt"
+
 }
