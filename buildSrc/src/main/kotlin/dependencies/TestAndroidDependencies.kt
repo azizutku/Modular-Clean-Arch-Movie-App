@@ -2,10 +2,12 @@ package dependencies
 
 object TestAndroidDependencies {
 
-    private const val JUNIT_VERSION = "1.1.3"
-    private const val ESPRESSO_VERSION = "3.4.0"
-
-    const val JUNIT = "androidx.test.ext:junit:$JUNIT_VERSION"
-    const val ESPRESSO = "androidx.test.espresso:espresso-core:$ESPRESSO_VERSION"
+    const val JUNIT = "androidx.test.ext:junit:${BuildDependenciesVersions.ANDROID_JUNIT}"
+    const val ESPRESSO =
+        "androidx.test.espresso:espresso-core:${BuildDependenciesVersions.ESPRESSO}"
+    const val HILT =
+        "com.google.dagger:hilt-android-testing:${BuildDependenciesVersions.HILT}"
+    const val NAVIGATION =
+        "androidx.navigation:navigation-testing:${BuildDependenciesVersions.NAVIGATION}"
 
 }

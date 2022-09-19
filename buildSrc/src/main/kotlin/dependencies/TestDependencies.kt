@@ -2,8 +2,9 @@ package dependencies
 
 object TestDependencies {
 
-    private const val JUNIT_VERSION = "4.13.2"
-
-    const val JUNIT = "junit:junit:$JUNIT_VERSION"
-
+    const val JUNIT = "junit:junit:${BuildDependenciesVersions.JUNIT}"
+    const val HILT =
+        "com.google.dagger:hilt-android-testing:${BuildDependenciesVersions.HILT}"
+    const val ROOM = "androidx.room:room-testing:${BuildDependenciesVersions.ROOM}"
+    const val PAGING = "androidx.paging:paging-common:${BuildDependenciesVersions.PAGING}"
 }
