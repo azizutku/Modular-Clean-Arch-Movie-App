@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.App.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/colorPrimary</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_fill_movie_scale_50</item>
+        <item name="postSplashScreenTheme">@style/Theme.CleanMovieApp</item>
+    </style>
+</resources>
