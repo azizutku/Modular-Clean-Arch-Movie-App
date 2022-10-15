@@ -1,3 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">Clean Movie App - Dev</string>
+    <string name="title_alert_dialog">Oops..</string>
+    <string name="text_button_retry_load_state">Try again</string>
+    <string name="text_button_ok">OK</string>
+    <string name="text_button_cancel">Cancel</string>
+    <string name="text_button_go_back">Go back</string>
+
+    <string name="message_exception_io">No internet connection. Please check your internet connection and try again.</string>
+    <string name="message_exception_http">An unknown error has occurred. Please try again.</string>
+    <string name="message_exception_timeout">The connection has time out. Please try again.</string>
+    <string name="message_exception_unknown">An unknown error has occurred. Please try again.</string>
 </resources>
