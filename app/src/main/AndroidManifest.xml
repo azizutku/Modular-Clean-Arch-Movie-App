@@ -12,6 +12,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+            <nav-graph android:value="@navigation/nav_main" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

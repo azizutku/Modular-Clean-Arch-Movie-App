@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="UnusedIds">
+    <item
+        android:id="@+id/nav_trending"
+        android:icon="@drawable/ic_fill_home_24"
+        android:title="@string/title_nav_item_trending" />
+    <item
+        android:id="@+id/nav_watchlist"
+        android:icon="@drawable/ic_fill_favorite_24"
+        android:title="@string/title_nav_item_watchlist" />
+</menu>
