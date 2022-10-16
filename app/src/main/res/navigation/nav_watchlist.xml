@@ -6,7 +6,7 @@
     app:startDestination="@id/watchlistFragment">
     <fragment
         android:id="@+id/watchlistFragment"
-        android:name="com.azizutku.movie.presentation.screens.watchlist.WatchlistFragment"
+        android:name="com.azizutku.movie.features.watchlist.presentation.WatchlistFragment"
         android:label="@string/title_fragment_watchlist">
         <action
             android:id="@+id/action_watchlistFragment_to_movieFragment"
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/movieFragment"
-        android:name="com.azizutku.movie.presentation.screens.movie.MovieFragment"
+        android:name="com.azizutku.movie.features.movie.presentation.MovieFragment"
         android:label="@string/title_fragment_movie"
         tools:layout="@layout/fragment_movie">
         <argument

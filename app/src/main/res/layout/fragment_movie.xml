@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.screens.movie.MovieFragment">
+    tools:context=".features.movie.presentation.MovieFragment">
 
     <include
         android:id="@+id/fragment_movie_toolbar"

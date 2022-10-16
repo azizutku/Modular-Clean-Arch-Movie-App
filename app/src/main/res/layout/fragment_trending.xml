@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.screens.trending.TrendingFragment">
+    tools:context=".features.trending.presentation.TrendingFragment">
 
     <include
         android:id="@+id/fragment_trending_toolbar"
