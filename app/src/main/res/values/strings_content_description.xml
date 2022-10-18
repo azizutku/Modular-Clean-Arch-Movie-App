@@ -2,4 +2,5 @@
 <resources>
     <string name="content_description_alert_dialog_image">Dialog image</string>
     <string name="content_description_movie_image">Movie image</string>
+    <string name="content_description_trending_movie_poster_image">Movie poster image</string>
 </resources>

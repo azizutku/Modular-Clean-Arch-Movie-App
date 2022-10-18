@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/space_xx_small"
+    app:cardCornerRadius="@dimen/space_medium">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/list_item_trending_movie_imageview_poster"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/content_description_trending_movie_poster_image"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="@dimen/constraint_ratio_trending_movie_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="@dimen/percent_width_trending_movie_image"
+            tools:src="@drawable/bg_placeholder_movie_image" />
+
+        <TextView
+            android:id="@+id/list_item_trending_movie_textview_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_large"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.Headline6"
+            app:layout_constraintBottom_toTopOf="@id/list_item_trending_movie_textview_vote"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/list_item_trending_movie_imageview_poster"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Spider-Man: No Way Home" />
+
+        <TextView
+            android:id="@+id/list_item_trending_movie_textview_vote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_large"
+            android:layout_marginTop="@dimen/space_small"
+            android:background="@drawable/bg_badge"
+            android:textAppearance="@style/TextAppearance.Subtitle2"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@id/list_item_trending_movie_textview_release_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/list_item_trending_movie_imageview_poster"
+            app:layout_constraintTop_toBottomOf="@id/list_item_trending_movie_textview_title"
+            tools:text="TMBD 8.2" />
+
+        <TextView
+            android:id="@+id/list_item_trending_movie_textview_release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/space_large"
+            android:layout_marginTop="@dimen/space_small"
+            android:textAppearance="@style/TextAppearance.Body1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/list_item_trending_movie_imageview_poster"
+            app:layout_constraintTop_toBottomOf="@id/list_item_trending_movie_textview_vote"
+            tools:text="15 Dec 2021" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

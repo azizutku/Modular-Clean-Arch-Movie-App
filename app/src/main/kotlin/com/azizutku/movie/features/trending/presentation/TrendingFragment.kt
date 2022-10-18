@@ -4,10 +4,17 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.paging.LoadState
 import com.azizutku.movie.R
-import com.azizutku.movie.databinding.FragmentTrendingBinding
 import com.azizutku.movie.common.base.BaseFragment
+import com.azizutku.movie.common.extensions.collectLatestLifecycleFlow
+import com.azizutku.movie.common.ui.recyclerview.SpacingItemDecoration
 import com.azizutku.movie.common.util.ThemeUtils
+import com.azizutku.movie.databinding.FragmentTrendingBinding
+import com.azizutku.movie.features.trending.di.FooterLoadStateAdapter
+import com.azizutku.movie.features.trending.di.HeaderLoadStateAdapter
+import com.azizutku.movie.features.trending.presentation.adapters.TrendingMovieLoadStateAdapter
+import com.azizutku.movie.features.trending.presentation.adapters.TrendingMoviesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -21,6 +28,17 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
     @Inject
     lateinit var themeUtils: ThemeUtils
 
+    @Inject
+    lateinit var adapter: TrendingMoviesAdapter
+
+    @Inject
+    @HeaderLoadStateAdapter
+    lateinit var headerLoadStateAdapter: TrendingMovieLoadStateAdapter
+
+    @Inject
+    @FooterLoadStateAdapter
+    lateinit var footerLoadStateAdapter: TrendingMovieLoadStateAdapter
+
     override fun initUi() {
         initToolbar()
         initRecyclerView()
@@ -28,11 +46,28 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
     }
 
     private fun initRecyclerView() {
-        // TODO: Initialize recycler view
+        adapter.onItemClicked = ::openMovieDetail
+        binding.fragmentTrendingSwipeRefreshLayout.setOnRefreshListener {
+            adapter.refresh()
+        }
+        binding.fragmentTrendingRecyclerviewTrending.addItemDecoration(
+            SpacingItemDecoration(resources.getDimensionPixelSize(R.dimen.space_medium), true)
+        )
+        binding.fragmentTrendingRecyclerviewTrending.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = headerLoadStateAdapter,
+            footer = footerLoadStateAdapter,
+        )
     }
 
     private fun subscribeObservers() {
-        // TODO: Subscribe observers
+        collectLatestLifecycleFlow(viewModel.uiState) { launchesUiState ->
+            if (launchesUiState is TrendingUiState.Success) {
+                adapter.submitData(launchesUiState.pagingData)
+            }
+        }
+        collectLatestLifecycleFlow(adapter.loadStateFlow) {
+            binding.fragmentTrendingSwipeRefreshLayout.isRefreshing = it.refresh is LoadState.Loading
+        }
     }
 
     private fun initToolbar() {
@@ -60,5 +95,11 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
 
     private fun toggleTheme() {
         themeUtils.toggleTheme(requireContext())
+    }
+
+    private fun openMovieDetail(movieId: Int) {
+        findNavController().navigate(
+            TrendingFragmentDirections.actionTrendingFragmentToMovieFragment(movieId)
+        )
     }
 }
