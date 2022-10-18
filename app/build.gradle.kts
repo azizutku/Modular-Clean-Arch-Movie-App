@@ -2,6 +2,8 @@ import dependencies.AnnotationProcessorsDependencies
 import dependencies.Dependencies
 import dependencies.TestAndroidDependencies
 import dependencies.TestDependencies
+import extensions.buildConfigStringField
+import extensions.getLocalProperty
 
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
@@ -26,6 +28,17 @@ android {
     buildTypes {
         BuildTypeDebug.create(this)
         BuildTypeRelease.create(this)
+    }
+    buildTypes.forEach {
+        kotlin.runCatching {
+            it.buildConfigStringField(BuildConstants.CONFIG_NAME_API_BASE_URL, BuildConstants.CONFIG_VALUE_API_BASE_URL)
+            it.buildConfigStringField(
+                BuildConstants.CONFIG_NAME_API_KEY,
+                getLocalProperty(BuildConstants.PROPERTY_NAME_API_KEY),
+            )
+        }.onFailure {
+            throw InvalidUserDataException(BuildConstants.MESSAGE_API_KEY_EXCEPTION)
+        }
     }
     flavorDimensions.add(BuildProductDimensions.DIMENSION_VERSION)
     productFlavors {

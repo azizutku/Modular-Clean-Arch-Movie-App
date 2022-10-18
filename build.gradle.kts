@@ -1,5 +1,5 @@
-import Utils.isNonStable
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import utils.VersionUtils.isNonStable
 
 plugins {
     id(BuildPlugins.KTLINT_PLUGIN).version(BuildPlugins.KTLINT_PLUGIN_VERSION)

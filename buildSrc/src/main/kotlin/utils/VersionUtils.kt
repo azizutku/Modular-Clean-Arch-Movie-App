@@ -1,4 +1,6 @@
-object Utils {
+package utils
+
+object VersionUtils {
 
     private val stableKeywords = listOf("RELEASE", "FINAL", "GA")
 
