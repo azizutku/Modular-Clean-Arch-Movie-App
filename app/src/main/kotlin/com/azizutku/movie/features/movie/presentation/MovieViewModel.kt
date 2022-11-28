@@ -2,7 +2,11 @@ package com.azizutku.movie.features.movie.presentation
 
 import androidx.lifecycle.viewModelScope
 import com.azizutku.movie.common.base.BaseViewModel
+import com.azizutku.movie.common.base.ErrorOwner
+import com.azizutku.movie.common.base.LoadingOwner
 import com.azizutku.movie.common.base.STOP_TIMEOUT_WHILE_SUBSCRIBED
+import com.azizutku.movie.common.base.combineForLoading
+import com.azizutku.movie.common.base.flattenMergeForError
 import com.azizutku.movie.common.vo.DataState
 import com.azizutku.movie.features.movie.domain.model.Movie
 import com.azizutku.movie.features.movie.domain.usecase.GetMovieUseCase
@@ -26,7 +30,7 @@ class MovieViewModel @Inject constructor(
     private val addMovieToWatchlistUseCase: AddMovieToWatchlistUseCase,
     private val removeMovieFromWatchlistUseCase: RemoveMovieFromWatchlistUseCase,
     private val checkMovieInWatchlistUseCase: CheckMovieInWatchlistUseCase,
-) : BaseViewModel() {
+) : BaseViewModel(), LoadingOwner, ErrorOwner {
 
     private val _stateMovies = MutableStateFlow<DataState<Movie>>(DataState.Idle)
 

@@ -44,8 +44,8 @@ abstract class BaseFragment<VB : ViewBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        subscribeLoading()
-        subscribeError()
+        subscribeLoadingIfNeeded()
+        subscribeErrorIfNeeded()
         initUi()
     }
 
@@ -54,8 +54,9 @@ abstract class BaseFragment<VB : ViewBinding>(
         _binding = null
     }
 
-    private fun subscribeLoading() {
-        collectLatestLifecycleFlow(viewModel.stateLoading) { isLoading ->
+    private fun subscribeLoadingIfNeeded() {
+        val loadingOwner = viewModel as? LoadingOwner ?: return
+        collectLatestLifecycleFlow(loadingOwner.stateLoading) { isLoading ->
             if (isLoading) {
                 loadingDialog.show()
             } else {
@@ -64,8 +65,9 @@ abstract class BaseFragment<VB : ViewBinding>(
         }
     }
 
-    private fun subscribeError() {
-        collectLatestLifecycleFlow(viewModel.stateError) {
+    private fun subscribeErrorIfNeeded() {
+        val errorOwner = viewModel as? ErrorOwner ?: return
+        collectLatestLifecycleFlow(errorOwner.stateError) {
             errorHandler.handleException(it.exception)
         }
     }

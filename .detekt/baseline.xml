@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>UnusedImports:ErrorOwner.kt$import androidx.lifecycle.ViewModel</ID>
+    <ID>UnusedImports:LoadingOwner.kt$import androidx.lifecycle.ViewModel</ID>
+  </CurrentIssues>
+</SmellBaseline>

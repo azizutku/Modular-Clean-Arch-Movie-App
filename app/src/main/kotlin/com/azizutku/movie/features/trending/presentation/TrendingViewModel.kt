@@ -22,8 +22,6 @@ class TrendingViewModel @Inject constructor(
     )
     val uiState = _uiState.asStateFlow()
 
-    override val stateLoading = MutableStateFlow(false).asStateFlow()
-
     init {
         getTrendingMovies()
     }

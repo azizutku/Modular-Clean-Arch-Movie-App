@@ -22,8 +22,6 @@ class WatchlistViewModel @Inject constructor(
     )
     val uiState = _uiState.asStateFlow()
 
-    override val stateLoading = combineForLoading(MutableStateFlow(false))
-
     fun getMoviesFromWatchlist() {
         viewModelScope.launch {
             getMoviesInWatchlistUseCase().cachedIn(viewModelScope).collectLatest { pagingData ->

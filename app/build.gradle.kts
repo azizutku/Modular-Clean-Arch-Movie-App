@@ -52,7 +52,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
-        freeCompilerArgs = freeCompilerArgs.plus("-Xopt-in=kotlin.RequiresOptIn")
+        freeCompilerArgs = freeCompilerArgs
+            .plus("-Xopt-in=kotlin.RequiresOptIn")
+            .plus("-Xcontext-receivers")
     }
     buildFeatures {
         viewBinding = true
