@@ -6,8 +6,14 @@ import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.azizutku.movie.R
-import com.azizutku.movie.databinding.FragmentMovieBinding
 import com.azizutku.movie.common.base.BaseFragment
+import com.azizutku.movie.common.extensions.collectLatestLifecycleFlow
+import com.azizutku.movie.common.extensions.orFalse
+import com.azizutku.movie.common.extensions.setTextIfAvailableOrHide
+import com.azizutku.movie.common.extensions.setVisible
+import com.azizutku.movie.databinding.FragmentMovieBinding
+import com.azizutku.movie.features.movie.domain.model.Movie
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,18 +27,44 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(
 
     private val movieId by lazy { args.movieId }
 
+    private var isMovieInWatchlist = false
+
     override fun initUi() {
         initToolbar()
         initErrorHandler()
         subscribeObservers()
+        viewModel.getMovie(movieId)
+        viewModel.isInWatchlist(movieId)
     }
 
     private fun subscribeObservers() {
-        // TODO: Subscribe observers
+        collectLatestLifecycleFlow(viewModel.uiState) { uiState ->
+            if (uiState is MovieUiState.Success) {
+                uiState.movie?.let { movie ->
+                    updateUi(movie)
+                }
+                handleMovieIsInWatchlistState(uiState.isMovieInWatchlist?.isInWatchlist.orFalse())
+            }
+        }
     }
 
-    private fun onMenuItemWatchlistAction() {
-        // TODO: Add movie to watchlist or remove from watchlist
+    private fun handleMovieIsInWatchlistState(isInWatchlist: Boolean) {
+        isMovieInWatchlist = isInWatchlist
+        adjustMenuItemWatchlistAction()
+    }
+
+    private fun updateUi(movie: Movie) {
+        with(binding) {
+            fragmentMovieGroupContent.setVisible(true)
+            fragmentMovieTextviewTitle.text = movie.title
+            fragmentMovieTextviewSubtitle.text = movie.subtitle
+            fragmentMovieTextviewTagline.setTextIfAvailableOrHide(
+                text = movie.tagline,
+                fragmentMovieViewDividerFirst,
+            )
+            fragmentMovieTextviewDetails.text = movie.description
+            Glide.with(requireContext()).load(movie.posterUrl).centerCrop().into(fragmentMovieImageviewMovie)
+        }
     }
 
     private fun initToolbar() {
@@ -57,5 +89,26 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(
             findNavController().popBackStack()
         }
         errorHandler.defaultTextPrimaryAction = requireContext().getString(R.string.text_button_go_back)
+    }
+
+    private fun onMenuItemWatchlistAction() {
+        if (isMovieInWatchlist.not()) {
+            viewModel.addToWatchlist(movieId)
+        } else {
+            viewModel.removeFromWatchlist(movieId)
+        }
+    }
+
+    private fun adjustMenuItemWatchlistAction() {
+        val itemWatchlistAction = binding.fragmentMovieToolbar.toolbar.menu.findItem(R.id.item_toolbar_watchlist_action)
+        itemWatchlistAction?.apply {
+            if (isMovieInWatchlist) {
+                title = requireContext().getString(R.string.title_toolbar_menu_item_watchlist_action_remove)
+                setIcon(R.drawable.ic_fill_favorite_24)
+            } else {
+                title = requireContext().getString(R.string.title_toolbar_menu_item_watchlist_action_add)
+                setIcon(R.drawable.ic_line_favorite_24)
+            }
+        }
     }
 }
