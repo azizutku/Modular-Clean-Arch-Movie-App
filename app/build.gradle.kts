@@ -1,7 +1,3 @@
-import dependencies.AnnotationProcessorsDependencies
-import dependencies.Dependencies
-import dependencies.TestAndroidDependencies
-import dependencies.TestDependencies
 import extensions.buildConfigStringField
 import extensions.getLocalProperty
 
@@ -67,50 +63,45 @@ android {
 }
 
 dependencies {
-    implementation(Dependencies.CORE_KTX)
-    implementation(Dependencies.APP_COMPAT)
-    implementation(Dependencies.MATERIAL)
-    implementation(Dependencies.CONSTRAINT_LAYOUT)
-    implementation(Dependencies.SPLASH_SCREEN)
-    implementation(Dependencies.HILT)
-    implementation(Dependencies.COROUTINES)
-    implementation(Dependencies.TIMBER)
-    implementation(Dependencies.FRAGMENT_KTX)
-    implementation(Dependencies.VIEW_MODEL_KTX)
-    implementation(Dependencies.NAVIGATION_FRAGMENT)
-    implementation(Dependencies.NAVIGATION_UI)
-    implementation(Dependencies.KOTLINX_SERIALIZATION_JSON)
-    implementation(Dependencies.LOTTIE)
-    implementation(Dependencies.LIFECYCLE)
-    implementation(Dependencies.LIFECYCLE_VIEWMODEL)
-    implementation(Dependencies.LIFECYCLE_VIEWMODEL_SAVED_STATE)
-    implementation(Dependencies.RETROFIT)
-    implementation(Dependencies.LOGGING_INTERCEPTOR)
-    implementation(Dependencies.KOTLINX_SERIALIZATION_CONVERTER)
-    implementation(Dependencies.ROOM)
-    implementation(Dependencies.ROOM_KTX)
-    implementation(Dependencies.ROOM_PAGING)
-    implementation(Dependencies.PAGING)
-    implementation(Dependencies.GLIDE)
-    implementation(Dependencies.SWIPE_REFRESH_LAYOUT)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.splash.screen)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.viewmodel.ktx)
+    implementation(libs.androidx.paging)
+    implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.bundles.androidx.navigation)
+    implementation(libs.bundles.androidx.lifecycle)
+    implementation(libs.bundles.androidx.room)
+    implementation(libs.material)
+    implementation(libs.hilt)
+    implementation(libs.coroutines)
+    implementation(libs.timber)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.lottie)
+    implementation(libs.retrofit)
+    implementation(libs.logging.interceptor)
+    implementation(libs.kotlinx.serialization.converter)
+    implementation(libs.glide)
 
-    debugImplementation(Dependencies.CHUCKER)
-    releaseImplementation(Dependencies.CHUCKER_NO_OP)
+    debugImplementation(libs.chucker)
+    releaseImplementation(libs.chucker.no.op)
 
-    testImplementation(TestDependencies.JUNIT)
-    testImplementation(TestDependencies.HILT)
-    testImplementation(TestDependencies.ROOM)
-    testImplementation(TestDependencies.PAGING)
+    testImplementation(libs.junit.test)
+    testImplementation(libs.hilt.test)
+    testImplementation(libs.room.test)
+    testImplementation(libs.paging.test)
 
-    androidTestImplementation(TestAndroidDependencies.JUNIT)
-    androidTestImplementation(TestAndroidDependencies.ESPRESSO)
-    androidTestImplementation(TestAndroidDependencies.HILT)
-    androidTestImplementation(TestAndroidDependencies.NAVIGATION)
+    androidTestImplementation(libs.junit.androidTest)
+    androidTestImplementation(libs.espesso.androidTest)
+    androidTestImplementation(libs.hilt.androidTest)
+    androidTestImplementation(libs.navigation.androidTest)
 
-    kapt(AnnotationProcessorsDependencies.HILT)
-    kapt(AnnotationProcessorsDependencies.ROOM)
-    kaptAndroidTest(AnnotationProcessorsDependencies.HILT)
-    kaptTest(AnnotationProcessorsDependencies.HILT)
+    kapt(libs.hilt.kapt)
+    kapt(libs.room.kapt)
+    kaptAndroidTest(libs.hilt.kapt)
+    kaptTest(libs.hilt.kapt)
 }
 
 kapt {
