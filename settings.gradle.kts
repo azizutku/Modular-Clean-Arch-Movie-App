@@ -23,6 +23,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Clean Movie App"
 
-include(
-    ":app"
-)
+include(":app")
+include(":benchmark")

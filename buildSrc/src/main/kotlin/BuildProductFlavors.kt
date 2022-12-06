@@ -1,18 +1,26 @@
 import com.android.build.api.dsl.ApplicationProductFlavor
+import com.android.build.api.dsl.ProductFlavor
+import com.android.build.api.dsl.TestProductFlavor
 import org.gradle.api.NamedDomainObjectContainer
 
-interface BuildProductFlavor {
+interface BuildProductFlavor<T: ProductFlavor> {
     val name: String
 
     fun create(
-        namedDomainObjectContainer: NamedDomainObjectContainer<ApplicationProductFlavor>,
+        namedDomainObjectContainer: NamedDomainObjectContainer<T>,
         isApp: Boolean = false,
-    ): ApplicationProductFlavor
+    ): T
+
+    companion object {
+        const val DEVELOPMENT = "dev"
+        const val TEST = "qa"
+        const val PRODUCTION = "prod"
+    }
 }
 
-object ProductFlavorDev : BuildProductFlavor {
+object ProductFlavorDev : BuildProductFlavor<ApplicationProductFlavor> {
 
-    override val name = "dev"
+    override val name = BuildProductFlavor.DEVELOPMENT
 
     override fun create(
         namedDomainObjectContainer: NamedDomainObjectContainer<ApplicationProductFlavor>,
@@ -28,8 +36,8 @@ object ProductFlavorDev : BuildProductFlavor {
     }
 }
 
-object ProductFlavorQA : BuildProductFlavor {
-    override val name = "qa"
+object ProductFlavorQA : BuildProductFlavor<ApplicationProductFlavor> {
+    override val name = BuildProductFlavor.TEST
 
     override fun create(
         namedDomainObjectContainer: NamedDomainObjectContainer<ApplicationProductFlavor>,
@@ -45,13 +53,55 @@ object ProductFlavorQA : BuildProductFlavor {
     }
 }
 
-object ProductFlavorProduction : BuildProductFlavor {
-    override val name = "prod"
+object ProductFlavorProduction : BuildProductFlavor<ApplicationProductFlavor> {
+    override val name = BuildProductFlavor.PRODUCTION
 
     override fun create(
         namedDomainObjectContainer: NamedDomainObjectContainer<ApplicationProductFlavor>,
         isApp: Boolean,
     ): ApplicationProductFlavor {
+        return namedDomainObjectContainer.create(name) {
+            dimension = BuildProductDimensions.DIMENSION_VERSION
+        }
+    }
+}
+
+object TestProductFlavorDev : BuildProductFlavor<TestProductFlavor> {
+
+    override val name = BuildProductFlavor.DEVELOPMENT
+
+    override fun create(
+        namedDomainObjectContainer: NamedDomainObjectContainer<TestProductFlavor>,
+        isApp: Boolean,
+    ): TestProductFlavor {
+        return namedDomainObjectContainer.create(name) {
+            dimension = BuildProductDimensions.DIMENSION_VERSION
+        }
+    }
+}
+
+object TestProductFlavorQA : BuildProductFlavor<TestProductFlavor> {
+
+    override val name = BuildProductFlavor.TEST
+
+    override fun create(
+        namedDomainObjectContainer: NamedDomainObjectContainer<TestProductFlavor>,
+        isApp: Boolean,
+    ): TestProductFlavor {
+        return namedDomainObjectContainer.create(name) {
+            dimension = BuildProductDimensions.DIMENSION_VERSION
+        }
+    }
+}
+
+object TestProductFlavorProduction : BuildProductFlavor<TestProductFlavor> {
+
+    override val name = BuildProductFlavor.PRODUCTION
+
+    override fun create(
+        namedDomainObjectContainer: NamedDomainObjectContainer<TestProductFlavor>,
+        isApp: Boolean,
+    ): TestProductFlavor {
         return namedDomainObjectContainer.create(name) {
             dimension = BuildProductDimensions.DIMENSION_VERSION
         }

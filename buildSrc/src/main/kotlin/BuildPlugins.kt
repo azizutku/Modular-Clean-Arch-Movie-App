@@ -7,6 +7,7 @@ object BuildPlugins {
     const val HILT_PLUGIN = "dagger.hilt.android.plugin"
     const val KOTLINX_SERIALIZATION = "kotlinx-serialization"
     const val NAVIGATION_SAFEARGS = "androidx.navigation.safeargs.kotlin"
+    const val ANDROID_TEST = "com.android.test"
 
     const val DETEKT = "plugins.detekt"
     const val GIT_HOOKS = "plugins.git-hooks"

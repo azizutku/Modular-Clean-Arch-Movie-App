@@ -24,6 +24,7 @@ android {
     buildTypes {
         BuildTypeDebug.create(this)
         BuildTypeRelease.create(this)
+        BuildTypeBenchmark.create(this, signingConfigs)
     }
     buildTypes.forEach {
         kotlin.runCatching {
@@ -84,9 +85,11 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.kotlinx.serialization.converter)
     implementation(libs.glide)
+    implementation(libs.androidx.profileinstaller)
 
     debugImplementation(libs.chucker)
     releaseImplementation(libs.chucker.no.op)
+    add("benchmarkImplementation", libs.chucker.no.op)
 
     testImplementation(libs.junit.test)
     testImplementation(libs.hilt.test)

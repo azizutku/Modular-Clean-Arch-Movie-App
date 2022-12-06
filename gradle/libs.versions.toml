@@ -21,11 +21,14 @@ paging = "3.1.1"
 glide = "4.13.2"
 swiperefreshlayout = "1.1.0"
 chucker = "3.5.2"
+profileInstaller = "1.3.0-alpha02" # to support Android 13 we need to use alpha distribution
 
 # Tests
 junit = "4.13.2"
-junitAndroid = "1.1.3"
-espresso = "3.4.0"
+junitAndroid = "1.1.4"
+espresso = "3.5.0"
+uiautomator = "2.2.0"
+benchmarkMacro = "1.1.1"
 
 # Dependency versions of the included build-logic
 androidGradlePlugin = "7.3.1"
@@ -58,6 +61,7 @@ androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = 
 androidx-room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
 androidx-paging = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
 androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version.ref = "swiperefreshlayout" }
+androidx-profileinstaller = { group = "androidx.profileinstaller", name = "profileinstaller", version.ref = "profileInstaller" }
 
 # Google
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
@@ -96,6 +100,8 @@ junit-androidTest = { group = "androidx.test.ext", name = "junit", version.ref =
 espesso-androidTest = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
 hilt-androidTest = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 navigation-androidTest = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigation" }
+uiautomator-androidTest = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
+benchmark-macro-androidTest = { group = "androidx.benchmark", name = "benchmark-macro-junit4", version.ref = "benchmarkMacro" }
 
 # Annotation processor dependencies
 hilt-kapt = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
