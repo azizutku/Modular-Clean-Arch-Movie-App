@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ManagedVirtualDevice
+
 plugins {
     id(BuildPlugins.ANDROID_TEST)
     id(BuildPlugins.KOTLIN_ANDROID)
@@ -39,6 +41,18 @@ android {
 
     targetProjectPath = AndroidConfig.BENCHMARK_TARGET_PROJECT_PATH
     experimentalProperties["android.experimental.self-instrumenting"] = true
+
+    testOptions {
+        managedDevices {
+            devices {
+                create<ManagedVirtualDevice>("pixel6Api31") {
+                    device = "Pixel 6"
+                    apiLevel = 31
+                    systemImageSource = "aosp"
+                }
+            }
+        }
+    }
 }
 
 dependencies {
