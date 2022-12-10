@@ -29,6 +29,8 @@ junitAndroid = "1.1.4"
 espresso = "3.5.0"
 uiautomator = "2.2.0"
 benchmarkMacro = "1.1.1"
+turbine = "0.12.1"
+archCore = "2.1.0"
 
 # Dependency versions of the included build-logic
 androidGradlePlugin = "7.3.1"
@@ -94,6 +96,9 @@ junit-test = { group = "junit", name = "junit", version.ref = "junit" }
 hilt-test = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 room-test = { group = "androidx.room", name = "room-testing", version.ref = "room" }
 paging-test = { group = "androidx.paging", name = "paging-common", version.ref = "paging" }
+turbine-test = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+arch-core-test = { group = "androidx.arch.core", name = "core-testing", version.ref = "archCore" }
 
 # Test Android dependencies
 junit-androidTest = { group = "androidx.test.ext", name = "junit", version.ref = "junitAndroid" }

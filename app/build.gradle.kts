@@ -95,11 +95,16 @@ dependencies {
     testImplementation(libs.hilt.test)
     testImplementation(libs.room.test)
     testImplementation(libs.paging.test)
+    testImplementation(libs.turbine.test)
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.arch.core.test)
 
     androidTestImplementation(libs.junit.androidTest)
     androidTestImplementation(libs.espesso.androidTest)
     androidTestImplementation(libs.hilt.androidTest)
     androidTestImplementation(libs.navigation.androidTest)
+    androidTestImplementation(libs.coroutines.test)
+    androidTestImplementation(libs.arch.core.test)
 
     kapt(libs.hilt.kapt)
     kapt(libs.room.kapt)
