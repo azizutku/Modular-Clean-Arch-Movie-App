@@ -60,6 +60,16 @@ android {
         resources.excludes.add("META-INF/AL2.0")
         resources.excludes.add("META-INF/LGPL2.1")
     }
+    testOptions {
+        managedDevices {
+            devices {
+                create<com.android.build.api.dsl.ManagedVirtualDevice>("pixel6Api31") {
+                    device = "Pixel 6"
+                    apiLevel = 31
+                }
+            }
+        }
+    }
     namespace = "com.azizutku.movie"
 }
 
