@@ -6,7 +6,7 @@ object AndroidConfig {
     const val TARGET_SDK = 33
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0"
-    const val TEST_INSTRUMENTATION_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
+    const val TEST_INSTRUMENTATION_RUNNER = "com.azizutku.movie.common.di.HiltTestRunner"
     const val BENCHMARK_TARGET_PROJECT_PATH = ":app"
 
 }
