@@ -34,7 +34,7 @@ val trendingMovieDto3 = TrendingMovieDto(
 
 val testTrendingDto = TrendingDto(
     page = 1,
-    movies = listOf(trendingMovieDto, trendingMovieDto2, trendingMovieDto2),
+    movies = listOf(trendingMovieDto, trendingMovieDto2, trendingMovieDto3),
     totalPages = 1000,
     totalResults = 20000,
 )
