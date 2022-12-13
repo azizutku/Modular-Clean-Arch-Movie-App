@@ -8,6 +8,7 @@ plugins {
     id(BuildPlugins.HILT_PLUGIN)
     id(BuildPlugins.NAVIGATION_SAFEARGS)
     id(BuildPlugins.KOTLINX_SERIALIZATION)
+    id(BuildPlugins.JACOCO)
 }
 
 android {

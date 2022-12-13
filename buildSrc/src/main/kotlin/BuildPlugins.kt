@@ -11,4 +11,5 @@ object BuildPlugins {
 
     const val DETEKT = "plugins.detekt"
     const val GIT_HOOKS = "plugins.git-hooks"
+    const val JACOCO = "plugins.jacoco"
 }

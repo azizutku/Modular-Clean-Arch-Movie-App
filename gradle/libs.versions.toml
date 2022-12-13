@@ -44,6 +44,7 @@ ktlintPlugin = "11.0.0"
 versionsPlugin = "0.42.0"
 hiltPlugin = "2.43.2"
 kotlinSerializationPlugin = "1.7.10"
+jacocoPlugin = "0.8.8"
 
 [libraries]
 # Androidx
