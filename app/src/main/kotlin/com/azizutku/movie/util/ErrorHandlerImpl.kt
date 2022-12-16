@@ -1,8 +1,10 @@
-package com.azizutku.movie.util
+package com.azizutku.movie.common.util
 
 import android.content.Context
 import com.azizutku.movie.R
-import com.azizutku.movie.presentation.ui.dialogs.AlertDialog
+import com.azizutku.movie.common.network.GeneralNetworkExceptionCode
+import com.azizutku.movie.common.network.NetworkException
+import com.azizutku.movie.common.ui.dialogs.AlertDialog
 import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 
@@ -13,10 +15,12 @@ class ErrorHandlerImpl @Inject constructor(
 
     override var onDefaultPrimaryAction = { /* no-op */ }
     override var defaultTextPrimaryAction = context.getString(R.string.text_button_ok)
-    override var handleBeforeGeneralException: (exception: Exception) -> Boolean = { false }
-    override var handleAfterGeneralException: (exception: Exception) -> Boolean = { false }
+    override var handleBeforeGeneralException: (NetworkException) -> Boolean = { false }
+    override var handleAfterGeneralException: (NetworkException) -> Boolean = { false }
 
-    override fun handleGeneralException(exception: Exception): Boolean {
+    override fun handleGeneralException(networkException: NetworkException): Boolean {
+        GeneralNetworkExceptionCode.getFromCode(networkException.code) ?: return false
+        val exception = setLocalizedMessageIfNeeded(networkException)
         with(alertDialog) {
             setTitle(context.getString(R.string.title_alert_dialog))
             setMessage(exception.message)
@@ -30,12 +34,30 @@ class ErrorHandlerImpl @Inject constructor(
     }
 
     @Suppress("ReturnCount")
-    override fun handleException(exception: Exception): Boolean {
-        if (handleBeforeGeneralException(exception)) {
+    override fun handleException(networkException: NetworkException): Boolean {
+        if (handleBeforeGeneralException(networkException)) {
             return true
-        } else if (handleGeneralException(exception)) {
+        } else if (handleGeneralException(networkException)) {
             return true
         }
-        return handleAfterGeneralException(exception)
+        return handleAfterGeneralException(networkException)
     }
+
+    private fun setLocalizedMessageIfNeeded(exception: NetworkException): NetworkException =
+        when (GeneralNetworkExceptionCode.getFromCode(exception.code)) {
+            GeneralNetworkExceptionCode.IO_EXCEPTION -> exception.copy(
+                message = context.getString(R.string.message_exception_io)
+            )
+            GeneralNetworkExceptionCode.HTTP_EXCEPTION -> exception.copy(
+                message = context.getString(R.string.message_exception_http)
+            )
+            GeneralNetworkExceptionCode.TIMEOUT_EXCEPTION -> exception.copy(
+                message = context.getString(R.string.message_exception_timeout)
+            )
+            GeneralNetworkExceptionCode.PARSING_EXCEPTION,
+            GeneralNetworkExceptionCode.OTHER_EXCEPTION -> exception.copy(
+                message = context.getString(R.string.message_exception_unknown)
+            )
+            null -> exception
+        }
 }

@@ -1,13 +1,14 @@
 package com.azizutku.movie.util
 
+import com.azizutku.movie.common.network.NetworkException
 
 interface ErrorHandler {
 
     var onDefaultPrimaryAction: () -> Unit
     var defaultTextPrimaryAction: String
-    var handleBeforeGeneralException: (exception: Exception) -> Boolean
-    var handleAfterGeneralException: (exception: Exception) -> Boolean
+    var handleBeforeGeneralException: (networkException: NetworkException) -> Boolean
+    var handleAfterGeneralException: (networkException: NetworkException) -> Boolean
 
-    fun handleException(exception: Exception): Boolean
-    fun handleGeneralException(exception: Exception): Boolean
+    fun handleException(networkException: NetworkException): Boolean
+    fun handleGeneralException(networkException: NetworkException): Boolean
 }

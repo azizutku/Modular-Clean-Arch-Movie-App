@@ -1,5 +1,10 @@
 package com.azizutku.movie.core.network
 
+import com.azizutku.movie.common.network.NetworkException.Companion.CODE_HTTP_EXCEPTION
+import com.azizutku.movie.common.network.NetworkException.Companion.CODE_IO_EXCEPTION
+import com.azizutku.movie.common.network.NetworkException.Companion.CODE_OTHER_EXCEPTION
+import com.azizutku.movie.common.network.NetworkException.Companion.CODE_PARSING_EXCEPTION
+import com.azizutku.movie.common.network.NetworkException.Companion.CODE_TIMEOUT_EXCEPTION
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import retrofit2.HttpException
@@ -27,5 +32,18 @@ data class NetworkException(
             is HttpException -> NetworkException(code = CODE_HTTP_EXCEPTION)
             else -> NetworkException(throwable.localizedMessage, CODE_OTHER_EXCEPTION)
         }
+    }
+}
+
+enum class GeneralNetworkExceptionCode(val code: Int) {
+    PARSING_EXCEPTION(CODE_PARSING_EXCEPTION),
+    IO_EXCEPTION(CODE_IO_EXCEPTION),
+    HTTP_EXCEPTION(CODE_HTTP_EXCEPTION),
+    TIMEOUT_EXCEPTION(CODE_TIMEOUT_EXCEPTION),
+    OTHER_EXCEPTION(CODE_OTHER_EXCEPTION);
+
+    companion object {
+        fun getFromCode(code: Int): GeneralNetworkExceptionCode? =
+            GeneralNetworkExceptionCode.values().find { it.code == code }
     }
 }
