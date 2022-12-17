@@ -1,5 +1,8 @@
+@file:OptIn(ExperimentalBaselineProfilesApi::class)
+
 package com.azizutku.movie.benchmark.baselineprofile
 
+import androidx.benchmark.macro.ExperimentalBaselineProfilesApi
 import androidx.benchmark.macro.junit4.BaselineProfileRule
 import androidx.test.uiautomator.By
 import com.azizutku.movie.benchmark.PACKAGE_NAME
