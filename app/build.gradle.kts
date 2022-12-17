@@ -22,6 +22,10 @@ android {
         versionName = AndroidConfig.VERSION_NAME
         testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
     }
+    signingConfigs {
+        BuildDebugSigningConfig.create(file("../debug.keystore"), this)
+        BuildReleaseSigningConfig.create(file("../release.keystore"), this)
+    }
     buildTypes {
         BuildTypeDebug.create(this)
         BuildTypeRelease.create(this)
