@@ -17,9 +17,11 @@ class MovieLocalMapper @Inject constructor() : Mapper<MovieEntity, Movie> {
     override suspend fun map(from: MovieEntity): Movie {
         val parser = SimpleDateFormat(FORMAT_DATE_MOVIE_RELEASE_PARSER, Locale.ENGLISH)
         val formatter = SimpleDateFormat(FORMAT_DATE_MOVIE_RELEASE_FORMATTER, Locale.ENGLISH)
-        val releaseDate = parser.parse(from.releaseDate)?.let {
-            formatter.format(it)
-        }
+        val releaseDate = from.releaseDate?.let { releaseDate ->
+            parser.parse(releaseDate)?.let {
+                formatter.format(it)
+            }
+        }.orEmpty()
         return Movie(
             id = from.id,
             description = from.description.orEmpty(),

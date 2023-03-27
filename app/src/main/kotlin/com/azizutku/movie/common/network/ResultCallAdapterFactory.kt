@@ -22,6 +22,7 @@ class ResultCallAdapterFactory : CallAdapter.Factory() {
             object : CallAdapter<Any, Call<Result<*>>> {
                 override fun responseType(): Type = getParameterUpperBound(0, responseType)
 
+                @Suppress("UNCHECKED_CAST")
                 override fun adapt(call: Call<Any>): Call<Result<*>> =
                     ResultCall(call) as Call<Result<*>>
             }
