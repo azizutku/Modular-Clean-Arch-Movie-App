@@ -40,6 +40,10 @@ gradlePlugin {
             id = "movie.android.application.jacoco"
             implementationClass = "AndroidApplicationJacocoConventionPlugin"
         }
+        register("androidLibrary") {
+            id = "movie.android.library"
+            implementationClass = "AndroidLibraryConventionPlugin"
+        }
         register("gitHooks") {
             id = "movie.git.hooks"
             implementationClass = "GitHooksConventionPlugin"
