@@ -1,5 +1,6 @@
 package com.azizutku.movie.feature.watchlist.data.repository
 
+import androidx.annotation.VisibleForTesting
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -17,9 +18,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
-private const val PAGE_SIZE = 20
-private const val INITIAL_LOAD_SIZE = 20
-private const val PREFETCH_DISTANCE = 6
+@VisibleForTesting
+const val PAGE_SIZE = 20
+@VisibleForTesting
+const val INITIAL_LOAD_SIZE = 20
+@VisibleForTesting
+const val PREFETCH_DISTANCE = 6
 
 class WatchlistRepositoryImpl @Inject constructor(
     private val localDataSource: WatchlistLocalDataSource,

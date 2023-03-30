@@ -33,6 +33,7 @@ include(
     ":core:database",
     ":core:domain",
     ":core:model",
+    ":core:testing",
 )
 include(
     ":feature:movie",
