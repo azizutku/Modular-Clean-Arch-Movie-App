@@ -133,3 +133,4 @@ versions = { id = "com.github.ben-manes.versions", version.ref = "versionsPlugin
 hilt = { id = "dagger.hilt.android.plugin", version.ref = "hiltPlugin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "kspGradlePlugin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
