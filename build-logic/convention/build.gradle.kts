@@ -44,6 +44,10 @@ gradlePlugin {
             id = "movie.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
+        register("androidFeature") {
+            id = "movie.android.feature"
+            implementationClass = "AndroidFeatureConventionPlugin"
+        }
         register("gitHooks") {
             id = "movie.git.hooks"
             implementationClass = "GitHooksConventionPlugin"
