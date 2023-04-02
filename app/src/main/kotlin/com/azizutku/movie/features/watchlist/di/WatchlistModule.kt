@@ -1,7 +1,7 @@
 package com.azizutku.movie.features.watchlist.di
 
-import com.azizutku.movie.common.util.Mapper
-import com.azizutku.movie.features.movie.data.local.entity.MovieEntity
+import com.azizutku.movie.core.common.util.Mapper
+import com.azizutku.movie.core.database.model.MovieEntity
 import com.azizutku.movie.features.watchlist.data.repository.WatchlistRepositoryImpl
 import com.azizutku.movie.features.watchlist.data.repository.datasource.WatchlistLocalDataSource
 import com.azizutku.movie.features.watchlist.data.repository.datasourceImpl.WatchlistLocalDataSourceImpl

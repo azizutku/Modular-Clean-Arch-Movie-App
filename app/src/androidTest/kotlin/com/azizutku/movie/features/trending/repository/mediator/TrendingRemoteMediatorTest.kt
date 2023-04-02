@@ -7,8 +7,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.test.filters.SmallTest
-import com.azizutku.movie.common.data.MainDatabase
-import com.azizutku.movie.features.trending.data.local.entity.TrendingMovieEntity
+import com.azizutku.movie.core.database.model.TrendingMovieEntity
 import com.azizutku.movie.features.trending.data.remote.dto.TrendingDto
 import com.azizutku.movie.features.trending.data.repository.datasource.TrendingLocalDataSource
 import com.azizutku.movie.features.trending.data.repository.datasourceImpl.TrendingLocalDataSourceImpl
@@ -40,7 +39,7 @@ class TrendingRemoteMediatorTest {
     val instantExecutorRule = InstantTaskExecutorRule()
 
     @Inject
-    lateinit var database: MainDatabase
+    lateinit var database: com.azizutku.movie.core.database.MainDatabase
 
     private lateinit var trendingRemoteDataSource: FakeTrendingRemoteDataSourceImpl
     private lateinit var trendingLocalDataSource: TrendingLocalDataSource

@@ -2,7 +2,7 @@
 
 package com.azizutku.movie.models
 
-import com.azizutku.movie.features.watchlist.data.local.entity.WatchlistEntity
+import com.azizutku.movie.core.database.model.WatchlistEntity
 
 val watchlistEntity1 = WatchlistEntity(
     movieId = 1,

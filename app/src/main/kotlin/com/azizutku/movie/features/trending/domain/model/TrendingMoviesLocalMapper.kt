@@ -1,7 +1,7 @@
 package com.azizutku.movie.features.trending.domain.model
 
-import com.azizutku.movie.common.util.Mapper
-import com.azizutku.movie.features.trending.data.local.entity.TrendingMovieEntity
+import com.azizutku.movie.core.common.util.Mapper
+import com.azizutku.movie.core.database.model.TrendingMovieEntity
 import java.text.SimpleDateFormat
 import java.util.Locale
 import javax.inject.Inject

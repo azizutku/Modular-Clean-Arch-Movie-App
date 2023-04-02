@@ -2,8 +2,8 @@ package com.azizutku.movie.features.trending.data.repository.datasource
 
 import androidx.paging.LoadType
 import androidx.paging.PagingSource
-import com.azizutku.movie.features.trending.data.local.entity.TrendingMovieEntity
-import com.azizutku.movie.features.trending.data.local.entity.TrendingMovieRemoteKeyEntity
+import com.azizutku.movie.core.database.model.TrendingMovieEntity
+import com.azizutku.movie.core.database.model.TrendingMovieRemoteKeyEntity
 
 interface TrendingLocalDataSource {
     fun getPagingSourceFromDb(): PagingSource<Int, TrendingMovieEntity>

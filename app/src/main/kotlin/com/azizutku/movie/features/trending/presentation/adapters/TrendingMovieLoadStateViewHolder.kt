@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
-import com.azizutku.movie.common.base.BaseViewHolder
-import com.azizutku.movie.common.network.NetworkException
+import com.azizutku.movie.core.common.base.BaseViewHolder
+import com.azizutku.movie.core.common.network.NetworkException
 import com.azizutku.movie.databinding.ListItemLoadStateBinding
 
 class TrendingMovieLoadStateViewHolder(

@@ -1,7 +1,7 @@
 package com.azizutku.movie.features.movie.di
 
-import com.azizutku.movie.common.data.MainDatabase
-import com.azizutku.movie.features.movie.data.local.MoviesDao
+import com.azizutku.movie.core.database.MainDatabase
+import com.azizutku.movie.core.database.dao.MoviesDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,7 +1,7 @@
 package com.azizutku.movie.features.movie.di
 
-import com.azizutku.movie.common.util.Mapper
-import com.azizutku.movie.features.movie.data.local.entity.MovieEntity
+import com.azizutku.movie.core.common.util.Mapper
+import com.azizutku.movie.core.database.model.MovieEntity
 import com.azizutku.movie.features.movie.data.remote.dto.MovieDto
 import com.azizutku.movie.features.movie.data.repository.MovieRepositoryImpl
 import com.azizutku.movie.features.movie.data.repository.datasource.MovieCacheDataSource

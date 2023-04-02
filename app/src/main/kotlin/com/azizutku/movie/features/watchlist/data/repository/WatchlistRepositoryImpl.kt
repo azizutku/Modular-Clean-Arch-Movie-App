@@ -4,18 +4,18 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
-import com.azizutku.movie.common.vo.DataState
-import com.azizutku.movie.features.watchlist.data.local.entity.WatchlistEntity
+import com.azizutku.movie.core.common.vo.DataState
+import com.azizutku.movie.core.database.model.WatchlistEntity
 import com.azizutku.movie.features.watchlist.data.repository.datasource.WatchlistLocalDataSource
 import com.azizutku.movie.features.watchlist.domain.model.MovieWatchlistState
 import com.azizutku.movie.features.watchlist.domain.model.WatchlistMovie
 import com.azizutku.movie.features.watchlist.domain.model.WatchlistMovieLocalMapper
 import com.azizutku.movie.features.watchlist.domain.repository.WatchlistRepository
+import timber.log.Timber
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
-import timber.log.Timber
-import javax.inject.Inject
 
 private const val PAGE_SIZE = 20
 private const val INITIAL_LOAD_SIZE = 20

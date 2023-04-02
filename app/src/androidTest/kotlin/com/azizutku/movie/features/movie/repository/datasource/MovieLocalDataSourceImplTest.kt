@@ -2,7 +2,7 @@ package com.azizutku.movie.features.movie.repository.datasource
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.filters.SmallTest
-import com.azizutku.movie.common.data.MainDatabase
+import com.azizutku.movie.core.database.MainDatabase
 import com.azizutku.movie.features.movie.data.repository.datasource.MovieLocalDataSource
 import com.azizutku.movie.features.movie.data.repository.datasourceImpl.MovieLocalDataSourceImpl
 import com.azizutku.movie.models.movieEntity

@@ -1,6 +1,5 @@
 import com.android.build.api.dsl.ApplicationExtension
 import com.azizutku.movie.AndroidConfig
-import com.azizutku.movie.BuildConstants
 import com.azizutku.movie.BuildDebugSigningConfig
 import com.azizutku.movie.BuildPlugins
 import com.azizutku.movie.BuildReleaseSigningConfig
@@ -8,13 +7,10 @@ import com.azizutku.movie.BuildTypeBenchmark
 import com.azizutku.movie.BuildTypeDebug
 import com.azizutku.movie.BuildTypeRelease
 import com.azizutku.movie.extensions.JDK_VERSION
-import com.azizutku.movie.extensions.buildConfigStringField
 import com.azizutku.movie.extensions.configureFlavors
 import com.azizutku.movie.extensions.configureKotlinAndroid
-import com.azizutku.movie.extensions.getLocalProperty
 import com.azizutku.movie.extensions.kotlin
 import com.azizutku.movie.utils.configureGradleManagedDevices
-import org.gradle.api.InvalidUserDataException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -43,20 +39,6 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                     BuildTypeDebug.create(this)
                     BuildTypeRelease.create(this)
                     BuildTypeBenchmark.create(this, signingConfigs)
-                }
-                buildTypes.forEach {
-                    kotlin.runCatching {
-                        it.buildConfigStringField(
-                            BuildConstants.CONFIG_NAME_API_BASE_URL,
-                            BuildConstants.CONFIG_VALUE_API_BASE_URL,
-                        )
-                        it.buildConfigStringField(
-                            BuildConstants.CONFIG_NAME_API_KEY,
-                            getLocalProperty(BuildConstants.PROPERTY_NAME_API_KEY),
-                        )
-                    }.onFailure {
-                        throw InvalidUserDataException(BuildConstants.MESSAGE_API_KEY_EXCEPTION)
-                    }
                 }
                 packagingOptions {
                     resources.excludes.add("META-INF/AL2.0")

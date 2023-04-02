@@ -2,7 +2,7 @@
 
 package com.azizutku.movie.models
 
-import com.azizutku.movie.features.trending.data.local.entity.TrendingMovieEntity
+import com.azizutku.movie.core.database.model.TrendingMovieEntity
 import com.azizutku.movie.features.trending.data.remote.dto.TrendingDto
 import com.azizutku.movie.features.trending.data.remote.dto.TrendingMovieDto
 

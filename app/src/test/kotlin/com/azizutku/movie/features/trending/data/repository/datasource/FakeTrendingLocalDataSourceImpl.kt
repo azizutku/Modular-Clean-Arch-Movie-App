@@ -3,10 +3,10 @@ package com.azizutku.movie.features.trending.data.repository.datasource
 import androidx.paging.LoadType
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.azizutku.movie.features.trending.data.local.entity.TrendingMovieEntity
-import com.azizutku.movie.features.trending.data.local.entity.TrendingMovieRemoteKeyEntity
-import com.azizutku.movie.features.trending.data.repository.mediator.LAST_PAGE
-import com.azizutku.movie.features.trending.data.repository.mediator.TMDB_FIRST_PAGE_INDEX
+import com.azizutku.movie.core.database.dao.LAST_PAGE
+import com.azizutku.movie.core.database.dao.TMDB_FIRST_PAGE_INDEX
+import com.azizutku.movie.core.database.model.TrendingMovieEntity
+import com.azizutku.movie.core.database.model.TrendingMovieRemoteKeyEntity
 
 class FakeTrendingLocalDataSourceImpl : TrendingLocalDataSource {
 

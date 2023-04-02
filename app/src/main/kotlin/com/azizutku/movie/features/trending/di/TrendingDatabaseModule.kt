@@ -1,8 +1,8 @@
 package com.azizutku.movie.features.trending.di
 
-import com.azizutku.movie.common.data.MainDatabase
-import com.azizutku.movie.features.trending.data.local.TrendingMovieRemoteKeysDao
-import com.azizutku.movie.features.trending.data.local.TrendingMoviesDao
+import com.azizutku.movie.core.database.MainDatabase
+import com.azizutku.movie.core.database.dao.TrendingMovieRemoteKeysDao
+import com.azizutku.movie.core.database.dao.TrendingMoviesDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

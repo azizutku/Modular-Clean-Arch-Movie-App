@@ -3,7 +3,7 @@ package com.azizutku.movie.features.watchlist.repository.datasource
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.paging.PagingSource
 import androidx.test.filters.SmallTest
-import com.azizutku.movie.common.data.MainDatabase
+import com.azizutku.movie.core.database.MainDatabase
 import com.azizutku.movie.features.watchlist.data.repository.datasource.WatchlistLocalDataSource
 import com.azizutku.movie.features.watchlist.data.repository.datasourceImpl.WatchlistLocalDataSourceImpl
 import com.azizutku.movie.models.movieEntity

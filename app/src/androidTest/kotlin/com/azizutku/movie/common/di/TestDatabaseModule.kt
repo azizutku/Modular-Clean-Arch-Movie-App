@@ -2,7 +2,7 @@ package com.azizutku.movie.common.di
 
 import android.content.Context
 import androidx.room.Room
-import com.azizutku.movie.common.data.MainDatabase
+import com.azizutku.movie.core.database.MainDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @Module
 @TestInstallIn(
     components = [SingletonComponent::class],
-    replaces = [DatabaseModule::class],
+    replaces = [com.azizutku.movie.core.database.di.DatabaseModule::class],
 )
 object TestDatabaseModule {
 

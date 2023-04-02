@@ -5,14 +5,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.azizutku.movie.R
-import com.azizutku.movie.common.base.BaseFragment
-import com.azizutku.movie.common.extensions.collectLatestLifecycleFlow
-import com.azizutku.movie.common.ui.recyclerview.SpacingItemDecoration
-import com.azizutku.movie.common.util.ThemeUtils
+import com.azizutku.movie.core.common.extensions.collectLatestLifecycleFlow
+import com.azizutku.movie.core.common.util.ThemeUtils
+import com.azizutku.movie.core.ui.base.BaseFragment
+import com.azizutku.movie.core.ui.recyclerview.SpacingItemDecoration
 import com.azizutku.movie.databinding.FragmentWatchlistBinding
 import com.azizutku.movie.features.watchlist.presentation.adapter.WatchlistMoviesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.azizutku.movie.core.ui.R as uiR
 
 @AndroidEntryPoint
 class WatchlistFragment : BaseFragment<FragmentWatchlistBinding>(
@@ -37,7 +38,7 @@ class WatchlistFragment : BaseFragment<FragmentWatchlistBinding>(
     private fun initRecyclerView() {
         adapter.onItemClicked = ::openMovieDetail
         binding.fragmentWatchlistRecyclerviewMovies.addItemDecoration(
-            SpacingItemDecoration(resources.getDimensionPixelSize(R.dimen.space_medium), true)
+            SpacingItemDecoration(resources.getDimensionPixelSize(uiR.dimen.space_medium), true)
         )
         binding.fragmentWatchlistRecyclerviewMovies.adapter = adapter
     }
@@ -58,7 +59,7 @@ class WatchlistFragment : BaseFragment<FragmentWatchlistBinding>(
 
         with(binding.fragmentWatchlistToolbar.toolbar) {
             inflateMenu(R.menu.toolbar_main_menu)
-            title = getString(R.string.title_fragment_watchlist)
+            title = getString(uiR.string.title_fragment_watchlist)
             setupWithNavController(navController, appBarConfiguration)
             setOnMenuItemClickListener {
                 if (it.itemId == R.id.item_toolbar_toggle_theme) {

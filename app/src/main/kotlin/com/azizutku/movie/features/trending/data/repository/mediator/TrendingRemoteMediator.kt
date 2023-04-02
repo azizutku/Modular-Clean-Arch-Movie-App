@@ -4,15 +4,13 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import com.azizutku.movie.features.trending.data.local.entity.TrendingMovieEntity
-import com.azizutku.movie.features.trending.data.local.entity.TrendingMovieRemoteKeyEntity
+import com.azizutku.movie.core.database.model.TrendingMovieEntity
+import com.azizutku.movie.core.database.model.TrendingMovieRemoteKeyEntity
 import com.azizutku.movie.features.trending.data.repository.datasource.TrendingLocalDataSource
 import com.azizutku.movie.features.trending.data.repository.datasource.TrendingRemoteDataSource
 import com.azizutku.movie.features.trending.domain.model.TrendingMovieRemoteToLocalMapper
 import timber.log.Timber
 
-const val TMDB_FIRST_PAGE_INDEX = 1
-const val LAST_PAGE = 1000
 const val BASE_VALUE = 10
 
 @OptIn(ExperimentalPagingApi::class)

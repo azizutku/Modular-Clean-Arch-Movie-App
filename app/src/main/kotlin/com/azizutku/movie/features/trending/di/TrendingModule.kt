@@ -1,7 +1,7 @@
 package com.azizutku.movie.features.trending.di
 
-import com.azizutku.movie.common.util.Mapper
-import com.azizutku.movie.features.trending.data.local.entity.TrendingMovieEntity
+import com.azizutku.movie.core.common.util.Mapper
+import com.azizutku.movie.core.database.model.TrendingMovieEntity
 import com.azizutku.movie.features.trending.data.remote.dto.TrendingMovieDto
 import com.azizutku.movie.features.trending.data.repository.TrendingRepositoryImpl
 import com.azizutku.movie.features.trending.data.repository.datasource.TrendingLocalDataSource

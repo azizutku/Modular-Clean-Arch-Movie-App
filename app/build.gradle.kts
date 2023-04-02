@@ -6,6 +6,10 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":core:common"))
+    implementation(project(":core:network"))
+    implementation(project(":core:ui"))
+    implementation(project(":core:database"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)

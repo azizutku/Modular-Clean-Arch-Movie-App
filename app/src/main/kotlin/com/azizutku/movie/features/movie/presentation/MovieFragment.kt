@@ -6,15 +6,16 @@ import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.azizutku.movie.R
-import com.azizutku.movie.common.base.BaseFragment
-import com.azizutku.movie.common.extensions.collectLatestLifecycleFlow
-import com.azizutku.movie.common.extensions.orFalse
-import com.azizutku.movie.common.extensions.setTextIfAvailableOrHide
-import com.azizutku.movie.common.extensions.setVisible
+import com.azizutku.movie.core.common.extensions.collectLatestLifecycleFlow
+import com.azizutku.movie.core.common.extensions.orFalse
+import com.azizutku.movie.core.ui.extensions.setTextIfAvailableOrHide
+import com.azizutku.movie.core.ui.extensions.setVisible
+import com.azizutku.movie.core.ui.base.BaseFragment
 import com.azizutku.movie.databinding.FragmentMovieBinding
 import com.azizutku.movie.features.movie.domain.model.Movie
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import com.azizutku.movie.core.ui.R as uiR
 
 @AndroidEntryPoint
 class MovieFragment : BaseFragment<FragmentMovieBinding>(
@@ -88,7 +89,7 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(
         errorHandler.onDefaultPrimaryAction = {
             findNavController().popBackStack()
         }
-        errorHandler.defaultTextPrimaryAction = requireContext().getString(R.string.text_button_go_back)
+        errorHandler.defaultTextPrimaryAction = requireContext().getString(uiR.string.text_button_go_back)
     }
 
     private fun onMenuItemWatchlistAction() {
@@ -103,11 +104,11 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(
         val itemWatchlistAction = binding.fragmentMovieToolbar.toolbar.menu.findItem(R.id.item_toolbar_watchlist_action)
         itemWatchlistAction?.apply {
             if (isMovieInWatchlist) {
-                title = requireContext().getString(R.string.title_toolbar_menu_item_watchlist_action_remove)
-                setIcon(R.drawable.ic_fill_favorite_24)
+                title = requireContext().getString(uiR.string.title_toolbar_menu_item_watchlist_action_remove)
+                setIcon(uiR.drawable.ic_fill_favorite_24)
             } else {
-                title = requireContext().getString(R.string.title_toolbar_menu_item_watchlist_action_add)
-                setIcon(R.drawable.ic_line_favorite_24)
+                title = requireContext().getString(uiR.string.title_toolbar_menu_item_watchlist_action_add)
+                setIcon(uiR.drawable.ic_line_favorite_24)
             }
         }
     }

@@ -1,13 +1,13 @@
 package com.azizutku.movie.features.movie.presentation
 
 import androidx.lifecycle.viewModelScope
-import com.azizutku.movie.common.base.BaseViewModel
-import com.azizutku.movie.common.base.ErrorOwner
-import com.azizutku.movie.common.base.LoadingOwner
-import com.azizutku.movie.common.base.STOP_TIMEOUT_WHILE_SUBSCRIBED
-import com.azizutku.movie.common.base.combineForLoading
-import com.azizutku.movie.common.base.flattenMergeForError
-import com.azizutku.movie.common.vo.DataState
+import com.azizutku.movie.core.common.base.BaseViewModel
+import com.azizutku.movie.core.common.base.ErrorOwner
+import com.azizutku.movie.core.common.base.LoadingOwner
+import com.azizutku.movie.core.common.base.STOP_TIMEOUT_WHILE_SUBSCRIBED
+import com.azizutku.movie.core.common.base.combineForLoading
+import com.azizutku.movie.core.common.base.flattenMergeForError
+import com.azizutku.movie.core.common.vo.DataState
 import com.azizutku.movie.features.movie.domain.model.Movie
 import com.azizutku.movie.features.movie.domain.usecase.GetMovieUseCase
 import com.azizutku.movie.features.watchlist.domain.model.MovieWatchlistState
@@ -15,6 +15,7 @@ import com.azizutku.movie.features.watchlist.domain.usecase.AddMovieToWatchlistU
 import com.azizutku.movie.features.watchlist.domain.usecase.CheckMovieInWatchlistUseCase
 import com.azizutku.movie.features.watchlist.domain.usecase.RemoveMovieFromWatchlistUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -22,7 +23,6 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel
 class MovieViewModel @Inject constructor(

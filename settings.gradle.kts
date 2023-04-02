@@ -26,3 +26,9 @@ rootProject.name = "Clean Movie App"
 
 include(":app")
 include(":benchmark")
+include(
+    ":core:common",
+    ":core:ui",
+    ":core:network",
+    ":core:database",
+)

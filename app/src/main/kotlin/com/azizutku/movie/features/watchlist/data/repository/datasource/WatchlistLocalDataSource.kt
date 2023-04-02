@@ -1,8 +1,8 @@
 package com.azizutku.movie.features.watchlist.data.repository.datasource
 
 import androidx.paging.PagingSource
-import com.azizutku.movie.features.movie.data.local.entity.MovieEntity
-import com.azizutku.movie.features.watchlist.data.local.entity.WatchlistEntity
+import com.azizutku.movie.core.database.model.MovieEntity
+import com.azizutku.movie.core.database.model.WatchlistEntity
 
 interface WatchlistLocalDataSource {
 

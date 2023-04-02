@@ -6,10 +6,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.paging.LoadState
 import com.azizutku.movie.R
-import com.azizutku.movie.common.base.BaseFragment
-import com.azizutku.movie.common.extensions.collectLatestLifecycleFlow
-import com.azizutku.movie.common.ui.recyclerview.SpacingItemDecoration
-import com.azizutku.movie.common.util.ThemeUtils
+import com.azizutku.movie.core.common.extensions.collectLatestLifecycleFlow
+import com.azizutku.movie.core.common.util.ThemeUtils
+import com.azizutku.movie.core.ui.base.BaseFragment
+import com.azizutku.movie.core.ui.recyclerview.SpacingItemDecoration
 import com.azizutku.movie.databinding.FragmentTrendingBinding
 import com.azizutku.movie.features.trending.di.FooterLoadStateAdapter
 import com.azizutku.movie.features.trending.di.HeaderLoadStateAdapter
@@ -17,6 +17,7 @@ import com.azizutku.movie.features.trending.presentation.adapters.TrendingMovieL
 import com.azizutku.movie.features.trending.presentation.adapters.TrendingMoviesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.azizutku.movie.core.ui.R as uiR
 
 @AndroidEntryPoint
 class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
@@ -51,7 +52,7 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
             adapter.refresh()
         }
         binding.fragmentTrendingRecyclerviewTrending.addItemDecoration(
-            SpacingItemDecoration(resources.getDimensionPixelSize(R.dimen.space_medium), true)
+            SpacingItemDecoration(resources.getDimensionPixelSize(uiR.dimen.space_medium), true)
         )
         binding.fragmentTrendingRecyclerviewTrending.adapter = adapter.withLoadStateHeaderAndFooter(
             header = headerLoadStateAdapter,
@@ -78,7 +79,7 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
 
         with(binding.fragmentTrendingToolbar.toolbar) {
             inflateMenu(R.menu.toolbar_main_menu)
-            title = getString(R.string.title_fragment_trending)
+            title = getString(uiR.string.title_fragment_trending)
             setupWithNavController(navController, appBarConfiguration)
             setOnMenuItemClickListener {
                 if (it.itemId == R.id.item_toolbar_toggle_theme) {

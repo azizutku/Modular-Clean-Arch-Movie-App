@@ -1,7 +1,7 @@
 package com.azizutku.movie.features.watchlist.domain.repository
 
 import androidx.paging.PagingData
-import com.azizutku.movie.common.vo.DataState
+import com.azizutku.movie.core.common.vo.DataState
 import com.azizutku.movie.features.watchlist.domain.model.MovieWatchlistState
 import com.azizutku.movie.features.watchlist.domain.model.WatchlistMovie
 import kotlinx.coroutines.flow.Flow

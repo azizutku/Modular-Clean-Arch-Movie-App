@@ -4,9 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.paging.LoadType
 import androidx.paging.PagingSource
 import androidx.test.filters.SmallTest
-import com.azizutku.movie.common.data.MainDatabase
-import com.azizutku.movie.features.trending.data.local.entity.TrendingMovieEntity
-import com.azizutku.movie.features.trending.data.local.entity.TrendingMovieRemoteKeyEntity
+import com.azizutku.movie.core.database.model.TrendingMovieEntity
+import com.azizutku.movie.core.database.model.TrendingMovieRemoteKeyEntity
 import com.azizutku.movie.features.trending.data.repository.datasource.TrendingLocalDataSource
 import com.azizutku.movie.features.trending.data.repository.datasourceImpl.TrendingLocalDataSourceImpl
 import com.azizutku.movie.models.trendingMovieEntity
@@ -36,7 +35,7 @@ class TrendingLocalDataSourceImplTest {
     val instantExecutorRule = InstantTaskExecutorRule()
 
     @Inject
-    lateinit var database: MainDatabase
+    lateinit var database: com.azizutku.movie.core.database.MainDatabase
 
     private lateinit var moviesLocalDataSource: TrendingLocalDataSource
 
