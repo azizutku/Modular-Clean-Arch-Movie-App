@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_watchlist"
+    app:startDestination="@id/watchlistFragment">
+    <fragment
+        android:id="@+id/watchlistFragment"
+        android:name="com.azizutku.movie.feature.watchlist.presentation.WatchlistFragment"
+        android:label="@string/title_fragment_watchlist">
+        <deepLink
+            app:uri="@string/deep_link_watchlist" />
+    </fragment>
+</navigation>

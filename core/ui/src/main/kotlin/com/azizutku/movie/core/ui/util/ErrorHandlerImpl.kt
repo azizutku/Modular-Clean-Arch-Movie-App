@@ -3,6 +3,7 @@ package com.azizutku.movie.core.ui.util
 import android.content.Context
 import com.azizutku.movie.core.common.network.GeneralNetworkExceptionCode
 import com.azizutku.movie.core.common.network.NetworkException
+import com.azizutku.movie.core.common.util.ErrorHandler
 import com.azizutku.movie.core.ui.R
 import com.azizutku.movie.core.ui.dialogs.AlertDialog
 import dagger.hilt.android.qualifiers.ActivityContext

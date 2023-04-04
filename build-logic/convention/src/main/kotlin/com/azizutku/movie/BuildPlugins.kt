@@ -11,4 +11,5 @@ object BuildPlugins {
     const val NAVIGATION_SAFEARGS = "androidx.navigation.safeargs.kotlin"
     const val ANDROID_TEST = "com.android.test"
     const val GRADLE_JACOCO = "org.gradle.jacoco"
+    const val KSP = "com.google.devtools.ksp"
 }

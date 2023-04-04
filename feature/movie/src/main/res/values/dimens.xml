@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="percent_width_movie_image" format="float" type="dimen">0.60</item>
+    <item name="percent_width_divider" format="float" type="dimen">0.70</item>
+</resources>

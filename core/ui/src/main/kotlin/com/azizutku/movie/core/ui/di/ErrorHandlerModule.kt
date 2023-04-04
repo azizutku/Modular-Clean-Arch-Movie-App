@@ -1,6 +1,6 @@
 package com.azizutku.movie.core.ui.di
 
-import com.azizutku.movie.core.ui.util.ErrorHandler
+import com.azizutku.movie.core.common.util.ErrorHandler
 import com.azizutku.movie.core.ui.util.ErrorHandlerImpl
 import dagger.Binds
 import dagger.Module

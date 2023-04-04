@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="deep_link_movie" translatable="false">movieapp://movie/{movieId}</string>
+    <string name="deep_link_trending" translatable="false">movieapp://trending/</string>
+    <string name="deep_link_watchlist" translatable="false">movieapp://watchlist/</string>
+    <string name="argument_movie_id" translatable="false">movieId</string>
+</resources>

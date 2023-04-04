@@ -1,40 +1,21 @@
 plugins {
     id("movie.android.application")
     id("movie.android.hilt")
-    id("movie.android.room")
     id("movie.android.application.jacoco")
 }
 
 dependencies {
-    implementation(project(":core:common"))
-    implementation(project(":core:network"))
-    implementation(project(":core:ui"))
-    implementation(project(":core:database"))
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
+    implementation(project(":feature:movie"))
+    implementation(project(":feature:trending"))
+    implementation(project(":feature:watchlist"))
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.splash.screen)
     implementation(libs.androidx.fragment.ktx)
-    implementation(libs.androidx.viewmodel.ktx)
-    implementation(libs.androidx.paging)
-    implementation(libs.androidx.swiperefreshlayout)
     implementation(libs.bundles.androidx.navigation)
-    implementation(libs.bundles.androidx.lifecycle)
-    implementation(libs.material)
     implementation(libs.hilt)
     implementation(libs.coroutines)
     implementation(libs.timber)
-    implementation(libs.kotlinx.serialization.json)
-    implementation(libs.lottie)
-    implementation(libs.retrofit)
-    implementation(libs.logging.interceptor)
-    implementation(libs.kotlinx.serialization.converter)
-    implementation(libs.glide)
     implementation(libs.androidx.profileinstaller)
-
-    debugImplementation(libs.chucker)
-    releaseImplementation(libs.chucker.no.op)
-    add("benchmarkImplementation", libs.chucker.no.op)
 
     testImplementation(libs.junit.test)
     testImplementation(libs.hilt.test)
@@ -50,8 +31,4 @@ dependencies {
     androidTestImplementation(libs.navigation.androidTest)
     androidTestImplementation(libs.coroutines.test)
     androidTestImplementation(libs.arch.core.test)
-}
-
-kapt {
-    correctErrorTypes = true
 }

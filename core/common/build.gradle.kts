@@ -15,4 +15,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.retrofit)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.bundles.androidx.navigation)
 }

@@ -12,7 +12,4 @@
 
     <color name="colorOverlay">#66FFFFFF</color>
     <color name="colorOnOverlay">#FF000000</color>
-
-    <color name="colorBottomNavInactive">#DFDFDF</color>
-    <color name="colorBottomNavActive">#FFFFFF</color>
 </resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_fragment_movie">Movie Detail</string>
+    <string name="title_toolbar_menu_item_watchlist_action_add">Add to watchlist</string>
+    <string name="title_toolbar_menu_item_watchlist_action_remove">Remove from watchlist</string>
+</resources>

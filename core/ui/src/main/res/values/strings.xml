@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="title_nav_item_trending">Trending</string>
-    <string name="title_nav_item_watchlist">Watchlist</string>
-    <string name="title_fragment_trending">Trending Movies</string>
-    <string name="title_fragment_movie">Movie Detail</string>
-    <string name="title_fragment_watchlist">Watchlist</string>
     <string name="title_toolbar_menu_item_toggle">Toggle theme</string>
-    <string name="title_toolbar_menu_item_watchlist_action_add">Add to watchlist</string>
-    <string name="title_toolbar_menu_item_watchlist_action_remove">Remove from watchlist</string>
     <string name="title_alert_dialog">Oops..</string>
-    <string name="text_button_retry_load_state">Try again</string>
     <string name="text_button_ok">OK</string>
     <string name="text_button_cancel">Cancel</string>
     <string name="text_button_go_back">Go back</string>

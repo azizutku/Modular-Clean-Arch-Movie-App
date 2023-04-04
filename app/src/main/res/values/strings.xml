@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Clean Movie App - Dev</string>
+    <string name="title_nav_item_trending">Trending</string>
+    <string name="title_nav_item_watchlist">Watchlist</string>
 </resources>

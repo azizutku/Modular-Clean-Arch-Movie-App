@@ -31,4 +31,11 @@ include(
     ":core:ui",
     ":core:network",
     ":core:database",
+    ":core:domain",
+    ":core:model",
+)
+include(
+    ":feature:movie",
+    ":feature:trending",
+    ":feature:watchlist",
 )

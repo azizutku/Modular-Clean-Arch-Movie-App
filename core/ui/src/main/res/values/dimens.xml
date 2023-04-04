@@ -32,8 +32,6 @@
     <dimen name="size_xxx_huge">112dp</dimen>
     <dimen name="size_xxxx_huge">124dp</dimen>
 
-    <dimen name="height_bottom_navigation">56dp</dimen>
-
     <dimen name="radius_x_small">1dp</dimen>
     <dimen name="radius_small">2dp</dimen>
     <dimen name="radius_medium">4dp</dimen>
@@ -49,9 +47,5 @@
     <dimen name="elevation_medium">4dp</dimen>
     <dimen name="elevation_large">6dp</dimen>
 
-    <item name="percent_width_trending_movie_image" format="float" type="dimen">0.40</item>
-    <item name="constraint_ratio_trending_movie_image" format="string" type="dimen">H,1:1.5</item>
-    <item name="percent_width_movie_image" format="float" type="dimen">0.60</item>
-    <item name="percent_width_divider" format="float" type="dimen">0.70</item>
     <item name="constraint_ratio_movie_image" format="string" type="dimen">H,1:1.5</item>
 </resources>
