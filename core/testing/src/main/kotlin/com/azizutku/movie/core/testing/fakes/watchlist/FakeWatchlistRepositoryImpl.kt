@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.map
 class FakeWatchlistRepositoryImpl: WatchlistRepository {
 
     val watchlistMoviesMap = hashMapOf<Int, WatchlistEntity>()
-    override suspend fun addMovie(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {
+    override fun addMovie(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {
         emit(DataState.Loading)
         watchlistMoviesMap[movieId] = WatchlistEntity(
             movieId = movieId,
@@ -29,13 +29,13 @@ class FakeWatchlistRepositoryImpl: WatchlistRepository {
         emit(DataState.Success(MovieWatchlistState(isInWatchlist = true)))
     }
 
-    override suspend fun removeMovie(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {
+    override fun removeMovie(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {
         emit(DataState.Loading)
         watchlistMoviesMap.remove(movieId)
         emit(DataState.Success(MovieWatchlistState(isInWatchlist = false)))
     }
 
-    override suspend fun getAllMovies(): Flow<PagingData<WatchlistMovie>> = Pager(
+    override fun getAllMovies(): Flow<PagingData<WatchlistMovie>> = Pager(
         config = PagingConfig(
             pageSize = PAGE_SIZE,
             prefetchDistance = PREFETCH_DISTANCE,
@@ -48,7 +48,7 @@ class FakeWatchlistRepositoryImpl: WatchlistRepository {
         }
     }
 
-    override suspend fun isMovieInWatchlist(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {
+    override fun isMovieInWatchlist(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {
         emit(DataState.Loading)
         val isExist = watchlistMoviesMap.contains(movieId)
         emit(DataState.Success(MovieWatchlistState(isInWatchlist = isExist)))

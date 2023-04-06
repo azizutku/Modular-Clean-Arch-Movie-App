@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface WatchlistRepository {
 
-    suspend fun addMovie(movieId: Int): Flow<DataState<MovieWatchlistState>>
-    suspend fun removeMovie(movieId: Int): Flow<DataState<MovieWatchlistState>>
-    suspend fun getAllMovies(): Flow<PagingData<WatchlistMovie>>
-    suspend fun isMovieInWatchlist(movieId: Int): Flow<DataState<MovieWatchlistState>>
+    fun addMovie(movieId: Int): Flow<DataState<MovieWatchlistState>>
+    fun removeMovie(movieId: Int): Flow<DataState<MovieWatchlistState>>
+    fun getAllMovies(): Flow<PagingData<WatchlistMovie>>
+    fun isMovieInWatchlist(movieId: Int): Flow<DataState<MovieWatchlistState>>
 }

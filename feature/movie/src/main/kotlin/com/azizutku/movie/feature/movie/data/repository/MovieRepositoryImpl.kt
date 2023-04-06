@@ -23,7 +23,7 @@ class MovieRepositoryImpl @Inject constructor(
     private val localMapper: MovieLocalMapper,
 ) : MovieRepository {
 
-    override suspend fun getMovie(movieId: Int): Flow<DataState<Movie>> = flow {
+    override fun getMovie(movieId: Int): Flow<DataState<Movie>> = flow {
         emit(DataState.Loading)
 
         val movieFromCache = getMovieFromCache(movieId)

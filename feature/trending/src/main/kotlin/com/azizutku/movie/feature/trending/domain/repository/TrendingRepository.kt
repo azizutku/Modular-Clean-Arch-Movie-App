@@ -6,5 +6,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface TrendingRepository {
 
-    suspend fun getTrendingMovies(): Flow<PagingData<TrendingMovie>>
+    fun getTrendingMovies(): Flow<PagingData<TrendingMovie>>
 }

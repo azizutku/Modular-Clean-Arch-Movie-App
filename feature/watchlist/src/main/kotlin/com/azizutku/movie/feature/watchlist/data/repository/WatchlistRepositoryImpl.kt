@@ -30,7 +30,7 @@ class WatchlistRepositoryImpl @Inject constructor(
     private val localMapper: WatchlistMovieLocalMapper,
 ) : WatchlistRepository {
 
-    override suspend fun addMovie(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {
+    override fun addMovie(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {
         emit(DataState.Loading)
         localDataSource.addToWatchlist(
             WatchlistEntity(
@@ -48,7 +48,7 @@ class WatchlistRepositoryImpl @Inject constructor(
         Timber.i("Movie with id $movieId was added to watchlist")
     }
 
-    override suspend fun removeMovie(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {
+    override fun removeMovie(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {
         emit(DataState.Loading)
         localDataSource.removeFromWatchlist(movieId)
         emit(
@@ -61,7 +61,7 @@ class WatchlistRepositoryImpl @Inject constructor(
         Timber.i("Movie with id $movieId was removed from watchlist")
     }
 
-    override suspend fun getAllMovies(): Flow<PagingData<WatchlistMovie>> = Pager(
+    override fun getAllMovies(): Flow<PagingData<WatchlistMovie>> = Pager(
         config = PagingConfig(
             pageSize = PAGE_SIZE,
             prefetchDistance = PREFETCH_DISTANCE,
@@ -74,7 +74,7 @@ class WatchlistRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun isMovieInWatchlist(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {
+    override fun isMovieInWatchlist(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {
         emit(DataState.Loading)
         val isExist = localDataSource.isMovieInWatchlist(movieId)
         emit(

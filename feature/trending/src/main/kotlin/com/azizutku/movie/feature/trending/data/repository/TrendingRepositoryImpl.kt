@@ -27,7 +27,7 @@ class TrendingRepositoryImpl @Inject constructor(
     private val localMapper: TrendingMoviesLocalMapper,
 ) : TrendingRepository {
     @OptIn(ExperimentalPagingApi::class)
-    override suspend fun getTrendingMovies(): Flow<PagingData<TrendingMovie>> = Pager(
+    override fun getTrendingMovies(): Flow<PagingData<TrendingMovie>> = Pager(
         config = PagingConfig(
             pageSize = NETWORK_PAGE_SIZE,
             prefetchDistance = PREFETCH_DISTANCE,
