@@ -6,5 +6,6 @@
 
     <include app:graph="@navigation/nav_trending" />
     <include app:graph="@navigation/nav_watchlist" />
+    <include app:graph="@navigation/nav_movie" />
 
 </navigation>

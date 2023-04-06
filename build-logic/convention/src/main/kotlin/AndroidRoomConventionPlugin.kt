@@ -1,3 +1,4 @@
+import com.azizutku.movie.BuildPlugins
 import com.google.devtools.ksp.gradle.KspExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -15,7 +16,7 @@ class AndroidRoomConventionPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.apply("com.google.devtools.ksp")
+            pluginManager.apply(BuildPlugins.KSP)
 
             extensions.configure<KspExtension> {
                 arg(RoomSchemaArgProvider(File(projectDir, "schemas")))

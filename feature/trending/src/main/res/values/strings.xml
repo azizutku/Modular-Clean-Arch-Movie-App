@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_fragment_trending">Trending Movies</string>
+    <string name="text_button_retry_load_state">Try again</string>
+</resources>

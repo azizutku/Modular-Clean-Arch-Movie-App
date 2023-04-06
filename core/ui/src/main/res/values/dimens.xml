@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="space_empty">0dp</dimen>
+
+    <dimen name="space_x_tiny">1dp</dimen>
+    <dimen name="space_tiny">2dp</dimen>
+
+    <dimen name="space_xx_small">4dp</dimen>
+    <dimen name="space_x_small">8dp</dimen>
+    <dimen name="space_small">12dp</dimen>
+
+    <dimen name="space_medium">16dp</dimen>
+
+    <dimen name="space_large">20dp</dimen>
+    <dimen name="space_x_large">24dp</dimen>
+    <dimen name="space_xx_large">28dp</dimen>
+    <dimen name="space_xxx_large">32dp</dimen>
+    <dimen name="space_xxxx_large">36dp</dimen>
+
+    <dimen name="size_zero">0dp</dimen>
+    <dimen name="size_one">1dp</dimen>
+    <dimen name="size_small">16dp</dimen>
+    <dimen name="size_medium">24dp</dimen>
+    <dimen name="size_large">32dp</dimen>
+    <dimen name="size_x_large">40dp</dimen>
+    <dimen name="size_xx_large">48dp</dimen>
+    <dimen name="size_xxx_large">56dp</dimen>
+    <dimen name="size_huge">64dp</dimen>
+    <dimen name="size_x_huge">80dp</dimen>
+    <dimen name="size_xx_huge">96dp</dimen>
+    <dimen name="size_xxx_huge">112dp</dimen>
+    <dimen name="size_xxxx_huge">124dp</dimen>
+
+    <dimen name="radius_x_small">1dp</dimen>
+    <dimen name="radius_small">2dp</dimen>
+    <dimen name="radius_medium">4dp</dimen>
+    <dimen name="radius_large">8dp</dimen>
+    <dimen name="radius_x_large">12dp</dimen>
+    <dimen name="radius_xx_large">16dp</dimen>
+    <dimen name="radius_huge">24dp</dimen>
+    <dimen name="radius_x_huge">32dp</dimen>
+    <dimen name="radius_xx_huge">40dp</dimen>
+
+    <dimen name="elevation_x_small">1dp</dimen>
+    <dimen name="elevation_small">2dp</dimen>
+    <dimen name="elevation_medium">4dp</dimen>
+    <dimen name="elevation_large">6dp</dimen>
+
+    <item name="constraint_ratio_movie_image" format="string" type="dimen">H,1:1.5</item>
+</resources>

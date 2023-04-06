@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#191932</color>
+    <color name="colorPrimaryVariant">#262648</color>
+    <color name="colorSecondary">#EC2B44</color>
+    <color name="colorSecondaryVariant">#F14158</color>
+    <color name="colorSurface">#191932</color>
+    <color name="colorOnBackground">#191932</color>
+    <color name="colorOnSurface">#FFFFFF</color>
+    <color name="colorBackground">#191932</color>
+
+    <color name="colorOverlay">#66FFFFFF</color>
+    <color name="colorOnOverlay">#FF000000</color>
+</resources>

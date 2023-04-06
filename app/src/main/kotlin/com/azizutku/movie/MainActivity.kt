@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private val fragmentIdsWithBottomNavigation = listOf(
-        R.id.trendingFragment,
-        R.id.watchlistFragment,
+        com.azizutku.movie.feature.trending.R.id.trendingFragment,
+        com.azizutku.movie.feature.watchlist.R.id.watchlistFragment,
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
