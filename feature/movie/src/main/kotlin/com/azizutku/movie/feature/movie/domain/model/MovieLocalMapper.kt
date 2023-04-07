@@ -31,7 +31,9 @@ class MovieLocalMapper @Inject constructor() : Mapper<MovieEntity, Movie> {
             subtitle = listOfNotNull(
                 releaseDate,
                 from.genre,
-                from.voteAverage.toString().plus(CHAR_STAR)
+                from.voteAverage?.let { voteAverage ->
+                    String.format(Locale.ENGLISH, "%.1f", voteAverage).plus(CHAR_STAR)
+                }
             ).joinToString(SEPARATOR_SUBTITLE),
         )
     }
