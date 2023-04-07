@@ -36,8 +36,8 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                     BuildReleaseSigningConfig.create(file("../release.keystore"), this)
                 }
                 buildTypes {
-                    BuildTypeDebug.create(this)
-                    BuildTypeRelease.create(this)
+                    BuildTypeDebug.create(this, signingConfigs)
+                    BuildTypeRelease.create(this, signingConfigs)
                     BuildTypeBenchmark.create(this, signingConfigs)
                 }
                 packagingOptions {

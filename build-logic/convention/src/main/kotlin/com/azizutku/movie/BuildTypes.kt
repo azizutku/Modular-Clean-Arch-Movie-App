@@ -32,7 +32,7 @@ object BuildTypeDebug : BuildType<ApplicationBuildType> {
             isShrinkResources = false
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
-            signingConfig = buildTypeNamedDomainObjectContainer.getByName(BuildType.DEBUG).signingConfig
+            signingConfig = signingConfigDomainObjectContainer?.getByName(BuildType.DEBUG)
         }
     }
 }
@@ -48,7 +48,7 @@ object BuildTypeRelease : BuildType<ApplicationBuildType> {
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
             isMinifyEnabled = true
             isShrinkResources = true
-            signingConfig = buildTypeNamedDomainObjectContainer.getByName(BuildType.RELEASE).signingConfig
+            signingConfig = signingConfigDomainObjectContainer?.getByName(BuildType.RELEASE)
         }
     }
 }
@@ -62,7 +62,7 @@ object BuildTypeBenchmark : BuildType<ApplicationBuildType> {
     ): ApplicationBuildType {
         return buildTypeNamedDomainObjectContainer.create(name) {
             initWith(buildTypeNamedDomainObjectContainer.getByName(BuildType.RELEASE))
-            signingConfig = buildTypeNamedDomainObjectContainer.getByName(BuildType.DEBUG).signingConfig
+            signingConfig = signingConfigDomainObjectContainer?.getByName(BuildType.DEBUG)
             matchingFallbacks.add(BuildType.RELEASE)
             proguardFiles("benchmark-rules.pro")
         }
@@ -78,7 +78,7 @@ object TestBuildTypeBenchmark : BuildType<TestBuildType> {
     ): TestBuildType {
         return buildTypeNamedDomainObjectContainer.create(name) {
             isDebuggable = true
-            signingConfig = buildTypeNamedDomainObjectContainer.getByName(BuildType.DEBUG).signingConfig
+            signingConfig = signingConfigDomainObjectContainer?.getByName(BuildType.DEBUG)
             matchingFallbacks += listOf(BuildType.RELEASE)
         }
     }
