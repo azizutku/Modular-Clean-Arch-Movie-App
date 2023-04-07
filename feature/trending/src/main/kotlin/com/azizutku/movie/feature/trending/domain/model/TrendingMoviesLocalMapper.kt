@@ -25,7 +25,7 @@ class TrendingMoviesLocalMapper @Inject constructor() : Mapper<TrendingMovieEnti
             }.orEmpty(),
             title = from.title.orEmpty(),
             rating = from.voteAverage?.let { voteAverage ->
-                "TMDB $voteAverage"
+                "TMDB ${String.format(Locale.ENGLISH, "%.1f", voteAverage)}"
             }.orEmpty(),
         )
     }
