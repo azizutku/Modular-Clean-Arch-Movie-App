@@ -36,7 +36,7 @@ class AndroidBenchmarkConventionPlugin : Plugin<Project> {
                     // This benchmark buildType is used for benchmarking, and should function like your
                     // release build (for example, with minification on). It's signed with a debug key
                     // for easy local/CI testing.
-                    TestBuildTypeBenchmark.create(this)
+                    TestBuildTypeBenchmark.create(this, signingConfigs)
                 }
                 targetProjectPath = AndroidConfig.BENCHMARK_TARGET_PROJECT_PATH
                 experimentalProperties["android.experimental.self-instrumenting"] = true
