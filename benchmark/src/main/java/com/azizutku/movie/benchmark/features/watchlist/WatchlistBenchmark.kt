@@ -35,7 +35,7 @@ class WatchlistBenchmark {
             // Navigate to watchlist screen
             device.findObject(By.res(packageName, "nav_watchlist")).click()
             device.waitForIdle()
-        }
+        },
     ) {
         watchlistWaitForContent()
         watchlistScrollMoviesDownUp()

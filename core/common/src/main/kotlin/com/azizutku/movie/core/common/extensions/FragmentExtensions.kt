@@ -6,10 +6,11 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 fun <T> Fragment.collectLatestLifecycleFlow(flow: Flow<T>, action: suspend (T) -> Unit) {
-    viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-        viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+    viewLifecycleOwner.lifecycleScope.launch {
+        repeatOnLifecycle(Lifecycle.State.STARTED) {
             flow.collectLatest(action)
         }
     }

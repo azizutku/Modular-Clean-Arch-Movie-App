@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 
 class RemoveMovieFromWatchlistUseCase @Inject constructor(private val repository: WatchlistRepository) {
 
-    suspend operator fun invoke(movieId: Int): Flow<DataState<MovieWatchlistState>> = repository.removeMovie(movieId)
+    operator fun invoke(movieId: Int): Flow<DataState<MovieWatchlistState>> = repository.removeMovie(movieId)
 }

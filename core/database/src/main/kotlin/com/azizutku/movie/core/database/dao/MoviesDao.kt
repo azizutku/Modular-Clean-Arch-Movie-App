@@ -1,15 +1,14 @@
 package com.azizutku.movie.core.database.dao
 
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Upsert
 import com.azizutku.movie.core.database.model.MovieEntity
 
 @Dao
 interface MoviesDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(entity: MovieEntity)
+    @Upsert
+    suspend fun upsert(entity: MovieEntity)
 
     @Query("DELETE FROM movies")
     suspend fun clearAll()

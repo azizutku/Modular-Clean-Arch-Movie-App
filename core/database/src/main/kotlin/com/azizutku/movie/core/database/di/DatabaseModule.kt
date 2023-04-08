@@ -21,5 +21,4 @@ class DatabaseModule {
         Room.databaseBuilder(appContext, MainDatabase::class.java, DB_NAME)
             .fallbackToDestructiveMigration()
             .build()
-
 }

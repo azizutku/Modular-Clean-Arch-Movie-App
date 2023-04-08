@@ -6,10 +6,10 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import androidx.annotation.DrawableRes
-import com.azizutku.movie.core.ui.extensions.setTextIfAvailableOrHide
-import com.azizutku.movie.core.ui.extensions.setVisible
 import com.azizutku.movie.core.ui.R
 import com.azizutku.movie.core.ui.databinding.LayoutDialogAlertBinding
+import com.azizutku.movie.core.ui.extensions.setTextIfAvailableOrHide
+import com.azizutku.movie.core.ui.extensions.setVisible
 import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 

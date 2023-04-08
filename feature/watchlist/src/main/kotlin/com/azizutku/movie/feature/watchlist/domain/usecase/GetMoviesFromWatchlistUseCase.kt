@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 
 class GetMoviesFromWatchlistUseCase @Inject constructor(private val repository: WatchlistRepository) {
 
-    suspend operator fun invoke(): Flow<PagingData<WatchlistMovie>> = repository.getAllMovies()
+    operator fun invoke(): Flow<PagingData<WatchlistMovie>> = repository.getAllMovies()
 }

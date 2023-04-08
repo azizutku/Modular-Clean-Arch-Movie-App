@@ -27,5 +27,6 @@ class FakePagingSource : PagingSource<Int, MovieEntity>() {
 
     override fun getRefreshKey(state: PagingState<Int, MovieEntity>): Int = 0
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieEntity> = LoadResult.Error(Exception())
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieEntity> =
+        LoadResult.Error(Exception("Cannot load data"))
 }

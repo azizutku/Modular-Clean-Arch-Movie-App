@@ -2,11 +2,11 @@ package com.azizutku.movie
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
+import timber.log.Timber
+import timber.log.Timber.DebugTree
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import timber.log.Timber
-import timber.log.Timber.DebugTree
 
 private const val FORMAT_TIMBER_CREATE_STACK_ELEMENT = "%s:%s"
 

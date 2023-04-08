@@ -10,9 +10,9 @@ import com.azizutku.movie.core.common.base.BaseViewModel
 import com.azizutku.movie.core.common.base.ErrorOwner
 import com.azizutku.movie.core.common.base.LoadingOwner
 import com.azizutku.movie.core.common.extensions.collectLatestLifecycleFlow
+import com.azizutku.movie.core.common.util.ErrorHandler
 import com.azizutku.movie.core.ui.dialogs.AlertDialog
 import com.azizutku.movie.core.ui.dialogs.LoadingDialog
-import com.azizutku.movie.core.common.util.ErrorHandler
 import javax.inject.Inject
 
 abstract class BaseFragment<VB : ViewBinding>(

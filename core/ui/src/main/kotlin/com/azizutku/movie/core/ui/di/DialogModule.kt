@@ -11,12 +11,12 @@ import dagger.hilt.android.scopes.ActivityScoped
 
 @Module
 @InstallIn(ActivityComponent::class)
-abstract class DialogModule {
+interface DialogModule {
     @ActivityScoped
     @Binds
-    abstract fun bindLoadingDialog(impl: LoadingDialog): Dialog
+    fun bindLoadingDialog(impl: LoadingDialog): Dialog
 
     @ActivityScoped
     @Binds
-    abstract fun bindAlertDialog(impl: AlertDialog): Dialog
+    fun bindAlertDialog(impl: AlertDialog): Dialog
 }

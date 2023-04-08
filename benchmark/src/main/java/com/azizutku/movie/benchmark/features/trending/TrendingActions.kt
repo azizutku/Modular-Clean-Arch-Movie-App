@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 fun MacrobenchmarkScope.trendingWaitForContent() {
     device.wait(
         Until.hasObject(
-            By.res(packageName, "fragment_trending_toolbar")
+            By.res(packageName, "fragment_trending_toolbar"),
         ),
         TimeUnit.SECONDS.toMillis(30),
     )

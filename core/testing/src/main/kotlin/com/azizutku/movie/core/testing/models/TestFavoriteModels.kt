@@ -1,4 +1,5 @@
 @file:Suppress("UnderscoresInNumericLiterals")
+
 package com.azizutku.movie.core.testing.models
 
 import com.azizutku.movie.core.database.model.WatchlistEntity

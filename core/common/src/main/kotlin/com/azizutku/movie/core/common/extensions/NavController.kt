@@ -1,4 +1,5 @@
 @file:Suppress("UnusedImports")
+
 package com.azizutku.movie.core.common.extensions
 
 import androidx.core.net.toUri

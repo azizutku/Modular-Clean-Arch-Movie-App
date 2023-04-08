@@ -5,11 +5,11 @@ import com.azizutku.movie.core.common.network.NetworkException.Companion.CODE_IO
 import com.azizutku.movie.core.common.network.NetworkException.Companion.CODE_OTHER_EXCEPTION
 import com.azizutku.movie.core.common.network.NetworkException.Companion.CODE_PARSING_EXCEPTION
 import com.azizutku.movie.core.common.network.NetworkException.Companion.CODE_TIMEOUT_EXCEPTION
-import kotlinx.serialization.SerialName
-import kotlinx.serialization.Serializable
 import retrofit2.HttpException
 import java.io.IOException
 import java.net.SocketTimeoutException
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 @Serializable
 data class NetworkException(

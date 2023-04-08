@@ -10,16 +10,16 @@ import javax.inject.Qualifier
 
 @Module
 @InstallIn(FragmentComponent::class)
-abstract class TrendingAdapterModule {
+interface TrendingAdapterModule {
     @FragmentScoped
     @Binds
     @HeaderLoadStateAdapter
-    abstract fun bindHeaderLoadStateAdapter(impl: TrendingMovieLoadStateAdapter): TrendingMovieLoadStateAdapter
+    fun bindHeaderLoadStateAdapter(impl: TrendingMovieLoadStateAdapter): TrendingMovieLoadStateAdapter
 
     @FragmentScoped
     @Binds
     @FooterLoadStateAdapter
-    abstract fun bindFooterLoadStateAdapter(impl: TrendingMovieLoadStateAdapter): TrendingMovieLoadStateAdapter
+    fun bindFooterLoadStateAdapter(impl: TrendingMovieLoadStateAdapter): TrendingMovieLoadStateAdapter
 }
 
 @Qualifier
