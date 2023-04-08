@@ -16,7 +16,7 @@ class TrendingLocalDataSourceImpl @Inject constructor(
         trendingMoviesDao.getPagingSource()
 
     override suspend fun insertAllMoviesToDb(list: List<TrendingMovieEntity>) {
-        trendingMoviesDao.insertAll(list)
+        trendingMoviesDao.upsertAll(list)
     }
 
     override suspend fun clearAllMoviesFromDb() {
@@ -32,7 +32,7 @@ class TrendingLocalDataSourceImpl @Inject constructor(
     }
 
     override suspend fun insertAllRemoteKeysToDb(list: List<TrendingMovieRemoteKeyEntity>) {
-        trendingMovieRemoteKeysDao.insertAll(list)
+        trendingMovieRemoteKeysDao.upsertAll(list)
     }
 
     override suspend fun getRemoteKeyFromDb(movieId: Int): TrendingMovieRemoteKeyEntity? =

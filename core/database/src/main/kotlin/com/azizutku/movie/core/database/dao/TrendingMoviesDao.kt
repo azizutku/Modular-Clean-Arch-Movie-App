@@ -3,10 +3,9 @@ package com.azizutku.movie.core.database.dao
 import androidx.paging.LoadType
 import androidx.paging.PagingSource
 import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Upsert
 import com.azizutku.movie.core.database.model.TrendingMovieEntity
 import com.azizutku.movie.core.database.model.TrendingMovieRemoteKeyEntity
 
@@ -15,8 +14,8 @@ const val LAST_PAGE = 1000
 
 @Dao
 interface TrendingMoviesDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(list: List<TrendingMovieEntity>)
+    @Upsert
+    suspend fun upsertAll(list: List<TrendingMovieEntity>)
 
     @Query("SELECT * FROM trending_movies ORDER BY `order` ASC")
     fun getPagingSource(): PagingSource<Int, TrendingMovieEntity>
@@ -41,7 +40,7 @@ interface TrendingMoviesDao {
         val keys = movies.map {
             TrendingMovieRemoteKeyEntity(id = it.id, prevKey = prevKey, nextKey = nextKey)
         }
-        trendingMovieRemoteKeysDao.insertAll(keys)
-        insertAll(movies)
+        trendingMovieRemoteKeysDao.upsertAll(keys)
+        upsertAll(movies)
     }
 }

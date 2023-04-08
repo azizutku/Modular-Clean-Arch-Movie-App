@@ -13,7 +13,7 @@ class WatchlistLocalDataSourceImpl @Inject constructor(
     override fun getAllMoviesInWatchlist(): PagingSource<Int, MovieEntity> = watchlistDao.getAllMoviesInWatchlist()
 
     override suspend fun addToWatchlist(entity: WatchlistEntity) {
-        watchlistDao.insert(entity)
+        watchlistDao.upsert(entity)
     }
 
     override suspend fun removeFromWatchlist(movieId: Int) {

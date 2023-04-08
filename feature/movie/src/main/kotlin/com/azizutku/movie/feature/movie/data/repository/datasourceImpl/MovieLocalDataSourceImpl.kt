@@ -11,7 +11,7 @@ class MovieLocalDataSourceImpl @Inject constructor(
     override suspend fun getMovie(movieId: Int): MovieEntity? = moviesDao.getMovie(movieId)
 
     override suspend fun insertMovieToDb(entity: MovieEntity) {
-        moviesDao.insert(entity)
+        moviesDao.upsert(entity)
     }
 
     override suspend fun clearAllMoviesFromDb() {
