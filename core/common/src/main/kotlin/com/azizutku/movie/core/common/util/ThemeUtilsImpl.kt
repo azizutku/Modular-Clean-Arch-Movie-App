@@ -3,11 +3,11 @@ package com.azizutku.movie.core.common.util
 import android.content.Context
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatDelegate
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 class ThemeUtilsImpl @Inject constructor() : ThemeUtils {
     override fun isDarkTheme(context: Context) = context.resources.configuration.uiMode and

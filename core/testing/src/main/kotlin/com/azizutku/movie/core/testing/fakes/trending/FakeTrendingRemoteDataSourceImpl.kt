@@ -12,6 +12,6 @@ class FakeTrendingRemoteDataSourceImpl : TrendingRemoteDataSource {
     override suspend fun getTrendingMovies(page: Int): Result<TrendingDto> = if (isSuccessful) {
         Result.success(trendingDto ?: testTrendingDto)
     } else {
-        Result.failure(RuntimeException())
+        Result.failure(RuntimeException("Cannot access to API"))
     }
 }

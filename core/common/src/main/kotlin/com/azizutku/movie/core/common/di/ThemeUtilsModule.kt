@@ -10,9 +10,9 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class ThemeUtilsModule {
+interface ThemeUtilsModule {
 
     @Singleton
     @Binds
-    abstract fun bindThemeUtils(impl: ThemeUtilsImpl): ThemeUtils
+    fun bindThemeUtils(impl: ThemeUtilsImpl): ThemeUtils
 }

@@ -24,33 +24,33 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ViewModelComponent::class)
-abstract class MovieModule {
+interface MovieModule {
 
     @ViewModelScoped
     @Binds
-    abstract fun bindMovieRepository(repository: MovieRepositoryImpl): MovieRepository
+    fun bindMovieRepository(repository: MovieRepositoryImpl): MovieRepository
 
     @ViewModelScoped
     @Binds
-    abstract fun bindRemoteDataSource(impl: MovieRemoteDataSourceImpl): MovieRemoteDataSource
+    fun bindRemoteDataSource(impl: MovieRemoteDataSourceImpl): MovieRemoteDataSource
 
     @ViewModelScoped
     @Binds
-    abstract fun bindLocalDataSource(impl: MovieLocalDataSourceImpl): MovieLocalDataSource
+    fun bindLocalDataSource(impl: MovieLocalDataSourceImpl): MovieLocalDataSource
 
     @ViewModelScoped
     @Binds
-    abstract fun bindLocalMapper(impl: MovieLocalMapper): Mapper<MovieEntity, Movie>
+    fun bindLocalMapper(impl: MovieLocalMapper): Mapper<MovieEntity, Movie>
 
     @ViewModelScoped
     @Binds
-    abstract fun bindRemoteToLocalMapper(impl: MovieRemoteToLocalMapper): Mapper<MovieDto, MovieEntity>
+    fun bindRemoteToLocalMapper(impl: MovieRemoteToLocalMapper): Mapper<MovieDto, MovieEntity>
 }
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class MovieSingletonModule {
+interface MovieSingletonModule {
     @Singleton
     @Binds
-    abstract fun bindCacheDataSource(impl: MovieCacheDataSourceImpl): MovieCacheDataSource
+    fun bindCacheDataSource(impl: MovieCacheDataSourceImpl): MovieCacheDataSource
 }

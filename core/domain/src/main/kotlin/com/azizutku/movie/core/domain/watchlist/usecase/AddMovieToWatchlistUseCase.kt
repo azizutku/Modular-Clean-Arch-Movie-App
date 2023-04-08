@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 
 class AddMovieToWatchlistUseCase @Inject constructor(private val repository: WatchlistRepository) {
 
-    suspend operator fun invoke(movieId: Int): Flow<DataState<MovieWatchlistState>> = repository.addMovie(movieId)
+    operator fun invoke(movieId: Int): Flow<DataState<MovieWatchlistState>> = repository.addMovie(movieId)
 }

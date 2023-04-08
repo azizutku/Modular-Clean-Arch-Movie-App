@@ -20,27 +20,27 @@ import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
 @InstallIn(ViewModelComponent::class)
-abstract class TrendingModule {
+interface TrendingModule {
 
     @ViewModelScoped
     @Binds
-    abstract fun bindTrendingRepository(repository: TrendingRepositoryImpl): TrendingRepository
+    fun bindTrendingRepository(repository: TrendingRepositoryImpl): TrendingRepository
 
     @ViewModelScoped
     @Binds
-    abstract fun bindRemoteDataSource(impl: TrendingRemoteDataSourceImpl): TrendingRemoteDataSource
+    fun bindRemoteDataSource(impl: TrendingRemoteDataSourceImpl): TrendingRemoteDataSource
 
     @ViewModelScoped
     @Binds
-    abstract fun bindLocalDataSource(impl: TrendingLocalDataSourceImpl): TrendingLocalDataSource
+    fun bindLocalDataSource(impl: TrendingLocalDataSourceImpl): TrendingLocalDataSource
 
     @ViewModelScoped
     @Binds
-    abstract fun bindLocalMapper(impl: TrendingMoviesLocalMapper): Mapper<TrendingMovieEntity, TrendingMovie>
+    fun bindLocalMapper(impl: TrendingMoviesLocalMapper): Mapper<TrendingMovieEntity, TrendingMovie>
 
     @ViewModelScoped
     @Binds
-    abstract fun bindRemoteToLocalMapper(
-        impl: TrendingMovieRemoteToLocalMapper
+    fun bindRemoteToLocalMapper(
+        impl: TrendingMovieRemoteToLocalMapper,
     ): Mapper<TrendingMovieDto, TrendingMovieEntity>
 }

@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 
 class CheckMovieInWatchlistUseCase @Inject constructor(private val repository: WatchlistRepository) {
 
-    suspend operator fun invoke(movieId: Int): Flow<DataState<MovieWatchlistState>> =
+    operator fun invoke(movieId: Int): Flow<DataState<MovieWatchlistState>> =
         repository.isMovieInWatchlist(movieId)
 }

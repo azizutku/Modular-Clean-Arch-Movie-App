@@ -10,9 +10,9 @@ import dagger.hilt.android.scopes.FragmentScoped
 
 @Module
 @InstallIn(FragmentComponent::class)
-abstract class ErrorHandlerModule {
+interface ErrorHandlerModule {
 
     @FragmentScoped
     @Binds
-    abstract fun bindErrorHandler(impl: ErrorHandlerImpl): ErrorHandler
+    fun bindErrorHandler(impl: ErrorHandlerImpl): ErrorHandler
 }

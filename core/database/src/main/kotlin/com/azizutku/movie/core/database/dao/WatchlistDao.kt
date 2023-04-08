@@ -18,7 +18,7 @@ interface WatchlistDao {
 
     @Query(
         "SELECT movies.* FROM movies INNER JOIN watchlist ON movies.id = watchlist.movie_id " +
-                "ORDER BY watchlist.added_at DESC"
+            "ORDER BY watchlist.added_at DESC"
     )
     fun getAllMoviesInWatchlist(): PagingSource<Int, MovieEntity>
 

@@ -49,6 +49,7 @@ class AndroidBenchmarkConventionPlugin : Plugin<Project> {
                 "implementation"(libs.findLibrary("espesso.androidTest").get())
                 "implementation"(libs.findLibrary("uiautomator.androidTest").get())
                 "implementation"(libs.findLibrary("benchmark.macro.androidTest").get())
+                "detektPlugins"(libs.findBundle("detekt").get())
             }
             androidComponents {
                 beforeVariants(selector().all()) {

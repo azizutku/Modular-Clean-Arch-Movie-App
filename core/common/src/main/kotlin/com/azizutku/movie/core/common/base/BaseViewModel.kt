@@ -4,4 +4,5 @@ import androidx.lifecycle.ViewModel
 
 const val STOP_TIMEOUT_WHILE_SUBSCRIBED = 5000L
 
+@Suppress("UnnecessaryAbstractClass")
 abstract class BaseViewModel : ViewModel()

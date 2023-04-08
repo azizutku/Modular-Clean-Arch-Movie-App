@@ -12,9 +12,9 @@ import com.azizutku.movie.feature.trending.domain.model.TrendingMovie
 import com.azizutku.movie.feature.trending.domain.model.TrendingMovieRemoteToLocalMapper
 import com.azizutku.movie.feature.trending.domain.model.TrendingMoviesLocalMapper
 import com.azizutku.movie.feature.trending.domain.repository.TrendingRepository
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
 
 private const val NETWORK_PAGE_SIZE = 20
 private const val INITIAL_LOAD_SIZE = 40

@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 
-class FakeWatchlistRepositoryImpl: WatchlistRepository {
+class FakeWatchlistRepositoryImpl : WatchlistRepository {
 
     val watchlistMoviesMap = hashMapOf<Int, WatchlistEntity>()
     override fun addMovie(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {

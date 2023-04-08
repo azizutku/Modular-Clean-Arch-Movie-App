@@ -16,17 +16,17 @@ import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
 @InstallIn(ViewModelComponent::class)
-abstract class WatchlistModule {
+interface WatchlistModule {
 
     @ViewModelScoped
     @Binds
-    abstract fun bindWatchlistRepository(repository: WatchlistRepositoryImpl): WatchlistRepository
+    fun bindWatchlistRepository(repository: WatchlistRepositoryImpl): WatchlistRepository
 
     @ViewModelScoped
     @Binds
-    abstract fun bindLocalDataSource(impl: WatchlistLocalDataSourceImpl): WatchlistLocalDataSource
+    fun bindLocalDataSource(impl: WatchlistLocalDataSourceImpl): WatchlistLocalDataSource
 
     @ViewModelScoped
     @Binds
-    abstract fun bindLocalMapper(impl: WatchlistMovieLocalMapper): Mapper<MovieEntity, WatchlistMovie>
+    fun bindLocalMapper(impl: WatchlistMovieLocalMapper): Mapper<MovieEntity, WatchlistMovie>
 }

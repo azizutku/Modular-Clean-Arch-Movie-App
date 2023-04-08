@@ -20,8 +20,10 @@ import kotlinx.coroutines.flow.map
 
 @VisibleForTesting
 const val PAGE_SIZE = 20
+
 @VisibleForTesting
 const val INITIAL_LOAD_SIZE = 20
+
 @VisibleForTesting
 const val PREFETCH_DISTANCE = 6
 

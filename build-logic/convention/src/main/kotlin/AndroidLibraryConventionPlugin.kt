@@ -38,6 +38,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 add("testImplementation", project(":core:testing"))
                 add("androidTestImplementation", kotlin("test"))
                 add("androidTestImplementation", project(":core:testing"))
+                add("detektPlugins", libs.findBundle("detekt").get())
             }
             kotlin {
                 jvmToolchain(JDK_VERSION)

@@ -37,7 +37,7 @@ archCore = "2.2.0"
 # Dependency versions of the included build-logic
 androidGradlePlugin = "7.4.2"
 kotlin = "1.8.20"
-detekt = "1.19.0"
+detekt = "1.22.0"
 javapoet = "1.13.0"
 navigationSafeargs = "2.5.3"
 kspGradlePlugin = "1.8.20-1.0.10"
@@ -97,6 +97,10 @@ chucker-no-op = { group = "com.github.chuckerteam.chucker", name = "library-no-o
 # Image loading
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 
+# Detekt plugins
+detekt-formating = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
+detekt-rules = { group = "io.gitlab.arturbosch.detekt", name = "detekt-rules", version.ref = "detekt" }
+
 # Test dependencies
 junit-test = { group = "junit", name = "junit", version.ref = "junit" }
 hilt-test = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
@@ -130,6 +134,7 @@ ksp-gradle-plugin = { group = "com.google.devtools.ksp", name = "com.google.devt
 androidx-navigation = ["androidx.navigation.fragment", "androidx.navigation.ui"]
 androidx-lifecycle = ["androidx.lifecycle", "androidx.lifecycle.viewmodel", "androidx.lifecycle.viewmodel.saved.state"]
 androidx-room = ["androidx.room", "androidx.room.ktx", "androidx.room.paging"]
+detekt = ["detekt.formating", "detekt.rules"]
 
 [plugins]
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintPlugin" }

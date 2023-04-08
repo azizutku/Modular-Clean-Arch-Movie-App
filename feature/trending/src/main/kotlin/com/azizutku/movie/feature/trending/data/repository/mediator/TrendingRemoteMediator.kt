@@ -48,7 +48,7 @@ class TrendingRemoteMediator(
         }.onFailure {
             return MediatorResult.Error(it)
         }
-        return MediatorResult.Error(Exception())
+        return MediatorResult.Error(Exception("Unexpected error"))
     }
 
     private suspend fun getRemoteKeyForLastItem(
