@@ -34,7 +34,7 @@ class BaselineProfileGenerator {
         // Navigate to movie screen
         device.waitForIdle()
         val trendingRecycler = device.findObject(
-            By.res(packageName, "fragment_trending_recyclerview_trending")
+            By.res(packageName, "fragment_trending_recyclerview_trending"),
         )
         trendingRecycler.children.first().click()
         device.waitForIdle()

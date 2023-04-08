@@ -43,7 +43,7 @@ navigationSafeargs = "2.5.3"
 kspGradlePlugin = "1.8.20-1.0.10"
 
 # Plugins
-ktlintPlugin = "11.0.0"
+ktlintPlugin = "11.3.1"
 versionsPlugin = "0.46.0"
 hiltPlugin = "2.45"
 kotlinSerializationPlugin = "1.7.10"

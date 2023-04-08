@@ -30,7 +30,7 @@ class TrendingBenchmark {
         setupBlock = {
             pressHome()
             startActivityAndWait()
-        }
+        },
     ) {
         trendingWaitForContent()
         trendingScrollMoviesDownUp()

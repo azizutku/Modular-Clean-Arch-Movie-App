@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 fun MacrobenchmarkScope.watchlistWaitForContent() {
     device.wait(
         Until.hasObject(
-            By.res(packageName, "fragment_watchlist_toolbar")
+            By.res(packageName, "fragment_watchlist_toolbar"),
         ),
         TimeUnit.SECONDS.toMillis(30),
     )

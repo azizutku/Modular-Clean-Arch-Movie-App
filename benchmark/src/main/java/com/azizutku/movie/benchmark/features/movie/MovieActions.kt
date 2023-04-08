@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 fun MacrobenchmarkScope.movieWaitForContent() {
     device.wait(
         Until.hasObject(
-            By.res(packageName, "fragment_movie_toolbar")
+            By.res(packageName, "fragment_movie_toolbar"),
         ),
         TimeUnit.SECONDS.toMillis(30),
     )
