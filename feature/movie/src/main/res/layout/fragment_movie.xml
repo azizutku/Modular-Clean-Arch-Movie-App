@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
+        android:id="@+id/fragment_movie_scrollview_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">

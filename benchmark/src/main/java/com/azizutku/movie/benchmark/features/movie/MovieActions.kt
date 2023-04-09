@@ -2,8 +2,8 @@ package com.azizutku.movie.benchmark.features.movie
 
 import androidx.benchmark.macro.MacrobenchmarkScope
 import androidx.test.uiautomator.By
-import androidx.test.uiautomator.Direction
 import androidx.test.uiautomator.Until
+import com.azizutku.movie.benchmark.scrollUiObjectDownUp
 import java.util.concurrent.TimeUnit
 
 fun MacrobenchmarkScope.movieWaitForContent() {
@@ -23,9 +23,7 @@ fun MacrobenchmarkScope.movieClickWatchlistAction() {
     }
 }
 
-fun MacrobenchmarkScope.movieScrollDetailsDownUp() {
-    val movieDetails = device.findObject(By.res(packageName, "fragment_movie_textview_details"))
-    movieDetails.fling(Direction.DOWN)
-    device.waitForIdle()
-    movieDetails.fling(Direction.UP)
+fun MacrobenchmarkScope.movieScrollContentDownUp() {
+    val movieContent = device.findObject(By.res(packageName, "fragment_movie_scrollview_content"))
+    device.scrollUiObjectDownUp(movieContent)
 }

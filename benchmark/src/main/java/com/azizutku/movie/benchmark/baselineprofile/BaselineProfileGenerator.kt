@@ -7,7 +7,7 @@ import androidx.benchmark.macro.junit4.BaselineProfileRule
 import androidx.test.uiautomator.By
 import com.azizutku.movie.benchmark.PACKAGE_NAME
 import com.azizutku.movie.benchmark.features.movie.movieClickWatchlistAction
-import com.azizutku.movie.benchmark.features.movie.movieScrollDetailsDownUp
+import com.azizutku.movie.benchmark.features.movie.movieScrollContentDownUp
 import com.azizutku.movie.benchmark.features.movie.movieWaitForContent
 import com.azizutku.movie.benchmark.features.trending.trendingScrollMoviesDownUp
 import com.azizutku.movie.benchmark.features.trending.trendingWaitForContent
@@ -41,7 +41,7 @@ class BaselineProfileGenerator {
 
         movieWaitForContent()
         movieClickWatchlistAction()
-        movieScrollDetailsDownUp()
+        movieScrollContentDownUp()
 
         // Navigate to watchlist screen
         device.pressBack()
