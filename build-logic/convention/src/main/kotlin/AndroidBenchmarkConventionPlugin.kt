@@ -27,6 +27,7 @@ class AndroidBenchmarkConventionPlugin : Plugin<Project> {
             extensions.configure<TestExtension> {
                 configureKotlinAndroid(this, false)
                 defaultConfig.targetSdk = AndroidConfig.TARGET_SDK
+                defaultConfig.testInstrumentationRunner = AndroidConfig.TEST_BENCHMARK_INSTRUMENTATION_RUNNER
                 defaultConfig.missingDimensionStrategy(
                     BuildProductDimensions.DIMENSION_VERSION,
                     BuildProductFlavor.PRODUCTION.flavourName
