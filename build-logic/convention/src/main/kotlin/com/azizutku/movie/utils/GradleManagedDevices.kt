@@ -15,6 +15,7 @@ internal fun configureGradleManagedDevices(
 ) {
     val deviceConfigs = listOf(
         DeviceConfig("Pixel 4", API_LEVEL_30, "aosp-atd"),
+        DeviceConfig("Pixel 4", API_LEVEL_31, "aosp"),
         DeviceConfig("Pixel 4", API_LEVEL_31, "google", groups = listOf("phoneAndTablet")),
         DeviceConfig("Nexus 9", API_LEVEL_31, "google", groups = listOf("phoneAndTablet")),
     )

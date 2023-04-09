@@ -6,10 +6,12 @@ import androidx.benchmark.macro.StartupMode
 import androidx.benchmark.macro.junit4.MacrobenchmarkRule
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.uiautomator.By
+import androidx.test.uiautomator.Until
 import com.azizutku.movie.benchmark.PACKAGE_NAME
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.concurrent.TimeUnit
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class MovieBenchmark {
@@ -36,11 +38,16 @@ class MovieBenchmark {
             val trendingRecycler = device.findObject(
                 By.res(packageName, "fragment_trending_recyclerview_trending"),
             )
+            // Wait list item to be visible
+            device.wait(
+                Until.hasObject(By.res(packageName, "list_item_trending_movie_textview_title")),
+                TimeUnit.SECONDS.toMillis(30),
+            )
             trendingRecycler.children.first().click()
         },
     ) {
         movieWaitForContent()
         movieClickWatchlistAction()
-        movieScrollDetailsDownUp()
+        movieScrollContentDownUp()
     }
 }

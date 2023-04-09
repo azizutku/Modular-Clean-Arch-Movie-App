@@ -43,7 +43,7 @@ abstract class AbstractStartupBenchmark(private val startupMode: StartupMode) {
         packageName = PACKAGE_NAME,
         metrics = listOf(StartupTimingMetric()),
         compilationMode = compilationMode,
-        iterations = 10,
+        iterations = 5,
         startupMode = startupMode,
         setupBlock = {
             pressHome()
