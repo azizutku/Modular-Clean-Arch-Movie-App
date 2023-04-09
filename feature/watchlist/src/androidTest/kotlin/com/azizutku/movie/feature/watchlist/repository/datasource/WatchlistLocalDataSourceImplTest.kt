@@ -63,7 +63,7 @@ class WatchlistLocalDataSourceImplTest {
 
     @Test
     fun canReadWatchlistWithPaging() = runTest {
-        database.moviesDao().insert(movieEntity)
+        database.moviesDao().upsert(movieEntity)
         watchlistLocalDataSource.addToWatchlist(watchlistEntity1)
 
         val pagingSource = watchlistLocalDataSource.getAllMoviesInWatchlist()
