@@ -3,7 +3,6 @@ package com.azizutku.movie.extensions
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.ApplicationProductFlavor
 import com.android.build.api.dsl.CommonExtension
-import org.gradle.api.Project
 
 enum class FlavorDimension(val value: String) {
     VERSION("version"),
@@ -17,7 +16,7 @@ enum class BuildProductFlavor(
 ) {
     DEVELOPMENT("dev", FlavorDimension.VERSION, ".dev", "-dev"),
     TEST("qa", FlavorDimension.VERSION, ".qa", "-qa"),
-    PRODUCTION("prod", FlavorDimension.VERSION, ".prod", "-prod"),
+    PRODUCTION("prod", FlavorDimension.VERSION),
 }
 
 fun configureFlavors(
