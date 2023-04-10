@@ -1,8 +1,6 @@
 import com.android.build.api.dsl.ApplicationExtension
 import com.azizutku.movie.AndroidConfig
-import com.azizutku.movie.BuildDebugSigningConfig
 import com.azizutku.movie.BuildPlugins
-import com.azizutku.movie.BuildReleaseSigningConfig
 import com.azizutku.movie.BuildTypeBenchmark
 import com.azizutku.movie.BuildTypeDebug
 import com.azizutku.movie.BuildTypeRelease
@@ -34,10 +32,6 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 defaultConfig.targetSdk = AndroidConfig.TARGET_SDK
                 defaultConfig.versionCode = AndroidConfig.VERSION_CODE
                 defaultConfig.versionName = AndroidConfig.VERSION_NAME
-                signingConfigs {
-                    BuildDebugSigningConfig.create(file("../debug.keystore"), this)
-                    BuildReleaseSigningConfig.create(file("../release.keystore"), this)
-                }
                 buildTypes {
                     BuildTypeDebug.create(this, signingConfigs)
                     BuildTypeRelease.create(this, signingConfigs)

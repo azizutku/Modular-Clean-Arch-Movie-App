@@ -48,7 +48,7 @@ object BuildTypeRelease : BuildType<ApplicationBuildType> {
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
             isMinifyEnabled = true
             isShrinkResources = true
-            signingConfig = signingConfigDomainObjectContainer?.getByName(BuildType.RELEASE)
+            signingConfig = signingConfigDomainObjectContainer?.getByName(BuildType.DEBUG)
         }
     }
 }
