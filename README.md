@@ -1,6 +1,7 @@
-# Movie App
 
-<img src="images/app_tour.gif" width="250" align="right" hspace="20">
+# Movie App ![Kotlin](https://img.shields.io/badge/kotlin-1.8.20-orange) ![Android Gradle Plugin](https://img.shields.io/badge/agp-7.4.2-blue) 
+
+<img src="images/app_tour.gif" width="250" align="right" hspace="0">
 
 ## Try it
 
@@ -100,6 +101,7 @@ To check depedency updates run the following Gradle command in your terminal:
 ```
 gradle dependencyUpdates -Drevision=release
 ```
+
 ### Code style
 
 This project uses [detekt](https://github.com/detekt/detekt) and [ktlint](https://github.com/pinterest/ktlint) to perform static code analysis.
@@ -107,7 +109,14 @@ This project uses [detekt](https://github.com/detekt/detekt) and [ktlint](https:
 It has also pre-commit git hook to verify that all static analysis and tests pass before committing.
 Run `installGitHooks` task to use pre-commit git hook
 
-### Improving Performance with Baseline Profiles
+## Configuration
+In order to build successfully, you will need to provide an TMDB API key. This key is used to access data from the API service that the project relies on. To provide the API key, you should add the following line to your local.properties file:
+```
+tmdb.api.key=YOUR_API_KEY
+```
+To obtain an API key, follow the instructions provided at https://www.themoviedb.org/settings/api.
+
+## Improving Performance with Baseline Profiles
 #### Startup Performance (with 5 iterations)
 
 | Startup Mode           | Compilation Mode          | Min (ms) | Median (ms) | Max (ms) |
