@@ -23,6 +23,8 @@ android {
             throw InvalidUserDataException(com.azizutku.movie.BuildConstants.MESSAGE_API_KEY_EXCEPTION)
         }
     }
+
+    buildFeatures.buildConfig = true
 }
 
 dependencies {

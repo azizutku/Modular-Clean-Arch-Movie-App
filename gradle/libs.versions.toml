@@ -35,7 +35,7 @@ turbine = "0.12.3"
 archCore = "2.2.0"
 
 # Dependency versions of the included build-logic
-androidGradlePlugin = "7.4.2"
+androidGradlePlugin = "8.1.0"
 kotlin = "1.8.20"
 detekt = "1.22.0"
 javapoet = "1.13.0"

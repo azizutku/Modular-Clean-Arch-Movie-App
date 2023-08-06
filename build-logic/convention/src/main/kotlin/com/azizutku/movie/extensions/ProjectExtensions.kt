@@ -6,7 +6,7 @@ import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 
-const val JDK_VERSION = 11
+const val JDK_VERSION = 17
 
 fun Project.getLocalProperty(propertyName: String): String {
     return getLocalProperty(propertyName, this)

@@ -20,7 +20,7 @@ enum class BuildProductFlavor(
 }
 
 fun configureFlavors(
-    commonExtension: CommonExtension<*, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
     commonExtension.apply {
         flavorDimensions += FlavorDimension.values().map { dimension ->
