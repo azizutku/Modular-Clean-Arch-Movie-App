@@ -2,7 +2,7 @@
 echo "Running static analysis..."
 
 OUTPUT="/tmp/analysis-result"
-./gradlew detekt ktlintCheck --daemon > ${OUTPUT}
+./gradlew detektDevDebug ktlintCheck --daemon > ${OUTPUT}
 EXIT_CODE=$?
 if [ ${EXIT_CODE} -ne 0 ]; then
     cat ${OUTPUT}

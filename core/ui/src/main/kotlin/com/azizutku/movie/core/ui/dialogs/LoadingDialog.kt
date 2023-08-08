@@ -10,7 +10,7 @@ import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 
 class LoadingDialog @Inject constructor(@ActivityContext context: Context) : Dialog(context) {
-    private var binding: LayoutDialogLoadingBinding = LayoutDialogLoadingBinding.inflate(
+    private val binding: LayoutDialogLoadingBinding = LayoutDialogLoadingBinding.inflate(
         LayoutInflater.from(context),
         null,
         false
@@ -18,9 +18,7 @@ class LoadingDialog @Inject constructor(@ActivityContext context: Context) : Dia
 
     init {
         setContentView(binding.root)
-        window?.apply {
-            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        }
+        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         setCancelable(false)
     }
 }

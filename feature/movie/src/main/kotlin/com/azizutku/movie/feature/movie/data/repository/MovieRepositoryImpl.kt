@@ -51,7 +51,7 @@ class MovieRepositoryImpl @Inject constructor(
         localMapper.map(movieEntity)
     }
 
-    private suspend fun getMovieDataFlowFromRemote(
+    private fun getMovieDataFlowFromRemote(
         movieId: Int,
         emitError: Boolean = true,
     ): Flow<DataState<Movie>> = flow {
