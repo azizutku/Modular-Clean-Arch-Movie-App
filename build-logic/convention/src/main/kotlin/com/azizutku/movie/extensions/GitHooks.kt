@@ -49,6 +49,6 @@ internal fun Project.configureGitHooks() {
 }
 
 internal fun isLinuxOrMacOs(): Boolean {
-    val osName = System.getProperty("os.name").toLowerCase(Locale.ROOT)
+    val osName = System.getProperty("os.name").lowercase(Locale.ROOT)
     return listOf("linux", "mac os", "macos").contains(osName)
 }

@@ -8,7 +8,7 @@ import org.gradle.api.plugins.ExtensionAware
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
 
 internal fun configureKotlinAndroid(
-    commonExtension: CommonExtension<*, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *>,
     optInCoroutines: Boolean = true,
 ) {
     commonExtension.apply {
@@ -19,11 +19,11 @@ internal fun configureKotlinAndroid(
             testInstrumentationRunner = AndroidConfig.TEST_INSTRUMENTATION_RUNNER
         }
         compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_11
-            targetCompatibility = JavaVersion.VERSION_11
+            sourceCompatibility = JavaVersion.VERSION_17
+            targetCompatibility = JavaVersion.VERSION_17
         }
         kotlinOptions {
-            jvmTarget = JavaVersion.VERSION_11.toString()
+            jvmTarget = JavaVersion.VERSION_17.toString()
 
             // Treat all Kotlin warnings as errors (disabled by default)
             allWarningsAsErrors = true
@@ -43,6 +43,6 @@ internal fun configureKotlinAndroid(
     }
 }
 
-internal fun CommonExtension<*, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
+internal fun CommonExtension<*, *, *, *, *>.kotlinOptions(block: KotlinJvmOptions.() -> Unit) {
     (this as ExtensionAware).extensions.configure("kotlinOptions", block)
 }

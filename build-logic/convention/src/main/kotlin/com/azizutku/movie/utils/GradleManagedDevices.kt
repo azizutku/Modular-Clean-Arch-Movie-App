@@ -1,8 +1,8 @@
 package com.azizutku.movie.utils
 
-import androidx.navigation.safe.args.generator.ext.capitalize
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.ManagedVirtualDevice
+import com.azizutku.movie.extensions.capitalize
 import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.invoke
 import java.util.Locale
@@ -11,7 +11,7 @@ private const val API_LEVEL_30 = 30
 private const val API_LEVEL_31 = 31
 
 internal fun configureGradleManagedDevices(
-    commonExtension: CommonExtension<*, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *>,
 ) {
     val deviceConfigs = listOf(
         DeviceConfig("Pixel 4", API_LEVEL_30, "aosp-atd"),
@@ -56,7 +56,7 @@ private data class DeviceConfig(
     val groups: List<String>? = null,
 ) {
     val taskName = buildString {
-        append(device.toLowerCase(Locale.ROOT).replace(" ", ""))
+        append(device.lowercase(Locale.ROOT).replace(" ", ""))
         append("Api")
         append(apiLevel.toString())
         append(systemImageSource.capitalize(Locale.ROOT).replace("-", ""))

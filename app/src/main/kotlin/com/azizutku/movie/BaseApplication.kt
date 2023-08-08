@@ -1,6 +1,7 @@
 package com.azizutku.movie
 
 import android.app.Application
+import android.content.pm.ApplicationInfo
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import timber.log.Timber.DebugTree
@@ -21,7 +22,8 @@ class BaseApplication : Application() {
     }
 
     private fun initTimber() {
-        if (BuildConfig.DEBUG) {
+        val isDebuggable = applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
+        if (isDebuggable) {
             Timber.plant(
                 object : DebugTree() {
                     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
@@ -32,10 +34,10 @@ class BaseApplication : Application() {
                         return String.format(
                             FORMAT_TIMBER_CREATE_STACK_ELEMENT,
                             element.methodName,
-                            super.createStackElementTag(element)
+                            super.createStackElementTag(element),
                         )
                     }
-                }
+                },
             )
         }
     }
