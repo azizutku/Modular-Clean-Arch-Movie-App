@@ -42,6 +42,7 @@ class AndroidBenchmarkConventionPlugin : Plugin<Project> {
                 targetProjectPath = AndroidConfig.BENCHMARK_TARGET_PROJECT_PATH
                 experimentalProperties["android.experimental.self-instrumenting"] = true
                 configureGradleManagedDevices(this)
+                buildFeatures.buildConfig = true
                 namespace = "com.azizutku.movie.benchmark"
             }
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
