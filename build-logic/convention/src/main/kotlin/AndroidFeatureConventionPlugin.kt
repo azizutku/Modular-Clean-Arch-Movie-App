@@ -30,6 +30,8 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("material").get())
                 add("implementation", libs.findLibrary("glide").get())
                 add("implementation", libs.findLibrary("androidx.fragment.ktx").get())
+                add("implementation", libs.findLibrary("androidx.core.ktx").get())
+                add("implementation", libs.findLibrary("androidx.viewmodel.ktx").get())
                 add("implementation", libs.findBundle("androidx.navigation").get())
                 add("implementation", libs.findBundle("androidx.lifecycle").get())
                 add("implementation", libs.findBundle("androidx.room").get())
