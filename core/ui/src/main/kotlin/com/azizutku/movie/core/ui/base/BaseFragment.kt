@@ -32,6 +32,7 @@ abstract class BaseFragment<VB : ViewBinding>(
 
     private var _binding: VB? = null
     val binding: VB
+        @Suppress("UnsafeCallOnNullableType")
         get() = _binding!!
 
     protected abstract fun initUi()

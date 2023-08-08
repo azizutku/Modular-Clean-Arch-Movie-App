@@ -8,6 +8,7 @@ dependencies {
     implementation(project(":feature:movie"))
     implementation(project(":feature:trending"))
     implementation(project(":feature:watchlist"))
+    implementation(project(":core:common"))
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.splash.screen)
     implementation(libs.androidx.fragment.ktx)

@@ -14,16 +14,14 @@ import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 
 class AlertDialog @Inject constructor(@ActivityContext context: Context) : Dialog(context, R.style.Theme_Dialog) {
-    private var binding: LayoutDialogAlertBinding = LayoutDialogAlertBinding.inflate(
+    private val binding: LayoutDialogAlertBinding = LayoutDialogAlertBinding.inflate(
         LayoutInflater.from(context),
         null,
         false
     )
 
     init {
-        window?.apply {
-            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        }
+        window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         setContentView(binding.root)
     }
 

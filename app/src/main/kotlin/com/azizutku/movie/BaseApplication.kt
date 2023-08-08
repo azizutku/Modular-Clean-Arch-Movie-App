@@ -2,11 +2,14 @@ package com.azizutku.movie
 
 import android.app.Application
 import android.content.pm.ApplicationInfo
+import com.azizutku.movie.core.common.di.Dispatcher
+import com.azizutku.movie.core.common.di.MovieAppDispatchers.Default
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 import timber.log.Timber.DebugTree
+import javax.inject.Inject
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 private const val FORMAT_TIMBER_CREATE_STACK_ELEMENT = "%s:%s"
@@ -14,9 +17,13 @@ private const val FORMAT_TIMBER_CREATE_STACK_ELEMENT = "%s:%s"
 @HiltAndroidApp
 class BaseApplication : Application() {
 
+    @Inject
+    @Dispatcher(Default)
+    lateinit var defaultDispatcher: CoroutineDispatcher
+
     override fun onCreate() {
         super.onCreate()
-        CoroutineScope(Dispatchers.Default).launch {
+        CoroutineScope(defaultDispatcher).launch {
             initTimber()
         }
     }

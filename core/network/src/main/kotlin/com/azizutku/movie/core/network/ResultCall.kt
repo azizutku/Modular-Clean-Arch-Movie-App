@@ -6,9 +6,9 @@ import okio.Timeout
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
+@Suppress("UnsafeCallOnNullableType")
 class ResultCall<T>(private val delegate: Call<T>) : Call<Result<T>> {
     override fun enqueue(callback: Callback<Result<T>>) {
         delegate.enqueue(

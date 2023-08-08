@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 
 class GetMovieUseCase @Inject constructor(private val repository: MovieRepository) {
 
-    suspend operator fun invoke(movieId: Int): Flow<DataState<Movie>> = repository.getMovie(movieId)
+    operator fun invoke(movieId: Int): Flow<DataState<Movie>> = repository.getMovie(movieId)
 }
