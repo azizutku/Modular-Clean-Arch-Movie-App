@@ -1,0 +1,73 @@
+name: Build CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+env:
+  GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4g -Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.workers.max=2 -Dkotlin.incremental=false -Dkotlin.compiler.execution.strategy=in-process"
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v3.5.3
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/wrapper-validation-action@v1.1.0
+
+      - name: Configure JDK
+        uses: actions/setup-java@v3.12.0
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+        
+      - name: Access TMDB_API_KEY
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: echo tmdb.api.key=$TMDB_API_KEY > ./local.properties
+
+      - name: Run build with caching enabled
+        uses: gradle/gradle-build-action@v2.7.0
+        with:
+          arguments: clean assembleDevDebug -s
+
+      - name: Run Detekt
+        run: ./gradlew detektDevDebug
+
+      - name: Check lint
+        run: ./gradlew lintDevDebug
+
+      - name: Run local tests
+        run: ./gradlew testDevDebugUnitTest
+
+      - name: Upload detekt reports (HTML)
+        if: always()
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: detekt-reports
+          path: '**/build/reports/detekt/report.html'
+
+      - name: Upload lint reports (HTML)
+        if: always()
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: lint-reports
+          path: '**/build/reports/lint-results-*.html'
+
+      - name: Upload test results (XML)
+        if: always()
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: test-results
+          path: '**/build/test-results/test*UnitTest/**.xml'
+
