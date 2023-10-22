@@ -30,7 +30,7 @@ junit = "4.13.2"
 junitAndroid = "1.1.5"
 espresso = "3.5.1"
 uiautomator = "2.2.0"
-benchmarkMacro = "1.1.1"
+benchmarkMacro = "1.2.0"
 turbine = "1.0.0"
 archCore = "2.2.0"
 

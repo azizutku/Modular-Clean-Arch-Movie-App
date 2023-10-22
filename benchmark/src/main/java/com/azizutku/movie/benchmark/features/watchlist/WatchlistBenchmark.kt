@@ -1,5 +1,7 @@
 package com.azizutku.movie.benchmark.features.watchlist
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.benchmark.macro.CompilationMode
 import androidx.benchmark.macro.FrameTimingMetric
 import androidx.benchmark.macro.StartupMode
@@ -11,6 +13,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+@RequiresApi(Build.VERSION_CODES.N)
 @RunWith(AndroidJUnit4ClassRunner::class)
 class WatchlistBenchmark {
     @get:Rule
