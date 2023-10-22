@@ -1,5 +1,5 @@
 
-# Movie App ![Kotlin](https://img.shields.io/badge/kotlin-1.9.10-orange) ![Android Gradle Plugin](https://img.shields.io/badge/agp-8.1.0-blue) 
+# Movie App ![Kotlin](https://img.shields.io/badge/kotlin-1.9.10-orange) ![Android Gradle Plugin](https://img.shields.io/badge/agp-8.1.2-blue) 
 
 <img src="images/app_tour.gif" width="250" align="right" hspace="0">
 

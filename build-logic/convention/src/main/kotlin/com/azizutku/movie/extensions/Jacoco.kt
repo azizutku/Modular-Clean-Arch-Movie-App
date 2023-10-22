@@ -67,12 +67,12 @@ internal fun Project.configureJacoco(
                 html.required.set(true)
             }
             classDirectories.setFrom(
-                fileTree("$buildDir/tmp/kotlin-classes/${variant.name}") {
+                fileTree("${project.layout.buildDirectory}/tmp/kotlin-classes/${variant.name}") {
                     exclude(coverageExclusions)
                 }
             )
             sourceDirectories.setFrom(files("$projectDir/src/main/java", "$projectDir/src/main/kotlin"))
-            executionData.setFrom(file("$buildDir/jacoco/$testTaskName.exec"))
+            executionData.setFrom(file("${project.layout.buildDirectory}/jacoco/$testTaskName.exec"))
         }
         jacocoTestReport.dependsOn(reportTask)
     }
