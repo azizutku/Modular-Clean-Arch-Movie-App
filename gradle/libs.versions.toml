@@ -36,11 +36,11 @@ archCore = "2.2.0"
 
 # Dependency versions of the included build-logic
 androidGradlePlugin = "8.1.0"
-kotlin = "1.9.0"
+kotlin = "1.9.10"
 detekt = "1.23.1"
 javapoet = "1.13.0"
 navigationSafeargs = "2.6.0"
-kspGradlePlugin = "1.9.0-1.0.13"
+kspGradlePlugin = "1.9.10-1.0.13"
 
 # Plugins
 ktlintPlugin = "11.5.1"
