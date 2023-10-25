@@ -1,5 +1,7 @@
 package com.azizutku.movie.benchmark.features.movie
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.benchmark.macro.CompilationMode
 import androidx.benchmark.macro.FrameTimingMetric
 import androidx.benchmark.macro.StartupMode
@@ -13,6 +15,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import java.util.concurrent.TimeUnit
 
+@RequiresApi(Build.VERSION_CODES.N)
 @RunWith(AndroidJUnit4ClassRunner::class)
 class MovieBenchmark {
     @get:Rule

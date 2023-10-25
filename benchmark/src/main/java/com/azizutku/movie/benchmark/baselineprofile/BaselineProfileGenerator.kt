@@ -1,8 +1,7 @@
-@file:OptIn(ExperimentalBaselineProfilesApi::class)
-
 package com.azizutku.movie.benchmark.baselineprofile
 
-import androidx.benchmark.macro.ExperimentalBaselineProfilesApi
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.benchmark.macro.junit4.BaselineProfileRule
 import androidx.test.uiautomator.By
 import com.azizutku.movie.benchmark.PACKAGE_NAME
@@ -19,12 +18,13 @@ import org.junit.Test
 /**
  * Generates a baseline profile which can be copied to `app/src/main/baseline-prof.txt`.
  */
+@RequiresApi(Build.VERSION_CODES.P)
 class BaselineProfileGenerator {
     @get:Rule
     val baselineProfileRule = BaselineProfileRule()
 
     @Test
-    fun generate() = baselineProfileRule.collectBaselineProfile(PACKAGE_NAME) {
+    fun generate() = baselineProfileRule.collect(PACKAGE_NAME) {
         pressHome()
         startActivityAndWait()
 

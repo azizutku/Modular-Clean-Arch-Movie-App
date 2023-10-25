@@ -62,6 +62,6 @@ class AndroidBenchmarkConventionPlugin : Plugin<Project> {
     }
 }
 
-internal fun Project.androidComponents(configure: Action<TestAndroidComponentsExtension>): Unit =
+private fun Project.androidComponents(configure: Action<TestAndroidComponentsExtension>): Unit =
     (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("androidComponents", configure)
 
