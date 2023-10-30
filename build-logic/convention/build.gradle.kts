@@ -16,6 +16,7 @@ dependencies {
     implementation(libs.detekt.plugin)
     implementation(libs.javapoet.plugin)
     implementation(libs.navigation.safeargs.plugin)
+    implementation(libs.kotlinx.kover.plugin)
 }
 
 gradlePlugin {
@@ -59,6 +60,14 @@ gradlePlugin {
         register("detekt") {
             id = "movie.detekt"
             implementationClass = "DetektConventionPlugin"
+        }
+        register("androidKoverLibrary") {
+            id = "movie.android.library.kover"
+            implementationClass = "AndroidLibraryKoverConventionPlugin"
+        }
+        register("androidKoverApplication") {
+            id = "movie.android.application.kover"
+            implementationClass = "AndroidApplicationKoverConventionPlugin"
         }
     }
 }

@@ -21,6 +21,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 apply(BuildPlugins.ANDROID_LIBRARY)
                 apply(BuildPlugins.KOTLIN_ANDROID)
                 apply("movie.android.library.jacoco")
+                apply("movie.android.library.kover")
             }
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
