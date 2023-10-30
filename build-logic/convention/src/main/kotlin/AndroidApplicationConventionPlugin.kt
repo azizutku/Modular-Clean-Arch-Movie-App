@@ -15,6 +15,7 @@ import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
+import org.gradle.kotlin.dsl.kotlin
 
 class AndroidApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -40,6 +41,8 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 packaging {
                     resources.excludes.add("META-INF/AL2.0")
                     resources.excludes.add("META-INF/LGPL2.1")
+                    resources.excludes.add("META-INF/LICENSE.md")
+                    resources.excludes.add("META-INF/LICENSE-notice.md")
                 }
                 configureGradleManagedDevices(this)
                 namespace = AndroidConfig.NAMESPACE
@@ -47,6 +50,10 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {
                 add("detektPlugins", libs.findBundle("detekt").get())
+                add("testImplementation", kotlin("test"))
+                add("testImplementation", project(":core:testing"))
+                add("androidTestImplementation", kotlin("test"))
+                add("androidTestImplementation", project(":core:testing"))
             }
             kotlin {
                 jvmToolchain(JDK_VERSION)

@@ -4,6 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.paging.LoadType
 import androidx.paging.PagingSource
 import androidx.test.filters.SmallTest
+import com.azizutku.movie.core.database.MainDatabase
 import com.azizutku.movie.core.database.model.TrendingMovieEntity
 import com.azizutku.movie.core.database.model.TrendingMovieRemoteKeyEntity
 import com.azizutku.movie.feature.trending.data.repository.datasource.TrendingLocalDataSource
@@ -35,7 +36,7 @@ class TrendingLocalDataSourceImplTest {
     val instantExecutorRule = InstantTaskExecutorRule()
 
     @Inject
-    lateinit var database: com.azizutku.movie.core.database.MainDatabase
+    lateinit var database: MainDatabase
 
     private lateinit var moviesLocalDataSource: TrendingLocalDataSource
 
@@ -69,64 +70,94 @@ class TrendingLocalDataSourceImplTest {
 
     @Test
     fun canSaveTrendingMoviesToDatabaseAndReadThem() = runTest {
+        // Arrange
         moviesLocalDataSource.insertAllMoviesToDb(trendingMovies)
 
+        // Act
         val pagingSource = moviesLocalDataSource.getPagingSourceFromDb()
         val loadResult = pagingSource.load(
             PagingSource.LoadParams.Refresh(
                 key = null,
                 loadSize = 3,
-                placeholdersEnabled = false
-            )
+                placeholdersEnabled = false,
+            ),
         )
+
+        // Assert
         assert(loadResult is PagingSource.LoadResult.Page)
         assertEquals((loadResult as PagingSource.LoadResult.Page).data, trendingMovies)
     }
 
     @Test
     fun canClearAllTrendingMoviesFromDatabaseSuccessfully() = runTest {
+        // Arrange
         moviesLocalDataSource.insertAllMoviesToDb(trendingMovies)
         moviesLocalDataSource.clearAllMoviesFromDb()
 
+        // Act
         val pagingSource = moviesLocalDataSource.getPagingSourceFromDb()
         val loadResult = pagingSource.load(
             PagingSource.LoadParams.Refresh(
                 key = null,
                 loadSize = 3,
-                placeholdersEnabled = false
-            )
+                placeholdersEnabled = false,
+            ),
         )
+
+        // Assert
         assert(loadResult is PagingSource.LoadResult.Page)
-        assertEquals((loadResult as PagingSource.LoadResult.Page).data, emptyList<TrendingMovieEntity>())
+        assertEquals(
+            (loadResult as PagingSource.LoadResult.Page).data,
+            emptyList<TrendingMovieEntity>(),
+        )
     }
 
     @Test
     fun canSaveTrendingMovieRemoteKeysToDatabaseAndReadThem() = runTest {
+        // Arrange
         moviesLocalDataSource.insertAllRemoteKeysToDb(trendingMovieRemoteKeys)
-        trendingMovieRemoteKeys.forEachIndexed { index, remoteKeyEntity ->
-            assertEquals(moviesLocalDataSource.getRemoteKeyFromDb(trendingMovies[index].id), remoteKeyEntity)
+
+        trendingMovieRemoteKeys.forEachIndexed { index, expectedRemoteKeyEntity ->
+            // Act
+            val actualRemoteKeyEntity =
+                moviesLocalDataSource.getRemoteKeyFromDb(trendingMovies[index].id)
+
+            // Assert
+            assertEquals(expectedRemoteKeyEntity, actualRemoteKeyEntity)
         }
     }
 
     @Test
     fun canClearAllTrendingMovieRemoteKeysFromDatabaseSuccessfully() = runTest {
+        // Arrange
         val trendingMovieRemoteKeys = listOf(
             TrendingMovieRemoteKeyEntity(
                 trendingMovies[0].id,
                 prevKey = null,
                 nextKey = null,
-            )
+            ),
         )
-        moviesLocalDataSource.insertAllRemoteKeysToDb(trendingMovieRemoteKeys)
-        // Check database has remote key first.
-        assertEquals(moviesLocalDataSource.getRemoteKeyFromDb(trendingMovies[0].id), trendingMovieRemoteKeys[0])
 
+        // Act
+        moviesLocalDataSource.insertAllRemoteKeysToDb(trendingMovieRemoteKeys)
+
+        // Assert
+        // Check database has remote key first.
+        assertEquals(
+            moviesLocalDataSource.getRemoteKeyFromDb(trendingMovies[0].id),
+            trendingMovieRemoteKeys[0],
+        )
+
+        // Act
         moviesLocalDataSource.clearAllRemoteKeysFromDb()
+
+        // Assert
         assertEquals(moviesLocalDataSource.getRemoteKeyFromDb(trendingMovies[0].id), null)
     }
 
     @Test
     fun canRefreshDataForPagingSuccessfully() = runTest {
+        // Arrange
         val trendingMovieRemoteKey = TrendingMovieRemoteKeyEntity(
             id = trendingMovieEntity4.id,
             prevKey = null,
@@ -134,22 +165,28 @@ class TrendingLocalDataSourceImplTest {
         )
         moviesLocalDataSource.insertAllMoviesToDb(listOf(trendingMovieEntity4))
         moviesLocalDataSource.insertAllRemoteKeysToDb(listOf(trendingMovieRemoteKey))
+
+        // Act
         moviesLocalDataSource.refreshDataForPaging(
             loadType = LoadType.REFRESH,
             page = 0,
             movies = trendingMovies,
         )
 
+        // Assert
         assertEquals(moviesLocalDataSource.getRemoteKeyFromDb(trendingMovieEntity4.id), null)
 
+        // Act
         val pagingSource = moviesLocalDataSource.getPagingSourceFromDb()
         val loadResult = pagingSource.load(
             PagingSource.LoadParams.Refresh(
                 key = null,
                 loadSize = 3,
-                placeholdersEnabled = false
-            )
+                placeholdersEnabled = false,
+            ),
         )
+
+        // Assert
         assert(loadResult is PagingSource.LoadResult.Page)
         assertEquals((loadResult as PagingSource.LoadResult.Page).data, trendingMovies)
     }

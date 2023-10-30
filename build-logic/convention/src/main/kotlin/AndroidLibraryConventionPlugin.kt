@@ -20,12 +20,18 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply(BuildPlugins.ANDROID_LIBRARY)
                 apply(BuildPlugins.KOTLIN_ANDROID)
+                apply("movie.android.library.jacoco")
+                apply("movie.android.library.kover")
             }
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = AndroidConfig.TARGET_SDK
                 configureFlavors(this)
                 configureGradleManagedDevices(this)
+                packaging {
+                    resources.excludes.add("META-INF/LICENSE.md")
+                    resources.excludes.add("META-INF/LICENSE-notice.md")
+                }
             }
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             configurations.configureEach {

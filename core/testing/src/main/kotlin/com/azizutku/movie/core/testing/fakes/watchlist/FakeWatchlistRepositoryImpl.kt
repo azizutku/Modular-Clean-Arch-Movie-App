@@ -5,6 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.map
 import com.azizutku.movie.core.common.vo.DataState
+import com.azizutku.movie.core.database.model.MovieEntity
 import com.azizutku.movie.core.database.model.WatchlistEntity
 import com.azizutku.movie.core.domain.watchlist.repository.WatchlistRepository
 import com.azizutku.movie.core.model.watchlist.MovieWatchlistState
@@ -20,6 +21,8 @@ import kotlinx.coroutines.flow.map
 class FakeWatchlistRepositoryImpl : WatchlistRepository {
 
     val watchlistMoviesMap = hashMapOf<Int, WatchlistEntity>()
+    var movieEntities = emptyList<MovieEntity>()
+
     override fun addMovie(movieId: Int): Flow<DataState<MovieWatchlistState>> = flow {
         emit(DataState.Loading)
         watchlistMoviesMap[movieId] = WatchlistEntity(
@@ -41,7 +44,7 @@ class FakeWatchlistRepositoryImpl : WatchlistRepository {
             prefetchDistance = PREFETCH_DISTANCE,
             initialLoadSize = INITIAL_LOAD_SIZE,
         ),
-        pagingSourceFactory = { FakePagingSource() }
+        pagingSourceFactory = { FakePagingSource(movieEntities) }
     ).flow.map { pagingData ->
         pagingData.map {
             WatchlistMovieLocalMapper().map(it)

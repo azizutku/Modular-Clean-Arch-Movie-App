@@ -22,15 +22,7 @@ class ResultCall<T>(private val delegate: Call<T>) : Call<Result<T>> {
                                 Result.success(response.body()!!)
                             )
                         } else {
-                            Response.success(
-                                Result.failure(
-                                    runCatching {
-                                        Json.decodeFromString<NetworkException>(response.errorBody()!!.string())
-                                    }.getOrDefault(
-                                        NetworkException(code = NetworkException.CODE_PARSING_EXCEPTION)
-                                    )
-                                )
-                            )
+                            getResponseWithUnsuccessfulCall(response)
                         }
                     )
                 }
@@ -49,9 +41,23 @@ class ResultCall<T>(private val delegate: Call<T>) : Call<Result<T>> {
 
     override fun isExecuted(): Boolean = delegate.isExecuted
 
-    override fun execute(): Response<Result<T>> = Response.success(
-        Result.success(delegate.execute().body()!!)
-    )
+    override fun execute(): Response<Result<T>> {
+        return runCatching {
+            val response = delegate.execute()
+            if (response.isSuccessful) {
+                Response.success(
+                    response.code(),
+                    Result.success<T>(response.body()!!),
+                )
+            } else {
+                getResponseWithUnsuccessfulCall(response)
+            }
+        }.getOrElse {
+            Response.success(
+                Result.failure(NetworkException.getFromThrowable(it)),
+            )
+        }
+    }
 
     override fun cancel() {
         delegate.cancel()
@@ -64,4 +70,15 @@ class ResultCall<T>(private val delegate: Call<T>) : Call<Result<T>> {
     override fun request(): Request = delegate.request()
 
     override fun timeout(): Timeout = delegate.timeout()
+
+    private fun getResponseWithUnsuccessfulCall(response: Response<T>): Response<Result<T>> =
+        Response.success(
+            Result.failure(
+                runCatching {
+                    Json.decodeFromString<NetworkException>(response.errorBody()!!.string())
+                }.getOrDefault(
+                    NetworkException(code = NetworkException.CODE_PARSING_EXCEPTION),
+                ),
+            ),
+        )
 }

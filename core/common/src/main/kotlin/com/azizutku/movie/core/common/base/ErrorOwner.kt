@@ -3,7 +3,6 @@ package com.azizutku.movie.core.common.base
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.azizutku.movie.core.common.vo.DataState
-import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -17,7 +16,6 @@ interface ErrorOwner {
 }
 
 context(ViewModel)
-@OptIn(FlowPreview::class)
 fun <T> ErrorOwner.flattenMergeForError(vararg flows: Flow<T>) = flowOf(*flows)
     .flattenMerge()
     .filterIsInstance<DataState.Error>()
