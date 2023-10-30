@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.NavOptions
-import androidx.navigation.fragment.findNavController
 import com.azizutku.movie.core.common.R
 
 context(Fragment)
@@ -19,7 +18,7 @@ fun NavController.navigateToMovie(movieId: Int) {
     val request = NavDeepLinkRequest.Builder
         .fromUri(deeplinkUri)
         .build()
-    findNavController().navigate(request, getNavOptionsWithAnimation())
+    navigate(request, getNavOptionsWithAnimation())
 }
 
 private fun getNavOptionsWithAnimation(): NavOptions = NavOptions.Builder()

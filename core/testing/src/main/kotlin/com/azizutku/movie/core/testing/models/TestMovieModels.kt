@@ -3,10 +3,20 @@ package com.azizutku.movie.core.testing.models
 import com.azizutku.movie.core.database.model.MovieEntity
 import com.azizutku.movie.feature.movie.data.remote.dto.GenreDto
 import com.azizutku.movie.feature.movie.data.remote.dto.MovieDto
+import com.azizutku.movie.feature.movie.domain.model.Movie
 
 val genreDto = GenreDto(
     id = 1,
     name = "Fantasy",
+)
+
+val movie = Movie(
+    id = 1,
+    description = "Deep inside the mountain of Dovre",
+    tagline = "Mountains will move.",
+    posterUrl = "https://image.tmdb.org/t/p/w500/9z4jRr43JdtU66P0iy8h18OyLql.jpg",
+    title = "Troll",
+    subtitle = "2022 | Fantasy | 6.7★",
 )
 
 val movieDto = MovieDto(

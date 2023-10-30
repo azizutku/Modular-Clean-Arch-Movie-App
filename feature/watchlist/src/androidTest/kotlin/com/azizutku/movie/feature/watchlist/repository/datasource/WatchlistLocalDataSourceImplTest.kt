@@ -48,32 +48,48 @@ class WatchlistLocalDataSourceImplTest {
 
     @Test
     fun canSaveWatchlistEntityToDatabaseAndReadIt() = runTest {
+        // Arrange
         watchlistLocalDataSource.addToWatchlist(watchlistEntity1)
-        val isMovieInWatchlist = watchlistLocalDataSource.isMovieInWatchlist(watchlistEntity1.movieId)
+
+        // Act
+        val isMovieInWatchlist =
+            watchlistLocalDataSource.isMovieInWatchlist(watchlistEntity1.movieId)
+
+        // Assert
         assert(isMovieInWatchlist)
     }
 
     @Test
     fun canRemoveWatchlistEntityFromDatabaseSuccessfully() = runTest {
+        // Arrange
         watchlistLocalDataSource.addToWatchlist(watchlistEntity1)
         watchlistLocalDataSource.removeFromWatchlist(watchlistEntity1.movieId)
-        val isMovieInWatchlist = watchlistLocalDataSource.isMovieInWatchlist(watchlistEntity1.movieId)
+
+        // Act
+        val isMovieInWatchlist =
+            watchlistLocalDataSource.isMovieInWatchlist(watchlistEntity1.movieId)
+
+        // Assert
         assert(isMovieInWatchlist.not())
     }
 
     @Test
     fun canReadWatchlistWithPaging() = runTest {
+        // Arrange
         database.moviesDao().upsert(movieEntity)
         watchlistLocalDataSource.addToWatchlist(watchlistEntity1)
 
+        // Act
         val pagingSource = watchlistLocalDataSource.getAllMoviesInWatchlist()
         val loadResult = pagingSource.load(
             PagingSource.LoadParams.Refresh(
                 key = null,
                 loadSize = 1,
-                placeholdersEnabled = false
-            )
+                placeholdersEnabled = false,
+            ),
         )
+
+        // Assert
         assert(loadResult is PagingSource.LoadResult.Page)
         assert((loadResult as PagingSource.LoadResult.Page).data.isNotEmpty())
         assertEquals(watchlistEntity1.movieId, loadResult.data[0].id)

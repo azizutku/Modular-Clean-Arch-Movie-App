@@ -33,6 +33,8 @@ uiautomator = "2.2.0"
 benchmarkMacro = "1.2.0"
 turbine = "1.0.0"
 archCore = "2.2.0"
+mockk = "1.13.8"
+roboelectric = "4.10.3"
 
 # Dependency versions of the included build-logic
 androidGradlePlugin = "8.1.2"
@@ -104,10 +106,15 @@ detekt-rules = { group = "io.gitlab.arturbosch.detekt", name = "detekt-rules", v
 junit-test = { group = "junit", name = "junit", version.ref = "junit" }
 hilt-test = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 room-test = { group = "androidx.room", name = "room-testing", version.ref = "room" }
-paging-test = { group = "androidx.paging", name = "paging-common", version.ref = "paging" }
+paging-common-test = { group = "androidx.paging", name = "paging-common", version.ref = "paging" }
+paging-test = { group = "androidx.paging", name = "paging-testing", version.ref = "paging" }
 turbine-test = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
 arch-core-test = { group = "androidx.arch.core", name = "core-testing", version.ref = "archCore" }
+mockkAndroid-test = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
+mockkAgent-test = { group = "io.mockk", name = "mockk-agent", version.ref = "mockk" }
+roboelectric-test = { group = "org.robolectric", name = "robolectric", version.ref = "roboelectric" }
+
 
 # Test Android dependencies
 junit-androidTest = { group = "androidx.test.ext", name = "junit", version.ref = "junitAndroid" }

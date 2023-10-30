@@ -26,6 +26,10 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 defaultConfig.targetSdk = AndroidConfig.TARGET_SDK
                 configureFlavors(this)
                 configureGradleManagedDevices(this)
+                packaging {
+                    resources.excludes.add("META-INF/LICENSE.md")
+                    resources.excludes.add("META-INF/LICENSE-notice.md")
+                }
             }
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             configurations.configureEach {

@@ -44,6 +44,6 @@ enum class GeneralNetworkExceptionCode(val code: Int) {
 
     companion object {
         fun getFromCode(code: Int): GeneralNetworkExceptionCode? =
-            GeneralNetworkExceptionCode.values().find { it.code == code }
+            entries.find { it.code == code }
     }
 }
