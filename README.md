@@ -1,5 +1,6 @@
 
-# Movie App ![Kotlin](https://img.shields.io/badge/kotlin-1.9.10-orange) ![Android Gradle Plugin](https://img.shields.io/badge/agp-8.1.2-blue) 
+# Movie App ![Kotlin](https://img.shields.io/badge/kotlin-1.9.10-orange) ![Android Gradle Plugin](https://img.shields.io/badge/agp-8.1.2-blue)
+![Movie App](images/project_showcase.png "Clean Movie App")
 
 <img src="images/app_tour.gif" width="250" align="right" hspace="0">
 
@@ -15,17 +16,17 @@
     - Migrated from single module structure. Check [related PR for migration](https://github.com/azizutku/Modular-Clean-Arch-Movie-App/pull/3)
 - Composite builds with convention plugins
     - Migrated from buildSrc. Check [related PR for migration](https://github.com/azizutku/Modular-Clean-Arch-Movie-App/pull/2)
+- Unit tests with high coverage, including tests for Room and Paging.
 - Baseline Profiles and Macrobenchmark
 - Version Catalogs
 - Supporting fully offline usage with Room
-- Pagination from Local and Remote (RemoteMediator) and only from Local
+- Pagination from Local and Remote (RemoteMediator) and only from Local with Paging 3
 - Dependency injection with Hilt
 - Dark and Light theme
 - Kotlin Coroutines and Flows
 - Kotlinx Serialization
 - New SplashScreen API
 - Different product flavors (dummy)
-- Unit tests for ViewModels and data layer and tests for Room.
 - Deep links
 
 ## Screenshots
@@ -42,6 +43,48 @@ The project is divided into feature and core modules, following the rule: if a c
 
 ## Navigation
 When feature modules are compiled, they work in isolation and cannot access each other, making it impossible to navigate to destinations in other modules using IDs. To address this, deep links are used to enable direct navigation to a destination feature. This ensures that users can access features located in different modules without any issues.
+
+## Testing
+The project employs a range of strategies and tools to ensure that every component operates as intended and integrates flawlessly with the system.
+
+#### Strategies and Tools
+- **AAA Pattern**: The project employs the Arrange-Act-Assert pattern throughout to maintain clarity and efficiency in tests.
+- **Fakes**: These are used to simulate functionalities that can produce consistent results, favoring simplicity.
+- **Mocks**: Facilitated by the [Mockk](https://github.com/mockk/mockk) library, mocks are employed when interactions need verification, allowing confirmation that our code behaves correctly in a controlled environment.
+- **Robolectric**: Enables us to run Android-specific tests without the need for actual devices, speeding up the testing process.
+- **Parameterized tests**: Help in executing the same test with different inputs, ensuring a broader test coverage.
+- **JUnit4**: Testing framework orchestrates our testing, providing a stable and feature-rich platform to assert the correctness of our code.
+
+#### Fakes over Mocks
+Fakes are preferred because they have a "working" implementation of the class, but it's constructed in a manner that's ideal for testing purposes and not suitable for production. While fakes are the first choice due to their lightweight nature and speed, there are scenarios where it's necessary to use mocks. Mocks are employed when the interaction with the external system is complex and behavior needs to be validated precisely.
+
+#### Coverage Tools: JaCoCo vs Kover
+JaCoCo has been the standard for a long time, providing detailed coverage reports, whereas Kover is Kotlin-specific and integrates more seamlessly with Kotlin projects, potentially offering more accurate coverage metrics for Kotlin code.
+
+#### Executing Tests & Reports
+Execute all unit tests using the following command:
+```bash
+./gradlew testDevDebugUnitTest
+```
+To generate a coverage report with **JaCoCo**, use:
+```bash
+./gradlew jacocoTestDevDebugUnitTestReport
+```
+The reports are available in the `/build/reports/jacoco/jacocoTestDevDebugUnitTestReport/html` folder.
+
+For coverage reports via the Kover plugin, the command is:
+```bash
+./gradlew koverHtmlReportDevDebug
+```
+
+Find these reports in the `/build/reports/kover/htmlDevDebug` folder.
+
+#### Android-Specific Tests
+For performing UI tests and testing components that require an Android environment, such as Room and Paging, use:
+```bash
+./gradlew connectedDevDebugAndroidTest
+```
+or you can use `./gradlew pixel4Api31AospDevDebugAndroidTest` without connected device
 
 ## Baseline Profiles
 The app's baseline profile is located in the `app/src/main/baseline-prof.txt` directory, and is responsible for allowing the Ahead-of-Time (AOT) compilation of the app's critical user path during launch. To generate baseline profiles, run the following Gradle command in your terminal:
@@ -83,12 +126,19 @@ Please refer to [`lib.versions.toml`](https://github.com/azizutku/Modular-Clean-
 
 -   [JUnit](https://github.com/junit-team/junit4)
 -   [Turbine](https://github.com/cashapp/turbine)
+-   [Mockk](https://github.com/mockk/mockk)
+-   [Robolectric](https://github.com/robolectric/robolectric)
+-   [Coroutines-test](https://github.com/Kotlin/kotlinx.coroutines/tree/master/kotlinx-coroutines-test)
+-   [Hilt-test](https://dagger.dev/hilt/testing.html)
+-   [Room-test](https://developer.android.com/training/data-storage/room/testing-db)
+-   [Paging-test](https://developer.android.com/topic/libraries/architecture/paging/test)
 
 ### Plugins
 
 -   [Detekt](https://github.com/arturbosch/detekt)
 -   [Ktlint](https://github.com/pinterest/ktlint)
 -   [Jacoco](https://github.com/jacoco/jacoco)
+-   [Kover](https://github.com/Kotlin/kotlinx-kover)
 -   [Gradle Version Plugin](https://github.com/ben-manes/gradle-versions-plugin)
 
 To run detekt use `detekt` task.
