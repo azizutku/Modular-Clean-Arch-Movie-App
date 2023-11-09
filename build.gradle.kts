@@ -11,6 +11,9 @@ plugins {
     alias(libs.plugins.kotlinx.kover).apply(false)
     id("movie.git.hooks").apply(false)
     id("movie.detekt").apply(false)
+    // Required for gradle-versions-plugin as of Gradle 8.4.
+    // TODO: Remove once the plugin issue is resolved.
+    id("jvm-ecosystem")
 }
 
 plugins.apply("movie.git.hooks")
