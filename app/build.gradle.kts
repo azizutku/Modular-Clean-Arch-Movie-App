@@ -18,5 +18,5 @@ dependencies {
     implementation(libs.coroutines)
     implementation(libs.timber)
     implementation(libs.androidx.profileinstaller)
-    api(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.serialization.json)
 }

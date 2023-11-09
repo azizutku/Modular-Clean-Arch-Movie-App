@@ -9,8 +9,13 @@ plugins {
     alias(libs.plugins.ksp).apply(false)
     alias(libs.plugins.kotlin.jvm).apply(false)
     alias(libs.plugins.kotlinx.kover).apply(false)
+    alias(libs.plugins.jacoco.aggregate.coverage).apply(true)
+    alias(libs.plugins.module.graph.assertion).apply(true)
     id("movie.git.hooks").apply(false)
     id("movie.detekt").apply(false)
+    // Required for gradle-versions-plugin as of Gradle 8.4.
+    // TODO: Remove once the plugin issue is resolved.
+    id("jvm-ecosystem")
 }
 
 plugins.apply("movie.git.hooks")
@@ -28,4 +33,12 @@ tasks.withType<DependencyUpdatesTask> {
     rejectVersionIf {
         isNonStable(candidate.version)
     }
+}
+
+jacocoAggregateCoverage {
+    jacocoTestReportTask.set("jacocoTestDevDebugUnitTestReport")
+}
+
+moduleGraphAssert {
+    maxHeight = 4
 }

@@ -1,5 +1,5 @@
 
-# Movie App ![Kotlin](https://img.shields.io/badge/kotlin-1.9.10-orange) ![Android Gradle Plugin](https://img.shields.io/badge/agp-8.1.2-blue)
+# Movie App ![Kotlin](https://img.shields.io/badge/kotlin-1.9.20-orange) ![Android Gradle Plugin](https://img.shields.io/badge/agp-8.1.3-blue)
 ![Movie App](images/project_showcase.png "Clean Movie App")
 
 <img src="images/app_tour.gif" width="250" align="right" hspace="0">
@@ -140,6 +140,8 @@ Please refer to [`lib.versions.toml`](https://github.com/azizutku/Modular-Clean-
 -   [Jacoco](https://github.com/jacoco/jacoco)
 -   [Kover](https://github.com/Kotlin/kotlinx-kover)
 -   [Gradle Version Plugin](https://github.com/ben-manes/gradle-versions-plugin)
+-   [JaCoCo Aggregate Coverage Plugin](https://github.com/azizutku/jacoco-aggregate-coverage-plugin)
+-   [Modules Graph Assert](https://github.com/jraska/modules-graph-assert)
 
 To run detekt use `detekt` task.
 
@@ -165,6 +167,14 @@ In order to build successfully, you will need to provide an TMDB API key. This k
 tmdb.api.key=YOUR_API_KEY
 ```
 To obtain an API key, follow the instructions provided at https://www.themoviedb.org/settings/api.
+
+### Modules Graph Plugin
+- **Generate Stats:** Run `./gradlew generateModulesGraphStatistics` to get a statistical overview of module depths.
+- **Export GraphViz:** Execute `./gradlew generateModulesGraphvizText -Pmodules.graph.output.gv=all_modules.gv` to create a GraphViz representation of the module graph.
+- **GraphViz to PNG:** Use `dot -Tpng all_modules.gv -o all_modules_graph.png` to convert the GraphViz file to a PNG image.
+
+### JaCoCo Aggregate Plugin
+- **Unified Coverage Report:** Run `./gradlew aggregateJacocoReports` to generate a aggregated JaCoCo coverage report at `build/reports/jacocoAggregated/index.html`.
 
 ## Improving Performance with Baseline Profiles
 #### Startup Performance (with 5 iterations)
