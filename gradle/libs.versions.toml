@@ -51,6 +51,7 @@ hiltPlugin = "2.48.1"
 jacocoPlugin = "0.8.9"
 kover = "0.7.4"
 jacocoAggregateCoverage = "0.1.0"
+moduleGraphAssertion = "2.5.0"
 
 [libraries]
 # Androidx
@@ -153,3 +154,4 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "kspGradlePlugin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 jacoco-aggregate-coverage = { id = "com.azizutku.jacocoaggregatecoverageplugin", version.ref = "jacocoAggregateCoverage" }
+module-graph-assertion = { id = "com.jraska.module.graph.assertion", version.ref = "moduleGraphAssertion" }
