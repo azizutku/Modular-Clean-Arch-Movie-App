@@ -37,7 +37,7 @@ mockk = "1.13.11"
 roboelectric = "4.12.2"
 
 # Dependency versions of the included build-logic
-androidGradlePlugin = "8.2.1"
+androidGradlePlugin = "8.4.2"
 kotlin = "2.0.0"
 detekt = "1.23.6"
 javapoet = "1.13.0"
