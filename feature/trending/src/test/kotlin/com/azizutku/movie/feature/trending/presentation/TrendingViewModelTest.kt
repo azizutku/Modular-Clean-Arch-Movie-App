@@ -1,5 +1,7 @@
 package com.azizutku.movie.feature.trending.presentation
 
+import android.util.Log
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.paging.testing.asSnapshot
 import app.cash.turbine.test
 import com.azizutku.movie.core.testing.fakes.trending.FakeTrendingRemoteDataSourceImpl
@@ -11,6 +13,8 @@ import com.azizutku.movie.feature.trending.data.repository.datasource.fakes.Fake
 import com.azizutku.movie.feature.trending.domain.model.TrendingMovieRemoteToLocalMapper
 import com.azizutku.movie.feature.trending.domain.model.TrendingMoviesLocalMapper
 import com.azizutku.movie.feature.trending.domain.usecase.GetTrendingMoviesUseCase
+import io.mockk.every
+import io.mockk.mockkStatic
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
@@ -43,6 +47,8 @@ class TrendingViewModelTest {
             remoteToLocalMapper = TrendingMovieRemoteToLocalMapper(),
             localMapper = TrendingMoviesLocalMapper(),
         )
+        mockkStatic(Log::isLoggable)
+        every { Log.isLoggable(any(), any()) } returns false
         viewModel = TrendingViewModel(
             GetTrendingMoviesUseCase(trendingRepository),
         )

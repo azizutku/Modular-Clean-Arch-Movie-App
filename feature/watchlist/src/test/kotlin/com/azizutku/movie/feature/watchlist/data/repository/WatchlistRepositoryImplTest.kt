@@ -1,5 +1,6 @@
 package com.azizutku.movie.feature.watchlist.data.repository
 
+import android.util.Log
 import androidx.paging.testing.asSnapshot
 import app.cash.turbine.test
 import com.azizutku.movie.core.common.extensions.orFalse
@@ -11,6 +12,8 @@ import com.azizutku.movie.core.testing.models.movieEntity
 import com.azizutku.movie.core.testing.models.movieEntity2
 import com.azizutku.movie.core.testing.util.CoroutineRule
 import com.azizutku.movie.feature.watchlist.domain.model.WatchlistMovieLocalMapper
+import io.mockk.every
+import io.mockk.mockkStatic
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
@@ -34,6 +37,8 @@ class WatchlistRepositoryImplTest {
             localDataSource = fakeWatchlistLocalDataSourceImpl,
             localMapper = WatchlistMovieLocalMapper(),
         )
+        mockkStatic(Log::isLoggable)
+        every { Log.isLoggable(any(), any()) } returns false
     }
 
     @Test
