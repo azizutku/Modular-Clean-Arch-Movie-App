@@ -49,7 +49,7 @@ ktlintPlugin = "12.1.1"
 versionsPlugin = "0.51.0"
 hiltPlugin = "2.51.1"
 jacocoPlugin = "0.8.9"
-kover = "0.7.5"
+kover = "0.8.1"
 jacocoAggregateCoverage = "0.1.0"
 moduleGraphAssertion = "2.5.0"
 

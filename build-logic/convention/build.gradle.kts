@@ -61,13 +61,5 @@ gradlePlugin {
             id = "movie.detekt"
             implementationClass = "DetektConventionPlugin"
         }
-        register("androidKoverLibrary") {
-            id = "movie.android.library.kover"
-            implementationClass = "AndroidLibraryKoverConventionPlugin"
-        }
-        register("androidKoverApplication") {
-            id = "movie.android.application.kover"
-            implementationClass = "AndroidApplicationKoverConventionPlugin"
-        }
     }
 }

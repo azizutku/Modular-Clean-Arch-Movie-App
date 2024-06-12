@@ -1,9 +1,10 @@
 package com.azizutku.movie.extensions
 
-import com.android.build.api.variant.AndroidComponentsExtension
-import kotlinx.kover.gradle.plugin.dsl.KoverReportExtension
+import com.azizutku.movie.BuildPlugins
+import kotlinx.kover.gradle.plugin.dsl.KoverProjectExtension
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
 
 private val coverageExclusions = listOf(
     // Android
@@ -50,20 +51,26 @@ private val coverageExclusions = listOf(
     "*LocalDataSourceImpl.*", // Covered in androidTest
 )
 
-internal fun Project.configureKover(
-    androidComponentsExtension: AndroidComponentsExtension<*, *, *>,
-) {
-    androidComponentsExtension.onVariants { variant ->
-        configure<KoverReportExtension> {
+internal fun Project.configureKover() {
+    dependencies {
+        rootProject.subprojects.filter { plugins.hasPlugin(BuildPlugins.KOTLINX_KOVER) }.forEach { subproject ->
+            if (subproject.path.startsWith(":core:") || subproject.path.startsWith(":feature:")) {
+                add("kover", project(subproject.path))
+            }
+        }
+    }
+    configure<KoverProjectExtension> {
+        reports {
             filters {
-                androidReports(variant.name) {
-                    filters {
-                        excludes {
-                            classes(coverageExclusions)
-                            packages("*.di", "hilt_aggregated_deps")
-                            annotatedBy("*Generated*")
-                        }
-                    }
+                excludes {
+                    classes(coverageExclusions)
+                    packages(
+                        "*.di",
+                        "hilt_aggregated_deps",
+                        "dagger.hilt.internal.aggregatedroot.codegen",
+                    )
+                    annotatedBy("*Generated*")
+                    androidGeneratedClasses()
                 }
             }
         }

@@ -7,6 +7,7 @@ import com.azizutku.movie.BuildTypeRelease
 import com.azizutku.movie.extensions.JDK_VERSION
 import com.azizutku.movie.extensions.configureFlavors
 import com.azizutku.movie.extensions.configureKotlinAndroid
+import com.azizutku.movie.extensions.configureKover
 import com.azizutku.movie.extensions.kotlin
 import com.azizutku.movie.utils.configureGradleManagedDevices
 import org.gradle.api.Plugin
@@ -25,6 +26,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply(BuildPlugins.KOTLIN_ANDROID)
                 apply(BuildPlugins.NAVIGATION_SAFEARGS)
                 apply(BuildPlugins.KOTLINX_SERIALIZATION)
+                apply(BuildPlugins.KOTLINX_KOVER)
             }
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this)
@@ -58,6 +60,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             kotlin {
                 jvmToolchain(JDK_VERSION)
             }
+            configureKover()
         }
     }
 }
