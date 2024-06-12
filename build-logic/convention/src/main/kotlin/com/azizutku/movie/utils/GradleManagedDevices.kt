@@ -11,7 +11,7 @@ private const val API_LEVEL_30 = 30
 private const val API_LEVEL_31 = 31
 
 internal fun configureGradleManagedDevices(
-    commonExtension: CommonExtension<*, *, *, *, *>,
+    commonExtension: CommonExtension<*, *, *, *, *, *>,
 ) {
     val deviceConfigs = listOf(
         DeviceConfig("Pixel 4", API_LEVEL_30, "aosp-atd"),

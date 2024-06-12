@@ -1,14 +1,9 @@
-import com.android.build.api.variant.LibraryAndroidComponentsExtension
-import com.android.build.gradle.internal.tasks.databinding.DataBindingGenBaseClassesTask
 import com.azizutku.movie.BuildPlugins
-import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
-import org.gradle.configurationcache.extensions.capitalized
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
-import org.jetbrains.kotlin.gradle.tasks.AbstractKotlinCompileTool
 
 class AndroidFeatureConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -42,26 +37,6 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findBundle("androidx.room").get())
                 add("ksp", libs.findLibrary("room.compiler").get())
             }
-            // This is a workaround for the issue where ViewBinding-generated classes are not considered as inputs to KSP.
-            // This arose during the KSP migration for Hilt.
-            // Refer: https://issuetracker.google.com/issues/301245705?pli=1
-            androidComponents {
-                onVariants(selector().all()) { variant ->
-                    afterEvaluate {
-                        project.tasks.getByName("ksp" + variant.name.capitalized() + "Kotlin") {
-                            val dataBindingTask = project.tasks.getByName(
-                        "dataBindingGenBaseClasses" + variant.name.capitalized()
-                            ) as? DataBindingGenBaseClassesTask
-                            dataBindingTask?.let { task ->
-                                (this as? AbstractKotlinCompileTool<*>)?.setSource(task.sourceOutFolder)
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }
-
-private fun Project.androidComponents(configure: Action<LibraryAndroidComponentsExtension>): Unit =
-    (this as org.gradle.api.plugins.ExtensionAware).extensions.configure("androidComponents", configure)

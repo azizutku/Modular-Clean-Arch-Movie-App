@@ -2,7 +2,6 @@ plugins {
     id("movie.android.application")
     id("movie.android.hilt")
     id("movie.android.application.jacoco")
-    id("movie.android.application.kover")
 }
 
 dependencies {
