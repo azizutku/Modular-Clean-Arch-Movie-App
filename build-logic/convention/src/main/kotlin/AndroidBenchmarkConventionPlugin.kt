@@ -8,14 +8,13 @@ import com.azizutku.movie.TestBuildTypeBenchmark
 import com.azizutku.movie.extensions.BuildProductFlavor
 import com.azizutku.movie.extensions.configureFlavors
 import com.azizutku.movie.extensions.configureKotlinAndroid
+import com.azizutku.movie.extensions.libs
 import com.azizutku.movie.utils.configureGradleManagedDevices
 import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.getByType
 
 class AndroidBenchmarkConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
@@ -45,7 +44,6 @@ class AndroidBenchmarkConventionPlugin : Plugin<Project> {
                 buildFeatures.buildConfig = true
                 namespace = "com.azizutku.movie.benchmark"
             }
-            val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {
                 "implementation"(libs.findLibrary("junit.androidTest").get())
                 "implementation"(libs.findLibrary("espesso.androidTest").get())

@@ -9,13 +9,12 @@ import com.azizutku.movie.extensions.configureFlavors
 import com.azizutku.movie.extensions.configureKotlinAndroid
 import com.azizutku.movie.extensions.configureKover
 import com.azizutku.movie.extensions.kotlin
+import com.azizutku.movie.extensions.libs
 import com.azizutku.movie.utils.configureGradleManagedDevices
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.kotlin
 
 class AndroidApplicationConventionPlugin : Plugin<Project> {
@@ -49,7 +48,6 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 configureGradleManagedDevices(this)
                 namespace = AndroidConfig.NAMESPACE
             }
-            val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {
                 add("detektPlugins", libs.findBundle("detekt").get())
                 add("testImplementation", kotlin("test"))
