@@ -12,4 +12,5 @@ object BuildPlugins {
     const val GRADLE_JACOCO = "org.gradle.jacoco"
     const val KOTLINX_KOVER = "org.jetbrains.kotlinx.kover"
     const val KSP = "com.google.devtools.ksp"
+    const val COMPOSE = "org.jetbrains.kotlin.plugin.compose"
 }

@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.ksp).apply(false)
     alias(libs.plugins.kotlin.jvm).apply(false)
     alias(libs.plugins.kotlinx.kover).apply(false)
+    alias(libs.plugins.compose.compiler).apply(false)
     alias(libs.plugins.jacoco.aggregate.coverage).apply(true)
     alias(libs.plugins.module.graph.assertion).apply(true)
     id("movie.git.hooks").apply(false)

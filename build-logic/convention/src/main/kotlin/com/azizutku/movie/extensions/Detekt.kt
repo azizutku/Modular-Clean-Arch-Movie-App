@@ -8,12 +8,17 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.withType
 
-internal fun Project.configureDetekt() {
+internal fun Project.configureDetekt(enableComposeConfigs: Boolean = false) {
+    val configs = listOf("$rootDir/.detekt/config.yml")
+    val composeConfigs = listOf(
+        "$rootDir/.detekt/compose-rules-config.yml",
+        "$rootDir/.detekt/compose-config.yml",
+    )
     configure<DetektExtension> {
-        source = project.files("src/main/kotlin")
+        source.setFrom(project.files("src/main/kotlin"))
         buildUponDefaultConfig = true
         allRules = false
-        config = files("$rootDir/.detekt/config.yml")
+        config.setFrom(files(configs + if (enableComposeConfigs) composeConfigs else emptyList()))
         baseline = file("$rootDir/.detekt/baseline.xml")
     }
     tasks.withType<Detekt>().configureEach {

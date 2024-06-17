@@ -17,6 +17,7 @@ dependencies {
     implementation(libs.javapoet.plugin)
     implementation(libs.navigation.safeargs.plugin)
     implementation(libs.kotlinx.kover.plugin)
+    implementation(libs.compose.gradlePlugin)
 }
 
 gradlePlugin {
@@ -60,6 +61,10 @@ gradlePlugin {
         register("detekt") {
             id = "movie.detekt"
             implementationClass = "DetektConventionPlugin"
+        }
+        register("compose") {
+            id = "movie.compose"
+            implementationClass = "ComposeConventionPlugin"
         }
     }
 }
