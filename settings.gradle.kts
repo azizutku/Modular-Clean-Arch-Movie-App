@@ -25,6 +25,7 @@ dependencyResolutionManagement {
 rootProject.name = "Clean Movie App"
 
 include(":app")
+include(":compose-app")
 include(":benchmark")
 include(
     ":core:common",
