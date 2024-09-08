@@ -5,7 +5,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
-import com.azizutku.movie.core.ui.databinding.LayoutDialogLoadingBinding
+import com.azizutku.movie.core.ui.xml.databinding.LayoutDialogLoadingBinding
 import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 

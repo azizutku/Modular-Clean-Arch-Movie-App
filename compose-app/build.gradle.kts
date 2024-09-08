@@ -7,7 +7,6 @@ plugins {
 
 dependencies {
     implementation(project(":core:common"))
-    implementation(project(":core:ui"))
     implementation(libs.androidx.splash.screen)
     implementation(libs.hilt)
     implementation(libs.coroutines)

@@ -29,7 +29,7 @@ include(":compose-app")
 include(":benchmark")
 include(
     ":core:common",
-    ":core:ui",
+    ":core:ui:xml",
     ":core:network",
     ":core:database",
     ":core:domain",

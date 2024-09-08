@@ -14,7 +14,7 @@ import com.azizutku.movie.feature.watchlist.databinding.FragmentWatchlistBinding
 import com.azizutku.movie.feature.watchlist.presentation.adapter.WatchlistMoviesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.azizutku.movie.core.ui.R as uiR
+import com.azizutku.movie.core.ui.xml.R as uiR
 
 @AndroidEntryPoint
 class WatchlistFragment : BaseFragment<FragmentWatchlistBinding>(

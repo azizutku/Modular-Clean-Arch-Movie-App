@@ -15,7 +15,7 @@ import com.azizutku.movie.feature.movie.databinding.FragmentMovieBinding
 import com.azizutku.movie.feature.movie.domain.model.Movie
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import com.azizutku.movie.core.ui.R as uiR
+import com.azizutku.movie.core.ui.xml.R as uiR
 
 @AndroidEntryPoint
 class MovieFragment : BaseFragment<FragmentMovieBinding>(

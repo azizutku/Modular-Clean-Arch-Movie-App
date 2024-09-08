@@ -17,7 +17,7 @@ class AndroidFeatureXmlConventionPlugin : Plugin<Project> {
             dependencies {
                 add("implementation", project(":core:common"))
                 add("implementation", project(":core:database"))
-                add("implementation", project(":core:ui"))
+                add("implementation", project(":core:ui:xml"))
                 add("implementation", project(":core:network"))
                 add("implementation", project(":core:domain"))
                 add("implementation", project(":core:model"))

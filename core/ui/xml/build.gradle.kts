@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.azizutku.movie.core.ui"
+    namespace = "com.azizutku.movie.core.ui.xml"
 }
 
 dependencies {
