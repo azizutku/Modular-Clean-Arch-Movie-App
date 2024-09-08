@@ -24,6 +24,7 @@ class AndroidFeatureCommonConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("kotlinx.serialization.json").get())
                 add("implementation", libs.findLibrary("retrofit").get())
                 add("implementation", libs.findLibrary("timber").get())
+                add("implementation", libs.findBundle("androidx.lifecycle").get())
                 add("implementation", libs.findBundle("androidx.room").get())
                 add("ksp", libs.findLibrary("room.compiler").get())
             }

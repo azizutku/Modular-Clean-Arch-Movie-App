@@ -2,6 +2,7 @@ import com.azizutku.movie.utils.VersionUtils.isNonStable
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 plugins {
+    alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.ktlint)
     alias(libs.plugins.versions)
     alias(libs.plugins.hilt).apply(false)

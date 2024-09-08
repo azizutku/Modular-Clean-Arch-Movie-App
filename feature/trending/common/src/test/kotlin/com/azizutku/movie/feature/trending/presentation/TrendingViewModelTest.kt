@@ -8,10 +8,12 @@ import com.azizutku.movie.core.testing.models.trendingMovieEntity
 import com.azizutku.movie.core.testing.models.trendingMovieEntity2
 import com.azizutku.movie.core.testing.util.CoroutineRule
 import com.azizutku.movie.feature.trending.common.data.repository.TrendingRepositoryImpl
-import com.azizutku.movie.feature.trending.testing.fakes.FakeTrendingLocalDataSourceImpl
 import com.azizutku.movie.feature.trending.common.domain.model.TrendingMovieRemoteToLocalMapper
 import com.azizutku.movie.feature.trending.common.domain.model.TrendingMoviesLocalMapper
 import com.azizutku.movie.feature.trending.common.domain.usecase.GetTrendingMoviesUseCase
+import com.azizutku.movie.feature.trending.common.presentation.TrendingUiState
+import com.azizutku.movie.feature.trending.common.presentation.TrendingViewModel
+import com.azizutku.movie.feature.trending.testing.fakes.FakeTrendingLocalDataSourceImpl
 import io.mockk.every
 import io.mockk.mockkStatic
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -43,5 +43,6 @@ include(
 include(
     ":feature:trending:common",
     ":feature:trending:presentation-xml",
+    ":feature:trending:presentation-compose",
     ":feature:trending:testing",
 )

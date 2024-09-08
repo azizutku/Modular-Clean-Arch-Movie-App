@@ -1,4 +1,4 @@
-package com.azizutku.movie.feature.trending.presentation
+package com.azizutku.movie.feature.trending.common.presentation
 
 import androidx.paging.PagingData
 import com.azizutku.movie.feature.trending.common.domain.model.TrendingMovie

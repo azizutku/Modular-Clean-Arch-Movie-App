@@ -24,7 +24,9 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.azizutku.movie.navigation.AppNavHost
 import com.azizutku.movie.ui.AppBottomNavigation
 import com.azizutku.movie.ui.theme.AppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

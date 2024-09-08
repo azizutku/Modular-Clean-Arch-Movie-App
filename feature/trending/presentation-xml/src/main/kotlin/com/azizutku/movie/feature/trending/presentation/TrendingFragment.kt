@@ -11,6 +11,8 @@ import com.azizutku.movie.core.ui.base.BaseFragment
 import com.azizutku.movie.core.ui.extensions.collectLatestLifecycleFlow
 import com.azizutku.movie.core.ui.recyclerview.SpacingItemDecoration
 import com.azizutku.movie.feature.trending.R
+import com.azizutku.movie.feature.trending.common.presentation.TrendingUiState
+import com.azizutku.movie.feature.trending.common.presentation.TrendingViewModel
 import com.azizutku.movie.feature.trending.databinding.FragmentTrendingBinding
 import com.azizutku.movie.feature.trending.presentation.adapters.TrendingMovieLoadStateAdapter
 import com.azizutku.movie.feature.trending.presentation.adapters.TrendingMoviesAdapter

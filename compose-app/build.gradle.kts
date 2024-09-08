@@ -6,6 +6,7 @@ plugins {
 }
 
 dependencies {
+    implementation(project(":feature:trending:presentation-compose"))
     implementation(project(":core:common"))
     implementation(libs.androidx.splash.screen)
     implementation(libs.hilt)

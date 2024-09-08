@@ -17,6 +17,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navDeepLink
 import androidx.navigation.toRoute
 import com.azizutku.movie.AppState
+import com.azizutku.movie.trending.presentation.navigation.TrendingRoute
+import com.azizutku.movie.trending.presentation.navigation.trendingScreen
 import kotlinx.serialization.Serializable
 
 @Composable
@@ -43,31 +45,13 @@ fun AppNavHost(
 }
 
 @Serializable
-data object TrendingRoute
-
-@Serializable
 data object WatchlistRoute
 
 @Serializable
 data class MovieRoute(val movieId: String)
 
-fun NavController.navigateToTrending(navOptions: NavOptions) =
-    navigate(route = TrendingRoute, navOptions)
-
 fun NavController.navigateToWatchlist(navOptions: NavOptions) =
     navigate(route = WatchlistRoute, navOptions)
-
-fun NavGraphBuilder.trendingScreen() {
-    composable<TrendingRoute>(
-        deepLinks = listOf(
-            navDeepLink {
-                uriPattern = "movieapp://trending"
-            },
-        ),
-    ) {
-        TrendingScreen()
-    }
-}
 
 fun NavGraphBuilder.watchlistScreen(navController: NavHostController) {
     composable<WatchlistRoute>(
@@ -91,11 +75,6 @@ fun NavGraphBuilder.movieScreen() {
     ) {
         MovieScreen(it.toRoute<MovieRoute>().movieId)
     }
-}
-
-@Composable
-fun TrendingScreen(modifier: Modifier = Modifier) {
-    Text(modifier = modifier, text = "It is trending screen: ")
 }
 
 @Composable
