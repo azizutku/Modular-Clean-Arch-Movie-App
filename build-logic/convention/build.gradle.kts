@@ -54,6 +54,10 @@ gradlePlugin {
             id = "movie.android.feature.xml"
             implementationClass = "AndroidFeatureXmlConventionPlugin"
         }
+        register("androidFeatureCompose") {
+            id = "movie.android.feature.compose"
+            implementationClass = "AndroidFeatureComposeConventionPlugin"
+        }
         register("androidFeatureCommon") {
             id = "movie.android.feature.common"
             implementationClass = "AndroidFeatureCommonConventionPlugin"
