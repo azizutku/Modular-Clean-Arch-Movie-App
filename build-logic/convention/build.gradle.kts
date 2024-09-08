@@ -50,9 +50,17 @@ gradlePlugin {
             id = "movie.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
-        register("androidFeature") {
-            id = "movie.android.feature"
-            implementationClass = "AndroidFeatureConventionPlugin"
+        register("androidFeatureXml") {
+            id = "movie.android.feature.xml"
+            implementationClass = "AndroidFeatureXmlConventionPlugin"
+        }
+        register("androidFeatureCommon") {
+            id = "movie.android.feature.common"
+            implementationClass = "AndroidFeatureCommonConventionPlugin"
+        }
+        register("androidFeatureTesting") {
+            id = "movie.android.feature.testing"
+            implementationClass = "AndroidFeatureTestingConventionPlugin"
         }
         register("gitHooks") {
             id = "movie.git.hooks"

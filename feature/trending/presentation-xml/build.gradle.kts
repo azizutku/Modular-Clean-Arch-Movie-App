@@ -1,5 +1,5 @@
 plugins {
-    id("movie.android.feature")
+    id("movie.android.feature.xml")
 }
 
 android {
