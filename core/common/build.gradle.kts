@@ -10,9 +10,6 @@ android {
 
 dependencies {
     implementation(libs.coroutines)
-    implementation(libs.androidx.recyclerview)
-    implementation(libs.bundles.androidx.lifecycle)
-    implementation(libs.androidx.appcompat)
     implementation(libs.retrofit)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.navigation.ui)

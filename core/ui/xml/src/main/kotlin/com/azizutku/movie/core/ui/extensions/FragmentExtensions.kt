@@ -1,4 +1,4 @@
-package com.azizutku.movie.core.common.extensions
+package com.azizutku.movie.core.ui.extensions
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle

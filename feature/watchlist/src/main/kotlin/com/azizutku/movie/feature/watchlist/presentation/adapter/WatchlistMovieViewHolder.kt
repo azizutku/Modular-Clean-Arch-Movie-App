@@ -2,8 +2,8 @@ package com.azizutku.movie.feature.watchlist.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.azizutku.movie.core.common.base.BaseViewHolder
 import com.azizutku.movie.core.model.watchlist.WatchlistMovie
+import com.azizutku.movie.core.ui.base.BaseViewHolder
 import com.azizutku.movie.feature.watchlist.databinding.ListItemWatchlistMovieBinding
 import com.bumptech.glide.Glide
 

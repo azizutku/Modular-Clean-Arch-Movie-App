@@ -1,4 +1,4 @@
-package com.azizutku.movie.core.common.base
+package com.azizutku.movie.core.ui.base
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding

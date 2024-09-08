@@ -1,18 +1,14 @@
-@file:Suppress("UnusedImports")
-
 package com.azizutku.movie.core.common.extensions
 
 import androidx.core.net.toUri
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.NavOptions
 import com.azizutku.movie.core.common.R
 
-context(Fragment)
-fun NavController.navigateToMovie(movieId: Int) {
-    val deeplinkUri = getString(R.string.deep_link_movie).replace(
-        oldValue = "{${getString(R.string.argument_movie_id)}}",
+fun NavController.navigateToMovie(deeplinkPattern: String, argumentPattern: String, movieId: Int) {
+    val deeplinkUri = deeplinkPattern.replace(
+        oldValue = "{$argumentPattern}",
         newValue = movieId.toString(),
     ).toUri()
     val request = NavDeepLinkRequest.Builder

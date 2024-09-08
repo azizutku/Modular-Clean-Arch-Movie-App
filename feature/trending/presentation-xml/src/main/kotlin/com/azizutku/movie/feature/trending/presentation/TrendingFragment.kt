@@ -5,10 +5,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.paging.LoadState
-import com.azizutku.movie.core.common.extensions.collectLatestLifecycleFlow
 import com.azizutku.movie.core.common.extensions.navigateToMovie
 import com.azizutku.movie.core.common.util.ThemeUtils
 import com.azizutku.movie.core.ui.base.BaseFragment
+import com.azizutku.movie.core.ui.extensions.collectLatestLifecycleFlow
 import com.azizutku.movie.core.ui.recyclerview.SpacingItemDecoration
 import com.azizutku.movie.feature.trending.R
 import com.azizutku.movie.feature.trending.databinding.FragmentTrendingBinding
@@ -18,6 +18,7 @@ import com.azizutku.movie.feature.trending.presentation.di.FooterLoadStateAdapte
 import com.azizutku.movie.feature.trending.presentation.di.HeaderLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.azizutku.movie.core.common.R as commonR
 import com.azizutku.movie.core.ui.xml.R as uiR
 
 @AndroidEntryPoint
@@ -100,6 +101,10 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
     }
 
     private fun openMovieDetail(movieId: Int) {
-        findNavController().navigateToMovie(movieId)
+        findNavController().navigateToMovie(
+            deeplinkPattern = getString(commonR.string.deep_link_movie),
+            argumentPattern = getString(commonR.string.argument_movie_id),
+            movieId = movieId,
+        )
     }
 }

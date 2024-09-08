@@ -5,9 +5,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.azizutku.movie.core.common.extensions.collectLatestLifecycleFlow
 import com.azizutku.movie.core.common.extensions.orFalse
 import com.azizutku.movie.core.ui.base.BaseFragment
+import com.azizutku.movie.core.ui.extensions.collectLatestLifecycleFlow
 import com.azizutku.movie.core.ui.extensions.setTextIfAvailableOrHide
 import com.azizutku.movie.core.ui.extensions.setVisible
 import com.azizutku.movie.feature.movie.R
@@ -19,7 +19,7 @@ import com.azizutku.movie.core.ui.xml.R as uiR
 
 @AndroidEntryPoint
 class MovieFragment : BaseFragment<FragmentMovieBinding>(
-    inflate = FragmentMovieBinding::inflate
+    inflate = FragmentMovieBinding::inflate,
 ) {
 
     override val viewModel: MovieViewModel by viewModels()

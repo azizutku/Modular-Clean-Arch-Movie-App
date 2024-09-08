@@ -14,4 +14,5 @@ dependencies {
     implementation(libs.material)
     implementation(libs.lottie)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.bundles.androidx.lifecycle)
 }

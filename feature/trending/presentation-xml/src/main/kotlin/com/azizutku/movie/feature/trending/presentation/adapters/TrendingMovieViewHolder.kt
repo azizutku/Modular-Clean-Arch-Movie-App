@@ -2,7 +2,7 @@ package com.azizutku.movie.feature.trending.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.azizutku.movie.core.common.base.BaseViewHolder
+import com.azizutku.movie.core.ui.base.BaseViewHolder
 import com.azizutku.movie.feature.trending.common.domain.model.TrendingMovie
 import com.azizutku.movie.feature.trending.databinding.ListItemTrendingMovieBinding
 import com.bumptech.glide.Glide
