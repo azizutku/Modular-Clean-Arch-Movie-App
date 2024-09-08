@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Compose Clean Movie App - Dev</string>
+    <string name="title_nav_item_trending">Trending</string>
+    <string name="title_nav_item_watchlist">Watchlist</string>
+    <string name="content_description_nav_item_trending">Trending</string>
+    <string name="content_description_nav_item_watchlist">Watchlist</string>
 </resources>
