@@ -3,8 +3,8 @@
 package com.azizutku.movie.core.testing.models
 
 import com.azizutku.movie.core.database.model.TrendingMovieEntity
-import com.azizutku.movie.feature.trending.data.remote.dto.TrendingDto
-import com.azizutku.movie.feature.trending.data.remote.dto.TrendingMovieDto
+import com.azizutku.movie.feature.trending.common.data.remote.dto.TrendingDto
+import com.azizutku.movie.feature.trending.common.data.remote.dto.TrendingMovieDto
 
 val trendingMovieDto = TrendingMovieDto(
     id = 1,

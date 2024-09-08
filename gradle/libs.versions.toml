@@ -55,6 +55,7 @@ jacocoPlugin = "0.8.9"
 kover = "0.8.1"
 jacocoAggregateCoverage = "0.1.0"
 moduleGraphAssertion = "2.5.0"
+agp = "8.4.2"
 
 [libraries]
 # Androidx
@@ -175,3 +176,5 @@ kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 jacoco-aggregate-coverage = { id = "com.azizutku.jacocoaggregatecoverageplugin", version.ref = "jacocoAggregateCoverage" }
 module-graph-assertion = { id = "com.jraska.module.graph.assertion", version.ref = "moduleGraphAssertion" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

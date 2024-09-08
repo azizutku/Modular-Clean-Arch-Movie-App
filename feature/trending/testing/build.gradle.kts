@@ -4,20 +4,12 @@ plugins {
 }
 
 android {
-    namespace = "com.azizutku.movie.core.testing"
+    namespace = "com.azizutku.movie.feature.trending.testing"
 }
 
 dependencies {
-    implementation(project(":core:common"))
-    implementation(project(":core:ui"))
-    implementation(project(":core:network"))
-    implementation(project(":core:database"))
-    implementation(project(":core:domain"))
-    implementation(project(":core:model"))
-    implementation(project(":feature:movie"))
-    implementation(project(":feature:trending:common"))
-    implementation(project(":feature:watchlist"))
-
+    api(project(":feature:trending:common"))
+    api(project(":core:database"))
     api(libs.junit.test)
     api(libs.hilt.test)
     api(libs.room.test)

@@ -6,7 +6,7 @@ plugins {
 
 dependencies {
     implementation(project(":feature:movie"))
-    implementation(project(":feature:trending"))
+    implementation(project(":feature:trending:presentation-xml"))
     implementation(project(":feature:watchlist"))
     implementation(project(":core:common"))
     implementation(libs.androidx.constraintlayout)

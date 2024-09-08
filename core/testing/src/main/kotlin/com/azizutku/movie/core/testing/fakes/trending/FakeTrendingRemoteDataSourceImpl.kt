@@ -1,8 +1,8 @@
 package com.azizutku.movie.core.testing.fakes.trending
 
 import com.azizutku.movie.core.testing.models.testTrendingDto
-import com.azizutku.movie.feature.trending.data.remote.dto.TrendingDto
-import com.azizutku.movie.feature.trending.data.repository.datasource.TrendingRemoteDataSource
+import com.azizutku.movie.feature.trending.common.data.remote.dto.TrendingDto
+import com.azizutku.movie.feature.trending.common.data.repository.datasource.TrendingRemoteDataSource
 
 class FakeTrendingRemoteDataSourceImpl : TrendingRemoteDataSource {
 

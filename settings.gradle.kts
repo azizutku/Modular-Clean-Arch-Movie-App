@@ -38,6 +38,10 @@ include(
 )
 include(
     ":feature:movie",
-    ":feature:trending",
     ":feature:watchlist",
+)
+include(
+    ":feature:trending:common",
+    ":feature:trending:presentation-xml",
+    ":feature:trending:testing",
 )
