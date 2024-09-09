@@ -30,6 +30,7 @@ include(":benchmark")
 include(
     ":core:common",
     ":core:ui:xml",
+    ":core:ui:compose",
     ":core:network",
     ":core:database",
     ":core:domain",

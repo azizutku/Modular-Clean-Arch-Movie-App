@@ -8,6 +8,7 @@ plugins {
 dependencies {
     implementation(project(":feature:trending:presentation-compose"))
     implementation(project(":core:common"))
+    implementation(project(":core:ui:compose"))
     implementation(libs.androidx.splash.screen)
     implementation(libs.hilt)
     implementation(libs.coroutines)
