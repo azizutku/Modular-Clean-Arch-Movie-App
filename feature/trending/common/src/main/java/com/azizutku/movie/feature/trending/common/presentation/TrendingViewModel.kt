@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.azizutku.movie.core.common.base.BaseViewModel
+import com.azizutku.movie.feature.trending.common.domain.model.TrendingMovie
 import com.azizutku.movie.feature.trending.common.domain.usecase.GetTrendingMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -22,6 +23,10 @@ class TrendingViewModel @Inject constructor(
     )
     val uiState = _uiState.asStateFlow()
 
+    // This is a workaround for compose. It is not updating paging data.
+    private val _pagingState = MutableStateFlow<PagingData<TrendingMovie>>(PagingData.empty())
+    val pagingState = _pagingState.asStateFlow()
+
     init {
         getTrendingMovies()
     }
@@ -30,6 +35,7 @@ class TrendingViewModel @Inject constructor(
         viewModelScope.launch {
             getTrendingMoviesUseCase().cachedIn(viewModelScope).collectLatest { pagingData ->
                 _uiState.value = TrendingUiState.Success(pagingData)
+                _pagingState.value = pagingData
             }
         }
     }

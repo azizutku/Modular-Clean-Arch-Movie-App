@@ -20,6 +20,7 @@ import com.azizutku.movie.feature.trending.presentation.di.FooterLoadStateAdapte
 import com.azizutku.movie.feature.trending.presentation.di.HeaderLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import com.azizutku.feature.trending.common.R as trendingCommonR
 import com.azizutku.movie.core.common.R as commonR
 import com.azizutku.movie.core.ui.xml.R as uiR
 
@@ -83,7 +84,7 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
 
         with(binding.fragmentTrendingToolbar.toolbar) {
             inflateMenu(uiR.menu.toolbar_main_menu)
-            title = getString(R.string.title_fragment_trending)
+            title = getString(trendingCommonR.string.title_fragment_trending)
             setupWithNavController(navController, appBarConfiguration)
             setOnMenuItemClickListener {
                 if (it.itemId == uiR.id.item_toolbar_toggle_theme) {

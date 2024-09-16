@@ -119,6 +119,7 @@ androidx-ui-test-manifest-debugOnly = { group = "androidx.compose.ui", name = "u
 androidx-ui-tooling-debugOnly = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigation" }
+androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "paging" }
 
 # Detekt plugins
 detekt-formating = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
