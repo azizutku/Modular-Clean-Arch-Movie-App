@@ -18,6 +18,7 @@ class AndroidFeatureXmlConventionPlugin : Plugin<Project> {
                 add("implementation", project(":core:common"))
                 add("implementation", project(":core:database"))
                 add("implementation", project(":core:ui:xml"))
+                add("implementation", project(":core:ui:common"))
                 add("implementation", project(":core:network"))
                 add("implementation", project(":core:domain"))
                 add("implementation", project(":core:model"))

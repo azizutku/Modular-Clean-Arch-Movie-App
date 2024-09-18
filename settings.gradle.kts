@@ -31,6 +31,7 @@ include(
     ":core:common",
     ":core:ui:xml",
     ":core:ui:compose",
+    ":core:ui:common",
     ":core:network",
     ":core:database",
     ":core:domain",

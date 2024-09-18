@@ -12,6 +12,7 @@ import com.azizutku.movie.core.ui.xml.R
 import com.azizutku.movie.core.ui.xml.databinding.LayoutDialogAlertBinding
 import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
+import com.azizutku.movie.core.ui.common.R as uiCommonR
 
 class AlertDialog @Inject constructor(@ActivityContext context: Context) : Dialog(context, R.style.Theme_Dialog) {
     private val binding: LayoutDialogAlertBinding = LayoutDialogAlertBinding.inflate(
@@ -76,16 +77,16 @@ class AlertDialog @Inject constructor(@ActivityContext context: Context) : Dialo
     }
 
     override fun dismiss() {
-        setHeaderImage(R.drawable.ic_line_error_24)
-        setTitle(context.getString(R.string.title_alert_dialog))
+        setHeaderImage(uiCommonR.drawable.ic_line_error_24)
+        setTitle(context.getString(uiCommonR.string.title_alert_dialog))
         binding.dialogAlertTextviewMessage.setVisible(false)
         binding.dialogAlertTextviewPositiveAction.apply {
-            text = context.getString(R.string.text_button_ok)
+            text = context.getString(uiCommonR.string.text_button_ok)
             setVisible(true)
             setOnClickListener { dismiss() }
         }
         binding.dialogAlertTextviewNegativeAction.apply {
-            text = context.getString(R.string.text_button_cancel)
+            text = context.getString(uiCommonR.string.text_button_cancel)
             setVisible(false)
             setOnClickListener { dismiss() }
         }

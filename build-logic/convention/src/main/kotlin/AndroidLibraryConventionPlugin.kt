@@ -38,6 +38,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 }
             }
             dependencies {
+                // Required for freeCompilerArgs
+                add("implementation", libs.findLibrary("coroutines").get())
                 add("testImplementation", kotlin("test"))
                 add("testImplementation", project(":core:testing"))
                 add("androidTestImplementation", kotlin("test"))

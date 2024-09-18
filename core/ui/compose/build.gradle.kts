@@ -6,3 +6,7 @@ plugins {
 android {
     namespace = "com.azizutku.movie.core.ui.compose"
 }
+
+dependencies {
+    implementation(project(":core:ui:common"))
+}
