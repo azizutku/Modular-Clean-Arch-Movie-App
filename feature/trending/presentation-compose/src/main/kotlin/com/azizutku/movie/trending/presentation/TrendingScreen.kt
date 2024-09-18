@@ -1,16 +1,22 @@
 package com.azizutku.movie.trending.presentation
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
@@ -23,29 +29,53 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.PlatformTextStyle
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
+import androidx.paging.PagingData
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
+import coil.compose.AsyncImage
 import com.azizutku.movie.core.common.network.NetworkException
 import com.azizutku.movie.feature.trending.common.domain.model.TrendingMovie
 import com.azizutku.movie.feature.trending.common.presentation.TrendingViewModel
 import com.azizutku.movie.ui.theme.AppTheme
+import com.azizutku.movie.ui.theme.AppTypography
 import com.azizutku.movie.ui.theme.PreviewTheme
+import kotlinx.coroutines.flow.flowOf
 import com.azizutku.feature.trending.common.R as trendingCommonR
+import com.azizutku.movie.core.ui.common.R as uiCommonR
 
-@OptIn(ExperimentalMaterialApi::class)
+private const val ImageWidthPercent = 0.40f
+private const val ImageAspectRatio = 1f / 1.5f
+private val RatingBackgroundColor = Color(color = 0xFF09B4E4)
+
 @Composable
-fun TrendingScreen(
+internal fun TrendingScreen(
     modifier: Modifier = Modifier,
     viewModel: TrendingViewModel = hiltViewModel(),
 ) {
     val lazyPagingItems = viewModel.pagingState.collectAsLazyPagingItems()
+    TrendingScreen(
+        lazyPagingItems = lazyPagingItems,
+        modifier = modifier,
+    )
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+internal fun TrendingScreen(
+    lazyPagingItems: LazyPagingItems<TrendingMovie>,
+    modifier: Modifier = Modifier,
+) {
     val loadState = lazyPagingItems.loadState
     val pullRefreshState = rememberPullRefreshState(
         refreshing = loadState.refresh is LoadState.Loading,
@@ -72,7 +102,15 @@ private fun TrendingList(
     lazyPagingItems: LazyPagingItems<TrendingMovie>,
     loadState: CombinedLoadStates,
 ) {
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 24.dp),
+    ) {
+        item {
+            Spacer(modifier = Modifier.height(20.dp))
+        }
         items(
             lazyPagingItems.itemCount,
             lazyPagingItems.itemKey {
@@ -95,18 +133,56 @@ private fun TrendingList(
                 }
             }
         }
+        item {
+            Spacer(modifier = Modifier.height(20.dp))
+        }
     }
 }
 
 @Composable
 private fun ListItem(item: TrendingMovie) {
-    Text(
-        modifier = Modifier
-            .height(120.dp)
-            .background(Color.Red),
-        text = item.title,
-        textAlign = TextAlign.Center,
-    )
+    val rowAspectRatio = ImageAspectRatio / ImageWidthPercent
+    Card(
+        shape = RoundedCornerShape(16.dp),
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .aspectRatio(rowAspectRatio),
+        ) {
+            AsyncImage(
+                model = item.posterUrl,
+                contentDescription = stringResource(
+                    trendingCommonR.string.content_description_trending_movie_poster_image,
+                ),
+                placeholder = painterResource(id = uiCommonR.drawable.bg_placeholder_movie_image),
+                alignment = Alignment.Center,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxWidth(ImageWidthPercent)
+                    .aspectRatio(ImageAspectRatio),
+            )
+            Spacer(modifier = Modifier.width(20.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = 20.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Text(
+                    text = item.title,
+                    style = AppTypography.h6,
+                )
+                RatingBadge(item.rating)
+                Text(
+                    text = item.releaseDate,
+                    style = AppTypography.body1,
+                )
+            }
+        }
+    }
 }
 
 @Composable
@@ -137,8 +213,30 @@ private fun ListLoadingItem() {
     ) {
         CircularProgressIndicator(
             modifier = Modifier.size(32.dp),
+            color = MaterialTheme.colors.secondary
         )
     }
+}
+
+@Composable
+private fun RatingBadge(rating: String) {
+    Text(
+        text = rating,
+        style = AppTypography.subtitle2.copy(
+            platformStyle = PlatformTextStyle(
+                // Including font padding normally increases the text height,
+                // but interestingly, setting it to true makes it shorter here.
+                includeFontPadding = true,
+            ),
+        ),
+        color = Color.White,
+        modifier = Modifier
+            .background(
+                color = RatingBackgroundColor,
+                shape = RoundedCornerShape(16.dp),
+            )
+            .padding(vertical = 4.dp, horizontal = 12.dp),
+    )
 }
 
 @Composable
@@ -162,10 +260,29 @@ private fun RetryButton(onRetry: () -> Unit) {
 
 @Composable
 @PreviewTheme
+private fun TrendingScreenPreview(
+    @PreviewParameter(TrendingMoviePagingDataPreviewParameterProvider::class)
+    pagingData: PagingData<TrendingMovie>,
+) {
+    AppTheme {
+        TrendingScreen(
+            lazyPagingItems = flowOf(pagingData).collectAsLazyPagingItems()
+        )
+    }
+}
+
+@Composable
+@PreviewTheme
 private fun RetryButtonPreview() {
     AppTheme {
-        RetryButton {
-            // no-op
-        }
+        RetryButton { /* no-op */ }
+    }
+}
+
+@Composable
+@Preview
+private fun RatingBadgePreview() {
+    AppTheme {
+        RatingBadge("TMDB 6.4")
     }
 }
