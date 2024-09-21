@@ -9,4 +9,7 @@ android {
 
 dependencies {
     implementation(project(":core:ui:common"))
+    implementation(libs.androidx.material3) {
+        because("CenterAlignedTopAppBar")
+    }
 }
