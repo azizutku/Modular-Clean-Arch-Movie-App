@@ -2,10 +2,14 @@ package com.azizutku.movie.navigation
 
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
@@ -17,8 +21,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navDeepLink
 import androidx.navigation.toRoute
 import com.azizutku.movie.AppState
+import com.azizutku.movie.R
 import com.azizutku.movie.trending.presentation.navigation.TrendingRoute
 import com.azizutku.movie.trending.presentation.navigation.trendingScreen
+import com.azizutku.movie.ui.components.MovieAppTopAppBar
+import com.azizutku.movie.ui.components.TopAppBarAction
 import kotlinx.serialization.Serializable
 
 @Composable
@@ -38,9 +45,9 @@ fun AppNavHost(
         },
         modifier = modifier,
     ) {
-        trendingScreen()
+        trendingScreen(navController)
         watchlistScreen(navController)
-        movieScreen()
+        movieScreen(navController)
     }
 }
 
@@ -65,7 +72,7 @@ fun NavGraphBuilder.watchlistScreen(navController: NavHostController) {
     }
 }
 
-fun NavGraphBuilder.movieScreen() {
+fun NavGraphBuilder.movieScreen(navController: NavHostController) {
     composable<MovieRoute>(
         deepLinks = listOf(
             navDeepLink {
@@ -73,25 +80,42 @@ fun NavGraphBuilder.movieScreen() {
             },
         ),
     ) {
-        MovieScreen(it.toRoute<MovieRoute>().movieId)
+        MovieScreen(navController, it.toRoute<MovieRoute>().movieId)
     }
 }
 
 @Composable
 fun WatchlistScreen(navController: NavHostController, modifier: Modifier = Modifier) {
-    Button(
-        modifier = modifier,
-        onClick = {
-            navController.navigateToMovie(movieId = 123)
-        },
-    ) {
-        Text("It is watchlist screen")
+    Column(modifier = modifier) {
+        MovieAppTopAppBar(
+            navController = navController,
+            title = stringResource(R.string.title_watchlist_screen),
+            hideNavigationIcon = true,
+        )
+        Button(
+            onClick = {
+                navController.navigateToMovie(movieId = 123)
+            },
+        ) {
+            Text("It is watchlist screen")
+        }
     }
 }
 
 @Composable
-fun MovieScreen(movieId: String, modifier: Modifier = Modifier) {
-    Text(modifier = modifier, text = "It is movie screen, movie id: $movieId")
+fun MovieScreen(navController: NavHostController, movieId: String, modifier: Modifier = Modifier) {
+    Column(modifier = modifier) {
+        MovieAppTopAppBar(
+            navController = navController,
+            title = stringResource(R.string.title_movie_screen),
+            actions = listOf(
+                TopAppBarAction(
+                    imageVector = Icons.Filled.Favorite
+                )
+            )
+        )
+        Text(text = "It is movie screen, movie id: $movieId")
+    }
 }
 
 fun NavController.navigateToMovie(movieId: Int) {

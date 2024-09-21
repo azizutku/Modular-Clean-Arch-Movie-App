@@ -29,14 +29,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -45,14 +49,18 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import coil.compose.AsyncImage
 import com.azizutku.movie.core.common.network.NetworkException
+import com.azizutku.movie.feature.trending.R
 import com.azizutku.movie.feature.trending.common.domain.model.TrendingMovie
 import com.azizutku.movie.feature.trending.common.presentation.TrendingViewModel
+import com.azizutku.movie.ui.components.MovieAppTopAppBar
+import com.azizutku.movie.ui.components.TopAppBarAction
 import com.azizutku.movie.ui.theme.AppTheme
 import com.azizutku.movie.ui.theme.AppTypography
 import com.azizutku.movie.ui.theme.PreviewTheme
 import kotlinx.coroutines.flow.flowOf
 import com.azizutku.feature.trending.common.R as trendingCommonR
 import com.azizutku.movie.core.ui.common.R as uiCommonR
+import com.azizutku.movie.core.ui.compose.R as uiComposeR
 
 private const val ImageWidthPercent = 0.40f
 private const val ImageAspectRatio = 1f / 1.5f
@@ -60,11 +68,13 @@ private val RatingBackgroundColor = Color(color = 0xFF09B4E4)
 
 @Composable
 internal fun TrendingScreen(
+    navController: NavHostController,
     modifier: Modifier = Modifier,
     viewModel: TrendingViewModel = hiltViewModel(),
 ) {
     val lazyPagingItems = viewModel.pagingState.collectAsLazyPagingItems()
     TrendingScreen(
+        navController = navController,
         lazyPagingItems = lazyPagingItems,
         modifier = modifier,
     )
@@ -73,6 +83,7 @@ internal fun TrendingScreen(
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 internal fun TrendingScreen(
+    navController: NavHostController,
     lazyPagingItems: LazyPagingItems<TrendingMovie>,
     modifier: Modifier = Modifier,
 ) {
@@ -83,17 +94,34 @@ internal fun TrendingScreen(
             lazyPagingItems.refresh()
         },
     )
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .pullRefresh(pullRefreshState),
-    ) {
-        TrendingList(lazyPagingItems, loadState)
-        PullRefreshIndicator(
-            refreshing = loadState.refresh is LoadState.Loading,
-            state = pullRefreshState,
-            modifier = Modifier.align(Alignment.TopCenter),
+    Column(modifier = modifier) {
+        MovieAppTopAppBar(
+            navController = navController,
+            title = stringResource(R.string.title_trending_screen),
+            hideNavigationIcon = true,
+            actions = listOf(
+                TopAppBarAction(
+                    imageVector = ImageVector.vectorResource(uiComposeR.drawable.ic_toggle_theme_24),
+                    contentDescription = stringResource(
+                        uiComposeR.string.content_description_app_bar_action_toggle_theme
+                    ),
+                ) {
+                    // Toggle theme
+                }
+            )
         )
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .pullRefresh(pullRefreshState),
+        ) {
+            TrendingList(lazyPagingItems, loadState)
+            PullRefreshIndicator(
+                refreshing = loadState.refresh is LoadState.Loading,
+                state = pullRefreshState,
+                modifier = Modifier.align(Alignment.TopCenter),
+            )
+        }
     }
 }
 
@@ -108,9 +136,7 @@ private fun TrendingList(
             .fillMaxSize()
             .padding(horizontal = 24.dp),
     ) {
-        item {
-            Spacer(modifier = Modifier.height(20.dp))
-        }
+        item { /* Empty Item */ }
         items(
             lazyPagingItems.itemCount,
             lazyPagingItems.itemKey {
@@ -134,7 +160,7 @@ private fun TrendingList(
             }
         }
         item {
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(4.dp))
         }
     }
 }
@@ -266,7 +292,8 @@ private fun TrendingScreenPreview(
 ) {
     AppTheme {
         TrendingScreen(
-            lazyPagingItems = flowOf(pagingData).collectAsLazyPagingItems()
+            navController = rememberNavController(),
+            lazyPagingItems = flowOf(pagingData).collectAsLazyPagingItems(),
         )
     }
 }

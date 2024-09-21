@@ -4,6 +4,7 @@ package com.azizutku.movie.trending.presentation.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import androidx.navigation.navDeepLink
@@ -15,7 +16,7 @@ data object TrendingRoute
 
 fun NavController.navigateToTrending(navOptions: NavOptions) = navigate(route = TrendingRoute, navOptions)
 
-fun NavGraphBuilder.trendingScreen() {
+fun NavGraphBuilder.trendingScreen(navController: NavHostController) {
     composable<TrendingRoute>(
         deepLinks = listOf(
             navDeepLink {
@@ -23,6 +24,6 @@ fun NavGraphBuilder.trendingScreen() {
             },
         ),
     ) {
-        TrendingScreen()
+        TrendingScreen(navController)
     }
 }

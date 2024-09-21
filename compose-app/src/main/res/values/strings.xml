@@ -2,6 +2,10 @@
     <string name="app_name">Compose Clean Movie App - Dev</string>
     <string name="title_nav_item_trending">Trending</string>
     <string name="title_nav_item_watchlist">Watchlist</string>
+    <string name="title_watchlist_screen">Watchlist</string>
+    <string name="title_movie_screen">Movie Detail</string>
+    <string name="title_toolbar_menu_item_watchlist_action_add">Add to watchlist</string>
+    <string name="title_toolbar_menu_item_watchlist_action_remove">Remove from watchlist</string>
     <string name="content_description_nav_item_trending">Trending</string>
     <string name="content_description_nav_item_watchlist">Watchlist</string>
 </resources>
