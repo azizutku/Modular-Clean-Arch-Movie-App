@@ -189,7 +189,6 @@ private fun ListItem(item: TrendingMovie) {
                     .fillMaxWidth(ImageWidthPercent)
                     .aspectRatio(ImageAspectRatio),
             )
-            Spacer(modifier = Modifier.width(20.dp))
             Column(
                 modifier = Modifier
                     .fillMaxSize()
