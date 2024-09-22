@@ -32,12 +32,18 @@ class AppState(
 
     val currentTopLevelDestination: TopLevelDestination?
         @Composable get() {
+            val destination = currentDestination
+            destination ?: return lastKnownTopLevelDestination
             return topLevelDestinations.find { topLevelDestination ->
-                currentDestination?.hasRoute(route = topLevelDestination.route) ?: false
+                destination.hasRoute(route = topLevelDestination.route)
+            }?.also {
+                lastKnownTopLevelDestination = it
             }
         }
 
     private val topLevelDestinations: List<TopLevelDestination> = TopLevelDestination.entries
+
+    private var lastKnownTopLevelDestination: TopLevelDestination? = null
 
     fun navigateToTopLevelDestination(topLevelDestination: TopLevelDestination) {
         val topLevelNavOptions = navOptions {

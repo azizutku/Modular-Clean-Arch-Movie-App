@@ -16,16 +16,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.navigation.NavHostController
 import com.azizutku.movie.ui.theme.AppTypography
 
 @Composable
 fun MovieAppTopAppBar(
-    navController: NavHostController,
     title: String,
     modifier: Modifier = Modifier,
     hideNavigationIcon: Boolean = false,
     actions: List<TopAppBarAction> = emptyList(),
+    onNavigationIconClick: () -> Unit = { },
 ) {
     TopAppBar(
         modifier = modifier
@@ -37,9 +36,9 @@ fun MovieAppTopAppBar(
             )
         },
         navigationIcon = {
-            if (hideNavigationIcon.not() && navController.previousBackStackEntry != null) {
+            if (hideNavigationIcon.not()) {
                 IconButton(
-                    onClick = navController::navigateUp,
+                    onClick = onNavigationIconClick,
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,

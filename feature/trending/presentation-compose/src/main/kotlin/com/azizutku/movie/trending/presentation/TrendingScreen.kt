@@ -35,12 +35,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.PlatformTextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -52,6 +51,7 @@ import com.azizutku.movie.core.common.network.NetworkException
 import com.azizutku.movie.feature.trending.R
 import com.azizutku.movie.feature.trending.common.domain.model.TrendingMovie
 import com.azizutku.movie.feature.trending.common.presentation.TrendingViewModel
+import com.azizutku.movie.ui.NavigationAction
 import com.azizutku.movie.ui.components.MovieAppTopAppBar
 import com.azizutku.movie.ui.components.TopAppBarAction
 import com.azizutku.movie.ui.theme.AppTheme
@@ -68,14 +68,14 @@ private val RatingBackgroundColor = Color(color = 0xFF09B4E4)
 
 @Composable
 internal fun TrendingScreen(
-    navController: NavHostController,
+    onNavigationAction: (NavigationAction) -> Unit,
     modifier: Modifier = Modifier,
     viewModel: TrendingViewModel = hiltViewModel(),
 ) {
     val lazyPagingItems = viewModel.pagingState.collectAsLazyPagingItems()
     TrendingScreen(
-        navController = navController,
         lazyPagingItems = lazyPagingItems,
+        onNavigationAction = onNavigationAction,
         modifier = modifier,
     )
 }
@@ -83,20 +83,17 @@ internal fun TrendingScreen(
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 internal fun TrendingScreen(
-    navController: NavHostController,
     lazyPagingItems: LazyPagingItems<TrendingMovie>,
     modifier: Modifier = Modifier,
+    onNavigationAction: (NavigationAction) -> Unit = {},
 ) {
     val loadState = lazyPagingItems.loadState
     val pullRefreshState = rememberPullRefreshState(
         refreshing = loadState.refresh is LoadState.Loading,
-        onRefresh = {
-            lazyPagingItems.refresh()
-        },
+        onRefresh = lazyPagingItems::refresh,
     )
     Column(modifier = modifier) {
         MovieAppTopAppBar(
-            navController = navController,
             title = stringResource(R.string.title_trending_screen),
             hideNavigationIcon = true,
             actions = listOf(
@@ -108,7 +105,10 @@ internal fun TrendingScreen(
                 ) {
                     // Toggle theme
                 }
-            )
+            ),
+            onNavigationIconClick = {
+                onNavigationAction(NavigationAction.OnBackButtonClicked)
+            }
         )
         Box(
             modifier = Modifier
@@ -199,6 +199,7 @@ private fun ListItem(item: TrendingMovie) {
                 Text(
                     text = item.title,
                     style = AppTypography.h6,
+                    textAlign = TextAlign.Center,
                 )
                 RatingBadge(item.rating)
                 Text(
@@ -291,7 +292,6 @@ private fun TrendingScreenPreview(
 ) {
     AppTheme {
         TrendingScreen(
-            navController = rememberNavController(),
             lazyPagingItems = flowOf(pagingData).collectAsLazyPagingItems(),
         )
     }

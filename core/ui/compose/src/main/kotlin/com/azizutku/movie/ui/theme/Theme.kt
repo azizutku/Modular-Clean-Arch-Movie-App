@@ -2,6 +2,7 @@ package com.azizutku.movie.ui.theme
 
 import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -34,7 +35,13 @@ fun AppTheme(
         MaterialTheme(
             colors = colorPalette.material,
             typography = AppTypography,
-            content = content
+            content = {
+                CompositionLocalProvider(
+                    LocalContentAlpha provides 1f
+                ) {
+                    content()
+                }
+            },
         )
     }
 }

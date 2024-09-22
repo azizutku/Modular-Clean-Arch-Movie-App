@@ -9,6 +9,7 @@ import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import androidx.navigation.navDeepLink
 import com.azizutku.movie.trending.presentation.TrendingScreen
+import com.azizutku.movie.ui.handleNavigationAction
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -24,6 +25,8 @@ fun NavGraphBuilder.trendingScreen(navController: NavHostController) {
             },
         ),
     ) {
-        TrendingScreen(navController)
+        TrendingScreen(
+            onNavigationAction = navController::handleNavigationAction
+        )
     }
 }

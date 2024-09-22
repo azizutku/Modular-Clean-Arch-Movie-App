@@ -88,9 +88,9 @@ fun NavGraphBuilder.movieScreen(navController: NavHostController) {
 fun WatchlistScreen(navController: NavHostController, modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         MovieAppTopAppBar(
-            navController = navController,
             title = stringResource(R.string.title_watchlist_screen),
             hideNavigationIcon = true,
+            onNavigationIconClick = navController::navigateUp,
         )
         Button(
             onClick = {
@@ -106,13 +106,13 @@ fun WatchlistScreen(navController: NavHostController, modifier: Modifier = Modif
 fun MovieScreen(navController: NavHostController, movieId: String, modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
         MovieAppTopAppBar(
-            navController = navController,
             title = stringResource(R.string.title_movie_screen),
             actions = listOf(
                 TopAppBarAction(
                     imageVector = Icons.Filled.Favorite
                 )
-            )
+            ),
+            onNavigationIconClick = navController::navigateUp,
         )
         Text(text = "It is movie screen, movie id: $movieId")
     }
