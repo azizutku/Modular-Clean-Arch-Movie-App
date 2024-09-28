@@ -113,9 +113,6 @@ internal fun TrendingScreen(
                     onToggleTheme()
                 }
             ),
-            onNavigationIconClick = {
-                onNavigationAction(NavigationAction.OnBackButtonClicked)
-            }
         )
         Box(
             modifier = Modifier
