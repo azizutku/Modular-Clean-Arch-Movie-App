@@ -50,4 +50,5 @@ include(
 include(
     ":feature:movie:common",
     ":feature:movie:presentation-xml",
+    ":feature:movie:presentation-compose",
 )
