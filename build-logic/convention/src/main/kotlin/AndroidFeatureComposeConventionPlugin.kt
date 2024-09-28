@@ -20,6 +20,7 @@ class AndroidFeatureComposeConventionPlugin : Plugin<Project> {
                 add("implementation", project(":core:common"))
                 add("implementation", project(":core:ui:compose"))
                 add("implementation", project(":core:ui:common"))
+                add("implementation", project(":core:model"))
                 add("implementation", libs.findLibrary("coroutines").get())
                 add("implementation", libs.findLibrary("kotlinx.serialization.json").get())
             }
