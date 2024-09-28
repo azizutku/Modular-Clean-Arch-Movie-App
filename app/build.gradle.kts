@@ -5,7 +5,7 @@ plugins {
 }
 
 dependencies {
-    implementation(project(":feature:movie"))
+    implementation(project(":feature:movie:presentation-xml"))
     implementation(project(":feature:trending:presentation-xml"))
     implementation(project(":feature:watchlist"))
     implementation(project(":core:common"))

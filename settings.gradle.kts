@@ -39,7 +39,6 @@ include(
     ":core:testing",
 )
 include(
-    ":feature:movie",
     ":feature:watchlist",
 )
 include(
@@ -48,3 +47,4 @@ include(
     ":feature:trending:presentation-compose",
     ":feature:trending:testing",
 )
+include(":feature:movie:presentation-xml")

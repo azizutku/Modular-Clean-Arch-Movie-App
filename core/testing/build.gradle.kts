@@ -7,7 +7,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature:movie"))
+    implementation(project(":feature:movie:presentation-xml"))
     implementation(project(":feature:trending:common"))
     implementation(project(":feature:watchlist"))
 }
