@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="content_description_tmdb_logo">The Movie Database logo for attribution</string>
+    <string name="content_description_app_bar_action_favorites">Add / Remove Favorites</string>
 </resources>

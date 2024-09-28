@@ -7,6 +7,8 @@ plugins {
 
 dependencies {
     implementation(project(":feature:trending:presentation-compose"))
+    implementation(project(":feature:movie:presentation-compose"))
+    implementation(project(":feature:watchlist"))
     implementation(project(":core:common"))
     implementation(project(":core:model"))
     implementation(project(":core:ui:compose"))
