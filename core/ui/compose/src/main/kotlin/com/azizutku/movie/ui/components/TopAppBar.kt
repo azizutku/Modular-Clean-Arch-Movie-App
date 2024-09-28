@@ -16,7 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.azizutku.movie.ui.theme.AppTheme
 import com.azizutku.movie.ui.theme.AppTypography
+import com.azizutku.movie.ui.theme.PreviewTheme
 
 @Composable
 fun MovieAppTopAppBar(
@@ -33,6 +35,7 @@ fun MovieAppTopAppBar(
             Text(
                 text = title,
                 style = AppTypography.h6,
+                color = MaterialTheme.colors.onSurface,
             )
         },
         navigationIcon = {
@@ -43,6 +46,7 @@ fun MovieAppTopAppBar(
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                         contentDescription = "Navigate back",
+                        tint = MaterialTheme.colors.onSurface,
                     )
                 }
             }
@@ -56,6 +60,7 @@ fun MovieAppTopAppBar(
                     Icon(
                         imageVector = action.imageVector,
                         contentDescription = action.contentDescription,
+                        tint = MaterialTheme.colors.onSurface,
                     )
                 }
             }
@@ -91,6 +96,14 @@ private fun TopAppBar(
             actionIconContentColor = colors.actionIconContentColor,
         ),
     )
+}
+
+@Composable
+@PreviewTheme
+private fun MovieAppTopAppBarPreview() {
+    AppTheme {
+        MovieAppTopAppBar(title = "Trending Screen")
+    }
 }
 
 object TopAppBarDefaults {
