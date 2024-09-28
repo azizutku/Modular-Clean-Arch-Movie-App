@@ -98,8 +98,7 @@ Compose:
     active: true
     # -- You can optionally use this rule on things other than types ending in "ViewModel" or "Presenter" (which are the defaults). You can add your own via a regex here:
     # allowedStateHolderNames: .*ViewModel,.*Presenter
-    # -- You can optionally add an allowlist for Composable names that won't be affected by this rule
-    # allowedForwarding: .*Content,.*FancyStuff
+    allowedForwarding: ErrorLoadingScaffold
     # -- You can optionally add an allowlist for ViewModel/StateHolder names that won't be affected by this rule
     # allowedForwardingOfTypes: PotatoViewModel,(Apple|Banana)ViewModel,.*FancyViewModel
   ViewModelInjection:

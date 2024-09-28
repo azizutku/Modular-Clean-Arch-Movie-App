@@ -12,7 +12,7 @@ viewModelKtx = "2.8.2"
 navigation = "2.8.0"
 lifecycle = "2.8.2"
 kotlinxSerializationJson = "1.7.0"
-lottie = "6.4.1"
+lottie = "6.5.2"
 retrofit = "2.11.0"
 loggingInterceptor = "4.12.0"
 kotlinxSerializationConverterVersion = "1.0.0"
@@ -96,6 +96,7 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 
 # Animation
 lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
+lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
 
 # Network
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
@@ -169,7 +170,7 @@ androidx-navigation = ["androidx.navigation.fragment", "androidx.navigation.ui"]
 androidx-lifecycle = ["androidx.lifecycle", "androidx.lifecycle.viewmodel", "androidx.lifecycle.viewmodel.saved.state"]
 androidx-room = ["androidx.room", "androidx.room.ktx", "androidx.room.paging"]
 detekt = ["detekt.formating", "detekt.rules"]
-compose = ["androidx.activity.compose", "androidx.ui", "androidx.ui.graphics", "androidx.ui.tooling.preview", "androidx.material", "androidx.lifecycle.runtime.compose", "androidx.lifecycle.viewmodel.compose", "androidx.navigation.compose", "androidx.hilt.navigation.compose", "coil-compose"]
+compose = ["androidx.activity.compose", "androidx.ui", "androidx.ui.graphics", "androidx.ui.tooling.preview", "androidx.material", "androidx.lifecycle.runtime.compose", "androidx.lifecycle.viewmodel.compose", "androidx.navigation.compose", "androidx.hilt.navigation.compose", "coil-compose", "lottie-compose"]
 
 [plugins]
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlintPlugin" }
