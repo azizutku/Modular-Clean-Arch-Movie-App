@@ -1,9 +1,9 @@
 package com.azizutku.movie.core.testing.models
 
+import com.azizutku.feature.movie.common.data.remote.dto.GenreDto
+import com.azizutku.feature.movie.common.data.remote.dto.MovieDto
+import com.azizutku.feature.movie.common.domain.model.Movie
 import com.azizutku.movie.core.database.model.MovieEntity
-import com.azizutku.movie.feature.movie.data.remote.dto.GenreDto
-import com.azizutku.movie.feature.movie.data.remote.dto.MovieDto
-import com.azizutku.movie.feature.movie.domain.model.Movie
 
 val genreDto = GenreDto(
     id = 1,

@@ -47,4 +47,7 @@ include(
     ":feature:trending:presentation-compose",
     ":feature:trending:testing",
 )
-include(":feature:movie:presentation-xml")
+include(
+    ":feature:movie:common",
+    ":feature:movie:presentation-xml",
+)
