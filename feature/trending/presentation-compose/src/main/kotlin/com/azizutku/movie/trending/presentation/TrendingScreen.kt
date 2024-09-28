@@ -60,6 +60,7 @@ import com.azizutku.movie.ui.theme.AppTypography
 import com.azizutku.movie.ui.theme.PreviewTheme
 import kotlinx.coroutines.flow.flowOf
 import com.azizutku.feature.trending.common.R as trendingCommonR
+import com.azizutku.movie.core.common.R as coreCommonR
 import com.azizutku.movie.core.ui.common.R as uiCommonR
 import com.azizutku.movie.core.ui.compose.R as uiComposeR
 
@@ -121,7 +122,7 @@ internal fun TrendingScreen(
                 .fillMaxSize()
                 .pullRefresh(pullRefreshState),
         ) {
-            TrendingList(lazyPagingItems, loadState)
+            TrendingList(lazyPagingItems, loadState, onNavigationAction)
             PullRefreshIndicator(
                 refreshing = loadState.refresh is LoadState.Loading,
                 state = pullRefreshState,
@@ -135,7 +136,9 @@ internal fun TrendingScreen(
 private fun TrendingList(
     lazyPagingItems: LazyPagingItems<TrendingMovie>,
     loadState: CombinedLoadStates,
+    onNavigationAction: (NavigationAction) -> Unit = {},
 ) {
+    val context = LocalContext.current
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier
@@ -150,7 +153,13 @@ private fun TrendingList(
             },
         ) { index ->
             val item = lazyPagingItems[index] ?: return@items
-            ListItem(item)
+            ListItem(item) {
+                val deeplink = context.getString(coreCommonR.string.deep_link_movie).replace(
+                    oldValue = "{movieId}",
+                    newValue = item.id.toString(),
+                )
+                onNavigationAction(NavigationAction.NavigateTo(deeplink))
+            }
         }
         when {
             loadState.append is LoadState.Loading && lazyPagingItems.itemCount != 0 -> {
@@ -171,12 +180,14 @@ private fun TrendingList(
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-private fun ListItem(item: TrendingMovie) {
+private fun ListItem(item: TrendingMovie, onClick: () -> Unit) {
     val rowAspectRatio = ImageAspectRatio / ImageWidthPercent
     Card(
         shape = RoundedCornerShape(16.dp),
         modifier = Modifier.fillMaxWidth(),
+        onClick = onClick,
     ) {
         Row(
             modifier = Modifier
