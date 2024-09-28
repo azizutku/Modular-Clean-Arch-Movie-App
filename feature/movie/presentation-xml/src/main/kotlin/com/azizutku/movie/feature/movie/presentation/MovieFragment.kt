@@ -17,6 +17,7 @@ import com.azizutku.movie.feature.movie.R
 import com.azizutku.movie.feature.movie.databinding.FragmentMovieBinding
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import com.azizutku.feature.movie.common.R as movieCommonR
 import com.azizutku.movie.core.ui.common.R as uiCommonR
 import com.azizutku.movie.core.ui.xml.R as uiXmlR
 
@@ -107,11 +108,11 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(
         val itemWatchlistAction = binding.fragmentMovieToolbar.toolbar.menu.findItem(R.id.item_toolbar_watchlist_action)
         itemWatchlistAction?.apply {
             if (isMovieInWatchlist) {
-                title = requireContext().getString(R.string.title_toolbar_menu_item_watchlist_action_remove)
+                title = requireContext().getString(movieCommonR.string.title_toolbar_menu_item_watchlist_action_remove)
                 setIcon(uiXmlR.drawable.ic_fill_favorite_24)
             } else {
-                title = requireContext().getString(R.string.title_toolbar_menu_item_watchlist_action_add)
-                setIcon(R.drawable.ic_line_favorite_24)
+                title = requireContext().getString(movieCommonR.string.title_toolbar_menu_item_watchlist_action_add)
+                setIcon(movieCommonR.drawable.ic_line_favorite_24)
             }
         }
     }
