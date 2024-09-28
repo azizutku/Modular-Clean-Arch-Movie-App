@@ -9,6 +9,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:model"))
     implementation(libs.coroutines)
     implementation(libs.retrofit)
     implementation(libs.kotlinx.serialization.json)

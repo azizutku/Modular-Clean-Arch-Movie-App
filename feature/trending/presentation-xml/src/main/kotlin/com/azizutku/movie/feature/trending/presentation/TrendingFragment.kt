@@ -6,7 +6,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.paging.LoadState
 import com.azizutku.movie.core.common.extensions.navigateToMovie
-import com.azizutku.movie.core.common.util.ThemeUtils
 import com.azizutku.movie.core.ui.base.BaseFragment
 import com.azizutku.movie.core.ui.extensions.collectLatestLifecycleFlow
 import com.azizutku.movie.core.ui.recyclerview.SpacingItemDecoration
@@ -30,9 +29,6 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
 ) {
 
     override val viewModel: TrendingViewModel by viewModels()
-
-    @Inject
-    lateinit var themeUtils: ThemeUtils
 
     @Inject
     lateinit var adapter: TrendingMoviesAdapter
@@ -88,7 +84,7 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
             setupWithNavController(navController, appBarConfiguration)
             setOnMenuItemClickListener {
                 if (it.itemId == uiR.id.item_toolbar_toggle_theme) {
-                    toggleTheme()
+                    viewModel.toggleTheme(requireContext())
                     return@setOnMenuItemClickListener true
                 }
                 false
@@ -97,10 +93,6 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
                 binding.fragmentTrendingRecyclerviewTrending.smoothScrollToPosition(0)
             }
         }
-    }
-
-    private fun toggleTheme() {
-        themeUtils.toggleTheme(requireContext())
     }
 
     private fun openMovieDetail(movieId: Int) {

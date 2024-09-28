@@ -1,9 +1,12 @@
 package com.azizutku.movie.feature.trending.common.presentation
 
+import android.content.Context
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.azizutku.movie.core.common.base.BaseViewModel
+import com.azizutku.movie.core.common.data.repository.UserDataRepository
+import com.azizutku.movie.core.common.util.ThemeUtils
 import com.azizutku.movie.feature.trending.common.domain.model.TrendingMovie
 import com.azizutku.movie.feature.trending.common.domain.usecase.GetTrendingMoviesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,6 +19,8 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class TrendingViewModel @Inject constructor(
     private val getTrendingMoviesUseCase: GetTrendingMoviesUseCase,
+    private val userDataRepository: UserDataRepository,
+    private val themeUtils: ThemeUtils,
 ) : BaseViewModel() {
 
     private val _uiState = MutableStateFlow<TrendingUiState>(
@@ -29,6 +34,11 @@ class TrendingViewModel @Inject constructor(
 
     init {
         getTrendingMovies()
+    }
+
+    fun toggleTheme(context: Context) {
+        themeUtils.toggleTheme(context)
+        userDataRepository.toggleDarkThemeConfig()
     }
 
     private fun getTrendingMovies() {

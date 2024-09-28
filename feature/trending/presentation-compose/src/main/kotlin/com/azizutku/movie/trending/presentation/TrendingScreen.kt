@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
@@ -72,11 +73,15 @@ internal fun TrendingScreen(
     modifier: Modifier = Modifier,
     viewModel: TrendingViewModel = hiltViewModel(),
 ) {
+    val context = LocalContext.current
     val lazyPagingItems = viewModel.pagingState.collectAsLazyPagingItems()
     TrendingScreen(
         lazyPagingItems = lazyPagingItems,
-        onNavigationAction = onNavigationAction,
         modifier = modifier,
+        onToggleTheme = {
+            viewModel.toggleTheme(context)
+        },
+        onNavigationAction = onNavigationAction,
     )
 }
 
@@ -85,6 +90,7 @@ internal fun TrendingScreen(
 internal fun TrendingScreen(
     lazyPagingItems: LazyPagingItems<TrendingMovie>,
     modifier: Modifier = Modifier,
+    onToggleTheme: () -> Unit = {},
     onNavigationAction: (NavigationAction) -> Unit = {},
 ) {
     val loadState = lazyPagingItems.loadState
@@ -103,7 +109,7 @@ internal fun TrendingScreen(
                         uiComposeR.string.content_description_app_bar_action_toggle_theme
                     ),
                 ) {
-                    // Toggle theme
+                    onToggleTheme()
                 }
             ),
             onNavigationIconClick = {

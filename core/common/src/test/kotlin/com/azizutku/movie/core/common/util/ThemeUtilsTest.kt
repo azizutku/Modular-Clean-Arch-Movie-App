@@ -7,21 +7,17 @@ import com.azizutku.movie.core.testing.util.CoroutineRule
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK
-import io.mockk.mockkClass
-import io.mockk.mockkObject
 import io.mockk.mockkStatic
 import io.mockk.spyk
 import io.mockk.unmockkAll
 import io.mockk.verify
 import junit.framework.TestCase.assertEquals
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.test.advanceTimeBy
-import kotlinx.coroutines.test.runBlockingTest
-import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import kotlin.test.Test
+import kotlinx.coroutines.test.advanceTimeBy
+import kotlinx.coroutines.test.runTest
 
 class ThemeUtilsTest {
 

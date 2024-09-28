@@ -1,13 +1,14 @@
 package com.azizutku.movie.core.common.extensions
 
+import android.content.Context
 import android.net.Uri
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.NavOptions
+import androidx.test.core.app.ApplicationProvider
 import com.azizutku.movie.core.common.R
 import io.mockk.MockKAnnotations
-import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.unmockkAll
 import io.mockk.verify
@@ -27,11 +28,12 @@ class NavControllerExtensionsTest {
     @MockK
     private lateinit var mockFragment: Fragment
 
+    private lateinit var context: Context
+
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
-        every { mockFragment.getString(R.string.deep_link_movie) } returns "movieapp://movie/{movieId}"
-        every { mockFragment.getString(R.string.argument_movie_id) } returns "movieId"
+        context = ApplicationProvider.getApplicationContext()
     }
 
     @After
@@ -60,6 +62,8 @@ class NavControllerExtensionsTest {
     }
 
     private fun Fragment.navigateToMovie(movieId: Int) {
-        mockNavController.navigateToMovie(movieId)
+        val deeplinkPattern = this@NavControllerExtensionsTest.context.getString(R.string.deep_link_movie)
+        val argumentPattern = this@NavControllerExtensionsTest.context.getString(R.string.argument_movie_id)
+        mockNavController.navigateToMovie(deeplinkPattern, argumentPattern, movieId)
     }
 }
