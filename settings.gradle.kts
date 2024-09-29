@@ -39,9 +39,6 @@ include(
     ":core:testing",
 )
 include(
-    ":feature:watchlist",
-)
-include(
     ":feature:trending:common",
     ":feature:trending:presentation-xml",
     ":feature:trending:presentation-compose",
@@ -51,4 +48,9 @@ include(
     ":feature:movie:common",
     ":feature:movie:presentation-xml",
     ":feature:movie:presentation-compose",
+)
+include(
+    ":feature:watchlist:common",
+    ":feature:watchlist:presentation-xml",
+    ":feature:watchlist:presentation-compose",
 )

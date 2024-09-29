@@ -10,5 +10,5 @@ dependencies {
     implementation(project(":feature:movie:presentation-xml"))
     implementation(project(":feature:movie:common"))
     implementation(project(":feature:trending:common"))
-    implementation(project(":feature:watchlist"))
+    implementation(project(":feature:watchlist:common"))
 }
