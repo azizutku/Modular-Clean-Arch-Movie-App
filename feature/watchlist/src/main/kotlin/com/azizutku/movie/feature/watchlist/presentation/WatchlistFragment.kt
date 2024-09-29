@@ -14,8 +14,8 @@ import com.azizutku.movie.feature.watchlist.databinding.FragmentWatchlistBinding
 import com.azizutku.movie.feature.watchlist.presentation.adapter.WatchlistMoviesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.azizutku.movie.core.common.R as commonR
-import com.azizutku.movie.core.ui.xml.R as uiR
+import com.azizutku.movie.core.common.R as coreCommonR
+import com.azizutku.movie.core.ui.xml.R as coreUiXmlR
 
 @AndroidEntryPoint
 class WatchlistFragment : BaseFragment<FragmentWatchlistBinding>(
@@ -40,7 +40,7 @@ class WatchlistFragment : BaseFragment<FragmentWatchlistBinding>(
     private fun initRecyclerView() {
         adapter.onItemClicked = ::openMovieDetail
         binding.fragmentWatchlistRecyclerviewMovies.addItemDecoration(
-            SpacingItemDecoration(resources.getDimensionPixelSize(uiR.dimen.space_medium), true)
+            SpacingItemDecoration(resources.getDimensionPixelSize(coreUiXmlR.dimen.space_medium), true)
         )
         binding.fragmentWatchlistRecyclerviewMovies.adapter = adapter
     }
@@ -60,11 +60,11 @@ class WatchlistFragment : BaseFragment<FragmentWatchlistBinding>(
         )
 
         with(binding.fragmentWatchlistToolbar.toolbar) {
-            inflateMenu(uiR.menu.toolbar_main_menu)
+            inflateMenu(coreUiXmlR.menu.toolbar_main_menu)
             title = getString(R.string.title_fragment_watchlist)
             setupWithNavController(navController, appBarConfiguration)
             setOnMenuItemClickListener {
-                if (it.itemId == uiR.id.item_toolbar_toggle_theme) {
+                if (it.itemId == coreUiXmlR.id.item_toolbar_toggle_theme) {
                     toggleTheme()
                     return@setOnMenuItemClickListener true
                 }
@@ -82,8 +82,8 @@ class WatchlistFragment : BaseFragment<FragmentWatchlistBinding>(
 
     private fun openMovieDetail(movieId: Int) {
         findNavController().navigateToMovie(
-            deeplinkPattern = getString(commonR.string.deep_link_movie),
-            argumentPattern = getString(commonR.string.argument_movie_id),
+            deeplinkPattern = getString(coreCommonR.string.deep_link_movie),
+            argumentPattern = getString(coreCommonR.string.argument_movie_id),
             movieId = movieId,
         )
     }

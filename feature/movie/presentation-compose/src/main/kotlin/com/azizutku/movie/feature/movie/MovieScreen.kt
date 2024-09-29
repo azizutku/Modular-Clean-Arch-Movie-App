@@ -45,7 +45,7 @@ import com.azizutku.movie.ui.theme.AppTheme
 import com.azizutku.movie.ui.theme.AppTypography
 import com.azizutku.movie.ui.theme.PreviewTheme
 import com.azizutku.feature.movie.common.R as movieCommonR
-import com.azizutku.movie.core.ui.common.R as uiCommonR
+import com.azizutku.movie.core.ui.common.R as coreUiCommonR
 
 private const val ImageWidthPercent = 0.60f
 private const val LogoWidthPercent = 0.50f
@@ -66,7 +66,7 @@ internal fun MovieScreen(
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     ErrorLoadingScaffold(
         viewModel = viewModel,
-        errorPrimaryActionText = stringResource(uiCommonR.string.text_button_go_back),
+        errorPrimaryActionText = stringResource(coreUiCommonR.string.text_button_go_back),
         onErrorPrimaryAction = { onNavigationAction(NavigationAction.OnBackButtonClicked) },
     ) {
         MovieScreen(
@@ -134,8 +134,8 @@ private fun MovieContent(
     ) {
         AsyncImage(
             model = movie.posterUrl,
-            contentDescription = stringResource(uiCommonR.string.content_description_alert_dialog_image),
-            placeholder = painterResource(id = uiCommonR.drawable.bg_placeholder_movie_image),
+            contentDescription = stringResource(coreUiCommonR.string.content_description_alert_dialog_image),
+            placeholder = painterResource(id = coreUiCommonR.drawable.bg_placeholder_movie_image),
             alignment = Alignment.Center,
             contentScale = ContentScale.Crop,
             modifier = Modifier

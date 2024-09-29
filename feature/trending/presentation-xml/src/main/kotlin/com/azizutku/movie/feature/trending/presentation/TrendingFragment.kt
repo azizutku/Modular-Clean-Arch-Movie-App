@@ -20,8 +20,8 @@ import com.azizutku.movie.feature.trending.presentation.di.HeaderLoadStateAdapte
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import com.azizutku.feature.trending.common.R as trendingCommonR
-import com.azizutku.movie.core.common.R as commonR
-import com.azizutku.movie.core.ui.xml.R as uiR
+import com.azizutku.movie.core.common.R as coreCommonR
+import com.azizutku.movie.core.ui.xml.R as coreUiXmlR
 
 @AndroidEntryPoint
 class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
@@ -53,7 +53,7 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
             adapter.refresh()
         }
         binding.fragmentTrendingRecyclerviewTrending.addItemDecoration(
-            SpacingItemDecoration(resources.getDimensionPixelSize(uiR.dimen.space_medium), true)
+            SpacingItemDecoration(resources.getDimensionPixelSize(coreUiXmlR.dimen.space_medium), true)
         )
         binding.fragmentTrendingRecyclerviewTrending.adapter = adapter.withLoadStateHeaderAndFooter(
             header = headerLoadStateAdapter,
@@ -79,11 +79,11 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
         )
 
         with(binding.fragmentTrendingToolbar.toolbar) {
-            inflateMenu(uiR.menu.toolbar_main_menu)
+            inflateMenu(coreUiXmlR.menu.toolbar_main_menu)
             title = getString(trendingCommonR.string.title_fragment_trending)
             setupWithNavController(navController, appBarConfiguration)
             setOnMenuItemClickListener {
-                if (it.itemId == uiR.id.item_toolbar_toggle_theme) {
+                if (it.itemId == coreUiXmlR.id.item_toolbar_toggle_theme) {
                     viewModel.toggleTheme(requireContext())
                     return@setOnMenuItemClickListener true
                 }
@@ -97,8 +97,8 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>(
 
     private fun openMovieDetail(movieId: Int) {
         findNavController().navigateToMovie(
-            deeplinkPattern = getString(commonR.string.deep_link_movie),
-            argumentPattern = getString(commonR.string.argument_movie_id),
+            deeplinkPattern = getString(coreCommonR.string.deep_link_movie),
+            argumentPattern = getString(coreCommonR.string.argument_movie_id),
             movieId = movieId,
         )
     }

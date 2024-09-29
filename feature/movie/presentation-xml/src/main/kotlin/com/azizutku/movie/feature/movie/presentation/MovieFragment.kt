@@ -18,8 +18,8 @@ import com.azizutku.movie.feature.movie.databinding.FragmentMovieBinding
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import com.azizutku.feature.movie.common.R as movieCommonR
-import com.azizutku.movie.core.ui.common.R as uiCommonR
-import com.azizutku.movie.core.ui.xml.R as uiXmlR
+import com.azizutku.movie.core.ui.common.R as coreUiCommonR
+import com.azizutku.movie.core.ui.xml.R as coreUiXmlR
 
 @AndroidEntryPoint
 class MovieFragment : BaseFragment<FragmentMovieBinding>(
@@ -93,7 +93,7 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(
         errorHandler.onDefaultPrimaryAction = {
             findNavController().popBackStack()
         }
-        errorHandler.defaultTextPrimaryAction = requireContext().getString(uiCommonR.string.text_button_go_back)
+        errorHandler.defaultTextPrimaryAction = requireContext().getString(coreUiCommonR.string.text_button_go_back)
     }
 
     private fun onMenuItemWatchlistAction() {
@@ -109,7 +109,7 @@ class MovieFragment : BaseFragment<FragmentMovieBinding>(
         itemWatchlistAction?.apply {
             if (isMovieInWatchlist) {
                 title = requireContext().getString(movieCommonR.string.title_toolbar_menu_item_watchlist_action_remove)
-                setIcon(uiXmlR.drawable.ic_fill_favorite_24)
+                setIcon(coreUiXmlR.drawable.ic_fill_favorite_24)
             } else {
                 title = requireContext().getString(movieCommonR.string.title_toolbar_menu_item_watchlist_action_add)
                 setIcon(movieCommonR.drawable.ic_line_favorite_24)

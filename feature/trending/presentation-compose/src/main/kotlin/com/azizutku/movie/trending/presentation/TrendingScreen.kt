@@ -61,8 +61,8 @@ import com.azizutku.movie.ui.theme.PreviewTheme
 import kotlinx.coroutines.flow.flowOf
 import com.azizutku.feature.trending.common.R as trendingCommonR
 import com.azizutku.movie.core.common.R as coreCommonR
-import com.azizutku.movie.core.ui.common.R as uiCommonR
-import com.azizutku.movie.core.ui.compose.R as uiComposeR
+import com.azizutku.movie.core.ui.common.R as coreUiCommonR
+import com.azizutku.movie.core.ui.compose.R as coreUiComposeR
 
 private const val ImageWidthPercent = 0.40f
 private const val ImageAspectRatio = 1f / 1.5f
@@ -105,9 +105,9 @@ internal fun TrendingScreen(
             hideNavigationIcon = true,
             actions = listOf(
                 TopAppBarAction(
-                    imageVector = ImageVector.vectorResource(uiComposeR.drawable.ic_toggle_theme_24),
+                    imageVector = ImageVector.vectorResource(coreUiComposeR.drawable.ic_toggle_theme_24),
                     contentDescription = stringResource(
-                        uiComposeR.string.content_description_app_bar_action_toggle_theme
+                        coreUiComposeR.string.content_description_app_bar_action_toggle_theme
                     ),
                 ) {
                     onToggleTheme()
@@ -196,7 +196,7 @@ private fun ListItem(item: TrendingMovie, onClick: () -> Unit) {
                 contentDescription = stringResource(
                     trendingCommonR.string.content_description_trending_movie_poster_image,
                 ),
-                placeholder = painterResource(id = uiCommonR.drawable.bg_placeholder_movie_image),
+                placeholder = painterResource(id = coreUiCommonR.drawable.bg_placeholder_movie_image),
                 alignment = Alignment.Center,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

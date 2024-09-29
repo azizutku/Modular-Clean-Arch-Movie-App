@@ -4,11 +4,11 @@ import androidx.compose.material.Typography
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import com.azizutku.movie.core.ui.common.R as uiCommonR
+import com.azizutku.movie.core.ui.common.R as coreUiCommonR
 
-private val regular = Font(uiCommonR.font.rubik_regular, FontWeight.Normal)
-private val medium = Font(uiCommonR.font.rubik_medium, FontWeight.Medium)
-private val bold = Font(uiCommonR.font.rubik_bold, FontWeight.Bold)
+private val regular = Font(coreUiCommonR.font.rubik_regular, FontWeight.Normal)
+private val medium = Font(coreUiCommonR.font.rubik_medium, FontWeight.Medium)
+private val bold = Font(coreUiCommonR.font.rubik_bold, FontWeight.Bold)
 
 private val fontFamily = FontFamily(regular, medium, bold)
 private val baseline = Typography()
