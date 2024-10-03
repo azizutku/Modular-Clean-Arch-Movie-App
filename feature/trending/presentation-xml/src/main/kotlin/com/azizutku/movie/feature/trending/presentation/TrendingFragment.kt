@@ -19,9 +19,9 @@ import com.azizutku.movie.feature.trending.presentation.di.FooterLoadStateAdapte
 import com.azizutku.movie.feature.trending.presentation.di.HeaderLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import com.azizutku.feature.trending.common.R as trendingCommonR
 import com.azizutku.movie.core.common.R as coreCommonR
 import com.azizutku.movie.core.ui.xml.R as coreUiXmlR
+import com.azizutku.movie.feature.trending.common.R as trendingCommonR
 
 @AndroidEntryPoint
 class TrendingFragment : BaseFragment<FragmentTrendingBinding>(

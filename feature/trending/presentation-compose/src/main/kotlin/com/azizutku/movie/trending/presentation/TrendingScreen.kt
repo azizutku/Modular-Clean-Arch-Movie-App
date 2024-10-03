@@ -59,10 +59,10 @@ import com.azizutku.movie.ui.theme.AppTheme
 import com.azizutku.movie.ui.theme.AppTypography
 import com.azizutku.movie.ui.theme.PreviewTheme
 import kotlinx.coroutines.flow.flowOf
-import com.azizutku.feature.trending.common.R as trendingCommonR
 import com.azizutku.movie.core.common.R as coreCommonR
 import com.azizutku.movie.core.ui.common.R as coreUiCommonR
 import com.azizutku.movie.core.ui.compose.R as coreUiComposeR
+import com.azizutku.movie.feature.trending.common.R as trendingCommonR
 
 private const val ImageWidthPercent = 0.40f
 private const val ImageAspectRatio = 1f / 1.5f

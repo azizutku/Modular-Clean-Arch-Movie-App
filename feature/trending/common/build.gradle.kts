@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.azizutku.feature.trending.common"
+    namespace = "com.azizutku.movie.feature.trending.common"
 }
 
 dependencies {
