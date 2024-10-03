@@ -10,8 +10,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
+import com.azizutku.movie.feature.watchlist.navigation.navigateToWatchlist
 import com.azizutku.movie.navigation.TopLevelDestination
-import com.azizutku.movie.navigation.navigateToWatchlist
 import com.azizutku.movie.trending.presentation.navigation.navigateToTrending
 
 @Composable

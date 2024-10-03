@@ -6,6 +6,7 @@ import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.azizutku.movie.R
+import com.azizutku.movie.feature.watchlist.navigation.WatchlistRoute
 import com.azizutku.movie.trending.presentation.navigation.TrendingRoute
 import kotlin.reflect.KClass
 

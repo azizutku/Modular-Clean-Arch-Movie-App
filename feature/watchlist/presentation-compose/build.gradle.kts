@@ -8,4 +8,6 @@ android {
 
 dependencies {
     implementation(project(":feature:watchlist:common"))
+    implementation(libs.androidx.paging)
+    implementation(libs.androidx.paging.compose)
 }
