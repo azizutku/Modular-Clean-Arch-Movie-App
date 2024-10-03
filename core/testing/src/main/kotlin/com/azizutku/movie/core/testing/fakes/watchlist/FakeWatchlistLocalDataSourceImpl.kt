@@ -2,9 +2,9 @@ package com.azizutku.movie.core.testing.fakes.watchlist
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.azizutku.feature.watchlist.common.data.repository.datasource.WatchlistLocalDataSource
 import com.azizutku.movie.core.database.model.MovieEntity
 import com.azizutku.movie.core.database.model.WatchlistEntity
+import com.azizutku.movie.feature.watchlist.common.data.repository.datasource.WatchlistLocalDataSource
 
 class FakeWatchlistLocalDataSourceImpl : WatchlistLocalDataSource {
 

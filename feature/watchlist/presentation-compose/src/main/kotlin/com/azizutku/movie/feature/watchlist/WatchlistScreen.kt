@@ -30,18 +30,18 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 import coil.compose.AsyncImage
-import com.azizutku.feature.watchlist.common.presentation.WatchlistViewModel
 import com.azizutku.movie.core.model.watchlist.WatchlistMovie
+import com.azizutku.movie.feature.watchlist.common.presentation.WatchlistViewModel
 import com.azizutku.movie.ui.NavigationAction
 import com.azizutku.movie.ui.components.MovieAppTopAppBar
 import com.azizutku.movie.ui.components.TopAppBarAction
 import com.azizutku.movie.ui.theme.AppTheme
 import com.azizutku.movie.ui.theme.PreviewTheme
 import kotlinx.coroutines.flow.flowOf
-import com.azizutku.feature.watchlist.common.R as watchlistCommonR
 import com.azizutku.movie.core.common.R as coreCommonR
 import com.azizutku.movie.core.ui.common.R as coreUiCommonR
 import com.azizutku.movie.core.ui.compose.R as coreUiComposeR
+import com.azizutku.movie.feature.watchlist.common.R as watchlistCommonR
 
 private const val ImageAspectRatio = 1f / 1.5f
 

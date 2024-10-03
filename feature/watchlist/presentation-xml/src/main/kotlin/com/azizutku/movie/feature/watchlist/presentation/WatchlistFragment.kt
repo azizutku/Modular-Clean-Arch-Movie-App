@@ -4,14 +4,14 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.azizutku.feature.watchlist.common.presentation.WatchlistUiState
-import com.azizutku.feature.watchlist.common.presentation.WatchlistViewModel
 import com.azizutku.movie.core.common.extensions.navigateToMovie
 import com.azizutku.movie.core.common.util.ThemeUtils
 import com.azizutku.movie.core.ui.base.BaseFragment
 import com.azizutku.movie.core.ui.extensions.collectLatestLifecycleFlow
 import com.azizutku.movie.core.ui.recyclerview.SpacingItemDecoration
 import com.azizutku.movie.feature.watchlist.R
+import com.azizutku.movie.feature.watchlist.common.presentation.WatchlistUiState
+import com.azizutku.movie.feature.watchlist.common.presentation.WatchlistViewModel
 import com.azizutku.movie.feature.watchlist.databinding.FragmentWatchlistBinding
 import com.azizutku.movie.feature.watchlist.presentation.adapter.WatchlistMoviesAdapter
 import dagger.hilt.android.AndroidEntryPoint

@@ -3,5 +3,5 @@ plugins {
 }
 
 android {
-    namespace = "com.azizutku.feature.watchlist.common"
+    namespace = "com.azizutku.movie.feature.watchlist.common"
 }
