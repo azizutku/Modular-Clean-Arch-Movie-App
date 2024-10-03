@@ -5,21 +5,21 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.azizutku.feature.movie.common.domain.model.Movie
-import com.azizutku.feature.movie.common.presentation.MovieUiState
-import com.azizutku.feature.movie.common.presentation.MovieViewModel
 import com.azizutku.movie.core.common.extensions.orFalse
 import com.azizutku.movie.core.ui.base.BaseFragment
 import com.azizutku.movie.core.ui.extensions.collectLatestLifecycleFlow
 import com.azizutku.movie.core.ui.extensions.setTextIfAvailableOrHide
 import com.azizutku.movie.core.ui.extensions.setVisible
 import com.azizutku.movie.feature.movie.R
+import com.azizutku.movie.feature.movie.common.domain.model.Movie
+import com.azizutku.movie.feature.movie.common.presentation.MovieUiState
+import com.azizutku.movie.feature.movie.common.presentation.MovieViewModel
 import com.azizutku.movie.feature.movie.databinding.FragmentMovieBinding
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
-import com.azizutku.feature.movie.common.R as movieCommonR
 import com.azizutku.movie.core.ui.common.R as coreUiCommonR
 import com.azizutku.movie.core.ui.xml.R as coreUiXmlR
+import com.azizutku.movie.feature.movie.common.R as movieCommonR
 
 @AndroidEntryPoint
 class MovieFragment : BaseFragment<FragmentMovieBinding>(

@@ -33,10 +33,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
-import com.azizutku.feature.movie.common.domain.model.Movie
-import com.azizutku.feature.movie.common.presentation.MovieUiState
-import com.azizutku.feature.movie.common.presentation.MovieViewModel
 import com.azizutku.movie.core.common.extensions.orFalse
+import com.azizutku.movie.feature.movie.common.domain.model.Movie
+import com.azizutku.movie.feature.movie.common.presentation.MovieUiState
+import com.azizutku.movie.feature.movie.common.presentation.MovieViewModel
 import com.azizutku.movie.ui.NavigationAction
 import com.azizutku.movie.ui.components.ErrorLoadingScaffold
 import com.azizutku.movie.ui.components.MovieAppTopAppBar
@@ -44,8 +44,8 @@ import com.azizutku.movie.ui.components.TopAppBarAction
 import com.azizutku.movie.ui.theme.AppTheme
 import com.azizutku.movie.ui.theme.AppTypography
 import com.azizutku.movie.ui.theme.PreviewTheme
-import com.azizutku.feature.movie.common.R as movieCommonR
 import com.azizutku.movie.core.ui.common.R as coreUiCommonR
+import com.azizutku.movie.feature.movie.common.R as movieCommonR
 
 private const val ImageWidthPercent = 0.60f
 private const val LogoWidthPercent = 0.50f

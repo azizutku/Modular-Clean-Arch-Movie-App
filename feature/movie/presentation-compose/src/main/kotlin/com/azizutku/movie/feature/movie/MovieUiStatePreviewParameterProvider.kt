@@ -1,9 +1,9 @@
 package com.azizutku.movie.feature.movie
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import com.azizutku.feature.movie.common.domain.model.Movie
-import com.azizutku.feature.movie.common.presentation.MovieUiState
 import com.azizutku.movie.core.model.watchlist.MovieWatchlistState
+import com.azizutku.movie.feature.movie.common.domain.model.Movie
+import com.azizutku.movie.feature.movie.common.presentation.MovieUiState
 
 class MovieUiStatePreviewParameterProvider : PreviewParameterProvider<MovieUiState> {
     override val values: Sequence<MovieUiState> = sequenceOf(

@@ -3,5 +3,5 @@ plugins {
 }
 
 android {
-    namespace = "com.azizutku.feature.movie.common"
+    namespace = "com.azizutku.movie.feature.movie.common"
 }
