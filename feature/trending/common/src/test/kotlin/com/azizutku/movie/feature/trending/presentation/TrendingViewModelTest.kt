@@ -1,8 +1,11 @@
 package com.azizutku.movie.feature.trending.presentation
 
+import android.content.Context
 import android.util.Log
 import androidx.paging.testing.asSnapshot
 import app.cash.turbine.test
+import com.azizutku.movie.core.common.data.repository.UserDataRepository
+import com.azizutku.movie.core.common.util.ThemeUtils
 import com.azizutku.movie.core.testing.fakes.trending.FakeTrendingRemoteDataSourceImpl
 import com.azizutku.movie.core.testing.models.trendingMovieEntity
 import com.azizutku.movie.core.testing.models.trendingMovieEntity2
@@ -14,17 +17,21 @@ import com.azizutku.movie.feature.trending.common.domain.usecase.GetTrendingMovi
 import com.azizutku.movie.feature.trending.common.presentation.TrendingUiState
 import com.azizutku.movie.feature.trending.common.presentation.TrendingViewModel
 import com.azizutku.movie.feature.trending.testing.fakes.FakeTrendingLocalDataSourceImpl
+import io.mockk.MockKAnnotations
 import io.mockk.every
+import io.mockk.impl.annotations.MockK
+import io.mockk.mockk
 import io.mockk.mockkStatic
+import io.mockk.verify
+import org.junit.Assert.assertEquals
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runCurrent
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
 
 @ExperimentalCoroutinesApi
 class TrendingViewModelTest {
@@ -37,8 +44,15 @@ class TrendingViewModelTest {
     private lateinit var fakeTrendingLocalDataSourceImpl: FakeTrendingLocalDataSourceImpl
     private lateinit var fakeTrendingRemoteDataSourceImpl: FakeTrendingRemoteDataSourceImpl
 
+    @MockK(relaxed = true)
+    private lateinit var userDataRepository: UserDataRepository
+
+    @MockK(relaxed = true)
+    private lateinit var themeUtils: ThemeUtils
+
     @Before
     fun setUp() {
+        MockKAnnotations.init(this, relaxUnitFun = true)
         fakeTrendingLocalDataSourceImpl = FakeTrendingLocalDataSourceImpl()
         fakeTrendingRemoteDataSourceImpl = FakeTrendingRemoteDataSourceImpl()
 
@@ -51,7 +65,9 @@ class TrendingViewModelTest {
         mockkStatic(Log::isLoggable)
         every { Log.isLoggable(any(), any()) } returns false
         viewModel = TrendingViewModel(
-            GetTrendingMoviesUseCase(trendingRepository),
+            getTrendingMoviesUseCase = GetTrendingMoviesUseCase(trendingRepository),
+            userDataRepository = userDataRepository,
+            themeUtils = themeUtils,
         )
     }
 
@@ -90,5 +106,18 @@ class TrendingViewModelTest {
             }
         }
         runCurrent()
+    }
+
+    @Test
+    fun `toggleTheme should call toggleTheme on ThemeUtils and toggleDarkThemeConfig on UserDataRepository`() = runTest {
+        // Arrange
+        val mockContext = mockk<Context>(relaxed = true)
+
+        // Act
+        viewModel.toggleTheme(mockContext)
+
+        // Assert
+        verify(exactly = 1) { themeUtils.toggleTheme(mockContext) }
+        verify(exactly = 1) { userDataRepository.toggleDarkThemeConfig() }
     }
 }
